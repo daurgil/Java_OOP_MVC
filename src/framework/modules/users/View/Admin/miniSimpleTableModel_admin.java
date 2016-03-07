@@ -36,7 +36,6 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
 
         Object dev = null;
         admin_class fila = (admin_class) datos.get(row);
-        System.out.println("g"+fila.getDate_cont());
         
         switch (col) {
             case 0:
@@ -111,7 +110,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         
         admin_class admin = null;
         java.util.Date date= new java.util.Date();
-        for(int i=1;i<=(singleton_user.admin.size()-1);i++) {
+        for(int i=0;i<=(singleton_user.admin.size()-1);i++) {
             //admin = new admin_class(i, getCadenaAleatoria1(4), getCadenaAleatoria2(8), new Timestamp(date.getTime()));
             admin=singleton_user.admin.get(i);
             addRow(admin);

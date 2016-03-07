@@ -6,7 +6,6 @@
 package framework.modules.users.View.Admin;
 
 import framework.modules.Menu.View.menu;
-import framework.modules.Menu.View.menu;
 import framework.modules.users.Model.classes.singleton_user;
 import framework.modules.users.Model.utils_users.BLL.BLL_admin;
 import framework.modules.users.View.Admin.admin_create;
@@ -16,10 +15,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
