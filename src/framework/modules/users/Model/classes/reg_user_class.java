@@ -1,5 +1,6 @@
 package framework.modules.users.Model.classes;
 
+import framework.modules.users.Classes.user;
 import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;

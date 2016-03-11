@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import framework.modules.Config.Model.classes.language.class_language;
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
+import framework.modules.users.client.admin_class;
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.Model.classes.reg_user_class;
 import framework.modules.users.Model.classes.singleton_user;
+import framework.modules.users.client.singleton_admin;
 
 public class auto_txt {
 
@@ -32,14 +33,14 @@ public class auto_txt {
             e.printStackTrace();
         }
 		
-		if(singleton_user.admin.size()>0){
+		if(singleton_admin.admin.size()>0){
 			try {
 				File f;
 				
 				f = new File(PATH);	
 				FileOutputStream fo = new FileOutputStream(f);
 				ObjectOutputStream o = new ObjectOutputStream(fo);
-				o.writeObject(singleton_user.admin);
+				o.writeObject(singleton_admin.admin);
 				o.close();
 				
 			} catch (Exception e) {
@@ -67,7 +68,7 @@ public class auto_txt {
 
             FileInputStream fi=new FileInputStream(f);
 			ObjectInputStream oi=new ObjectInputStream(fi);
-			singleton_user.admin = (ArrayList<admin_class>)oi.readObject();
+			singleton_admin.admin = (ArrayList<admin_class>)oi.readObject();
 			oi.close();
 
         } catch (Exception e) {

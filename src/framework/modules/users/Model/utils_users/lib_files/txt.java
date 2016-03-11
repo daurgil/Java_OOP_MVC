@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,9 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import framework.modules.users.Model.classes.singleton_user;
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
+import framework.modules.users.client.admin_class;
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.Model.classes.reg_user_class;
+import framework.modules.users.client.singleton_admin;
 
 
 
@@ -42,7 +42,7 @@ public class txt {
 				
 				FileOutputStream fo = new FileOutputStream(f);
 				ObjectOutputStream o = new ObjectOutputStream(fo);
-				o.writeObject(singleton_user.admin);
+				o.writeObject(singleton_admin.admin);
 				o.close();
 				JOptionPane.showMessageDialog(null, "Archivo TXT guardado con exito",
 						"Archivo TXT", JOptionPane.INFORMATION_MESSAGE);
@@ -71,7 +71,7 @@ public class txt {
                 
                 FileInputStream fi=new FileInputStream(f);
     			ObjectInputStream oi=new ObjectInputStream(fi);
-    			singleton_user.admin = (ArrayList<admin_class>)oi.readObject();
+    			singleton_admin.admin = (ArrayList<admin_class>)oi.readObject();
     			oi.close();
             }
         } catch (Exception e) {

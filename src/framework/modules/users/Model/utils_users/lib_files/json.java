@@ -3,7 +3,6 @@ package framework.modules.users.Model.utils_users.lib_files;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -17,10 +16,12 @@ import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
+
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.Model.classes.reg_user_class;
 import framework.modules.users.Model.classes.singleton_user;
+import framework.modules.users.admin.Model.classes.admin_class;
+import framework.modules.users.admin.Model.classes.singleton_admin;
 
 
 
@@ -45,7 +46,7 @@ public class json {
 					PATH = PATH+ ".json";
 					
 					Gson gson = new Gson();
-					String json = gson.toJson(singleton_user.admin);
+					String json = gson.toJson(singleton_admin.admin);
 					FileWriter fileXml =new FileWriter(PATH);
 					fileXml.write(json.toString());
 					fileXml.close();
@@ -80,7 +81,7 @@ public class json {
 				File JFC = filechooser.getSelectedFile();
 				PATH = JFC.getAbsolutePath();
 				
-				singleton_user.admin.clear();
+				singleton_admin.admin.clear();
 				
 				JsonReader reader = new JsonReader(new FileReader(PATH));
 				JsonParser parser = new JsonParser();
@@ -90,7 +91,7 @@ public class json {
 				JsonArray list = root.getAsJsonArray();
 				for (JsonElement element : list) {
 					a = json.fromJson(element, admin_class.class);
-					singleton_user.admin.add(a);
+					singleton_admin.admin.add(a);
 				}
 			}
 			

@@ -8,7 +8,6 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
@@ -17,9 +16,6 @@ import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 import framework.modules.Config.Model.classes.class_config;
 import framework.modules.Config.Model.classes.language.class_language;
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
-import framework.modules.users.Model.classes.singleton_user;
 import framework.utils.appearance;
 
 public class auto_config {

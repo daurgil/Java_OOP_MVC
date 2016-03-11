@@ -8,7 +8,7 @@ public class validate {
 	private static final String pattern_name= "^[a-zA-ZñÑ\\s]*$";
 	private static final String pattern_surname= "[a-zA-ZñÑ\\s]*$";
 	private static final String pattern_mobile= "[0-9]{9}";
-	private static final String pattern_email= "^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	private static final String pattern_email= "^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,3})$";
 	private static final String pattern_nick= "^[a-zA-Z0-9_-]{3,15}$";
 	private static final String pattern_password= "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
 	private static final String pattern_avatar= "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";

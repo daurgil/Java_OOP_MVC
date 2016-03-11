@@ -1,6 +1,8 @@
 package framework.modules.Menu.View;
 
-import framework.modules.users.View.Admin.admin_table;
+
+import framework.modules.users.admin.View.admin_table;
+import framework.modules.users.client.View.client_table;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -129,7 +131,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_adminActionPerformed
 
     private void jb_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_clientActionPerformed
-        new admin_table().setVisible(true);
+        new client_table().setVisible(true);
         dispose();
     }//GEN-LAST:event_jb_clientActionPerformed
 

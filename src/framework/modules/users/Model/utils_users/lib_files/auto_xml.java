@@ -15,10 +15,11 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
 
 import framework.modules.Config.Model.classes.language.class_language;
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
+import framework.modules.users.client.admin_class;
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.Model.classes.reg_user_class;
 import framework.modules.users.Model.classes.singleton_user;
+import framework.modules.users.client.singleton_admin;
 
 public class auto_xml {
 
@@ -41,7 +42,7 @@ public class auto_xml {
             e.printStackTrace();
         }
 		
-		if(singleton_user.admin.isEmpty()){
+		if(singleton_admin.admin.isEmpty()){
 			File path = new File(PATH);
 			
 			path.delete();
@@ -54,7 +55,7 @@ public class auto_xml {
 				
 				
 				String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING + "\"?>\n";
-				xstream.toXML(singleton_user.admin, osw);
+				xstream.toXML(singleton_admin.admin, osw);
 				StringBuffer xml = new StringBuffer();
 				xml.append(header);
 				xml.append(os.toString());
@@ -87,7 +88,7 @@ public class auto_xml {
             File path = new File(PATH);
 
             if (path.exists()) {
-                singleton_user.admin = (ArrayList<admin_class>) xstream.fromXML(new FileReader(PATH));
+                singleton_admin.admin = (ArrayList<admin_class>) xstream.fromXML(new FileReader(PATH));
             }
 
         } catch (IOException e) {

@@ -14,11 +14,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
-
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.Model.classes.reg_user_class;
 import framework.modules.users.Model.classes.singleton_user;
+import framework.modules.users.admin.Model.classes.admin_class;
+import framework.modules.users.admin.Model.classes.singleton_admin;
 
 public class xml {
 	
@@ -35,7 +35,7 @@ public class xml {
 			
 			
 			String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING + "\"?>\n";
-			xstream.toXML(singleton_user.admin, osw);
+			xstream.toXML(singleton_admin.admin, osw);
 			StringBuffer xml = new StringBuffer();
 			xml.append(header);
 			xml.append(os.toString());
@@ -80,7 +80,7 @@ public class xml {
 			if(selection == filechooser.APPROVE_OPTION){
 				File JFC = filechooser.getSelectedFile();
 				PATH = JFC.getAbsolutePath();
-				singleton_user.admin = (ArrayList<admin_class>)xstream.fromXML(new FileReader(PATH));
+				singleton_admin.admin = (ArrayList<admin_class>)xstream.fromXML(new FileReader(PATH));
 				
 			}
 		} catch (Exception e) {

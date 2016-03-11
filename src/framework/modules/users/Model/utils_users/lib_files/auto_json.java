@@ -1,21 +1,10 @@
 package framework.modules.users.Model.utils_users.lib_files;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -23,14 +12,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.annotations.Annotations;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 import framework.modules.Config.Model.classes.language.class_language;
-import framework.modules.users.Model.classes.admin_class;
-import framework.modules.users.Model.classes.client_class;
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.Model.classes.reg_user_class;
 import framework.modules.users.Model.classes.singleton_user;
+import framework.modules.users.admin.Model.classes.admin_class;
+import framework.modules.users.admin.Model.classes.singleton_admin;
 
 public class auto_json {
 	
@@ -47,7 +36,7 @@ public class auto_json {
             e.printStackTrace();
         }
 		
-		if(singleton_user.admin.size()>0){
+		if(singleton_admin.admin.size()>0){
 			try{
 				XStream xstreamjson = new XStream(new JettisonMappedXmlDriver());
 				xstreamjson.setMode(XStream.NO_REFERENCES);
@@ -56,7 +45,7 @@ public class auto_json {
 				
 					
 				Gson gson = new Gson();
-				String json = gson.toJson(singleton_user.admin);
+				String json = gson.toJson(singleton_admin.admin);
 				FileWriter fileXml =new FileWriter(PATH);
 				fileXml.write(json.toString());
 				fileXml.close();
@@ -98,7 +87,7 @@ public class auto_json {
 				JsonArray list = root.getAsJsonArray();
 				for (JsonElement element : list) {
 					a = json.fromJson(element, admin_class.class);
-					singleton_user.admin.add(a);
+					singleton_admin.admin.add(a);
                 //singleton.admin = (ArrayList<Usuarios>) xstream.fromXML(new FileReader(PATH));
 				}
 			}
@@ -117,7 +106,7 @@ public class auto_json {
 			
 		try {
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/framework/modules/users/Model/files/client_files/json/auto_json.json";
+                    + "/src/framework/modules/Config/Model/files_config/files/client_files/json/auto_json.json";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,7 +149,7 @@ public class auto_json {
 			xstream.alias("client_class", client_class.class);
 			
 			PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/framework/modules/users/Model/files/client_files/json/auto_json.json";
+                    + "/src/framework/modules/Config/Model/files_config/files/client_files/json/auto_json.json";
 			
 			File path = new File(PATH);
 			
@@ -192,7 +181,7 @@ public class auto_json {
 			
 		try {
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/framework/modules/users/Model/files/reg_files/json/auto_json.json";
+                    + "/src/framework/modules/Config/Model/files_config/files/reg_files/json/auto_json.json";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -235,7 +224,7 @@ public class auto_json {
 			xstream.alias("reg_user_class", reg_user_class.class);
 			
 			PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/framework/modules/users/Model/files/reg_files/json/auto_json.json";
+                    + "/src/framework/modules/Config/Model/files_config/files/reg_files/json/auto_json.json";
 			
 			File path = new File(PATH);
 			
