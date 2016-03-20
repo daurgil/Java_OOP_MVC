@@ -1,6 +1,4 @@
 package framework.modules.users.client.Model.utils.autocomplete;
-import framework.modules.users.admin.Model.utils.autocomplete.*;
-import framework.modules.users.user_utils.autocomplete.*;
 import java.util.Collection;
 
 public interface Searchable<E, V>{

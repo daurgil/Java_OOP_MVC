@@ -28,7 +28,7 @@ public class client_class extends user implements Serializable{
 	/**Builder for all attributes*/
 	public client_class(String dni, String name, String surname, String mobile, String email, String user,
 			String password, String avatar, String state, class_date birthday, class_date up_date,
-			float shopping, float benefit, boolean premium, String type) {
+			float shopping, boolean premium, String type) {
 		
 		super(dni, name, surname, mobile, email, user, password, avatar, state, birthday);
 		

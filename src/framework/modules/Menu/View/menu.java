@@ -3,8 +3,16 @@ package framework.modules.Menu.View;
 
 import framework.modules.users.admin.View.admin_table;
 import framework.modules.users.client.View.client_table;
+import framework.modules.users.reg_user.View.reg_table;
+import framework.utils.singleton;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -24,13 +32,18 @@ public class menu extends javax.swing.JFrame {
      * Creates new form menu
      */
     public menu() {
+        //setLayout(new BorderLayout());
+        setContentPane(new JLabel(new ImageIcon(singleton.fondo_menu)));
+        //setLayout(new FlowLayout());
+        
         initComponents();
         this.setTitle("APP");
+        Image icono=Toolkit.getDefaultToolkit().getImage(singleton.icon_app);
+	this.setIconImage(icono);
 	this.setLocationRelativeTo(null);
-	this.setSize(665,400);//ancho x alto
+	this.setSize(680,450);//ancho x alto
 	this.setResizable(false);
-	//Image icono=Toolkit.getDefaultToolkit().getImage("p1.jpg");
-	//this.setIconImage(icono);
+	
 	//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -53,7 +66,6 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jb_admin = new javax.swing.JButton();
         jb_reg_user = new javax.swing.JButton();
         jb_client = new javax.swing.JButton();
@@ -61,21 +73,51 @@ public class menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jb_admin.setBackground(new java.awt.Color(0, 204, 204));
+        jb_admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/icon_user.png"))); // NOI18N
         jb_admin.setText("Admin");
+        jb_admin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jb_adminMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jb_adminMouseEntered(evt);
+            }
+        });
         jb_admin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_adminActionPerformed(evt);
             }
         });
 
-        jb_reg_user.setText("Registred User");
+        jb_reg_user.setBackground(new java.awt.Color(0, 204, 204));
+        jb_reg_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/icon_user.png"))); // NOI18N
+        jb_reg_user.setText("Reg. User");
+        jb_reg_user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jb_reg_userMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jb_reg_userMouseEntered(evt);
+            }
+        });
         jb_reg_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_reg_userActionPerformed(evt);
             }
         });
 
+        jb_client.setBackground(new java.awt.Color(0, 204, 204));
+        jb_client.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/icon_user.png"))); // NOI18N
         jb_client.setText("Client");
+        jb_client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jb_clientMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jb_clientMouseEntered(evt);
+            }
+        });
         jb_client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_clientActionPerformed(evt);
@@ -83,43 +125,41 @@ public class menu extends javax.swing.JFrame {
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/setting.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(466, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jb_client, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_reg_user, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(79, 79, 79)
-                .addComponent(jb_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_client, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_reg_user, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(477, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jb_client, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_reg_user, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jb_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jb_client, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jb_reg_user, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -136,14 +176,45 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_clientActionPerformed
 
     private void jb_reg_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_reg_userActionPerformed
-        new admin_table().setVisible(true);
+        new reg_table().setVisible(true);
         dispose();
     }//GEN-LAST:event_jb_reg_userActionPerformed
+
+    private void jb_adminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_adminMouseEntered
+        jb_admin.setIcon(singleton.icon_u_admin);
+    }//GEN-LAST:event_jb_adminMouseEntered
+
+    private void jb_adminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_adminMouseExited
+        jb_admin.setIcon(singleton.icon_user);
+    }//GEN-LAST:event_jb_adminMouseExited
+
+    private void jb_clientMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_clientMouseEntered
+        jb_client.setIcon(singleton.icon_u_client);
+    }//GEN-LAST:event_jb_clientMouseEntered
+
+    private void jb_clientMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_clientMouseExited
+        jb_client.setIcon(singleton.icon_user);
+    }//GEN-LAST:event_jb_clientMouseExited
+
+    private void jb_reg_userMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_reg_userMouseEntered
+        jb_reg_user.setIcon(singleton.icon_u_reg);
+    }//GEN-LAST:event_jb_reg_userMouseEntered
+
+    private void jb_reg_userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_reg_userMouseExited
+        jb_reg_user.setIcon(singleton.icon_user);
+    }//GEN-LAST:event_jb_reg_userMouseExited
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setIcon(singleton.setting2);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setIcon(singleton.setting);
+    }//GEN-LAST:event_jLabel1MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jb_admin;
     private javax.swing.JButton jb_client;
     private javax.swing.JButton jb_reg_user;

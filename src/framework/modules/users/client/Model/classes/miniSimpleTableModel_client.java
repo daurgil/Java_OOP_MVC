@@ -1,6 +1,6 @@
 package framework.modules.users.client.Model.classes;
-import framework.classes.class_date;
-import framework.modules.users.admin.Model.utils.pagina;
+
+import framework.modules.users.client.Model.utils.pagina;
 import framework.modules.users.client.View.client_table;
 import static framework.modules.users.client.View.client_table.combo;
 import java.util.ArrayList;
@@ -139,7 +139,6 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
                 }
             }
             client_table.jLabel3.setText(String.valueOf(cont));
-            System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
     }
@@ -173,5 +172,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     public void removeRow(int fila) {
         datos.remove(fila);
         fireTableDataChanged();
+        client_table.jLabel3.setText(String.valueOf(datos.size()));
+        pagina.initLinkBox();
     }
 }

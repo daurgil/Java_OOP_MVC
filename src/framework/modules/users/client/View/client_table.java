@@ -10,9 +10,12 @@ import framework.modules.Menu.View.menu;
 import framework.modules.users.client.Model.BLL.BLL_client;
 import framework.modules.users.client.Model.classes.miniSimpleTableModel_client;
 import framework.modules.users.client.Model.classes.singleton_client;
-import framework.modules.users.admin.Model.utils.autocomplete.AutocompleteJComboBox;
+import framework.modules.users.client.Model.utils.autocomplete.AutocompleteJComboBox;
+import framework.modules.users.client.Model.utils.autocomplete.StringSearchable;
 import framework.modules.users.client.Model.utils.pagina;
-import framework.modules.users.user_utils.autocomplete.StringSearchable;
+import static framework.modules.users.client.View.client_update.DNI;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -39,8 +42,10 @@ public class client_table extends javax.swing.JFrame {
         
         initComponents();
         
-        this.setTitle("Administrator Menu");
+        this.setTitle("Client Menu");
 	this.setLocationRelativeTo(null);
+        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_client.icon_client);
+        this.setIconImage(icono);
 	//this.setSize(700,500);//ancho x alto
 	this.setResizable(false);
 	//this.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
@@ -51,6 +56,10 @@ public class client_table extends javax.swing.JFrame {
         TABLA.setRowSorter(sorter);
         
         pagina.inicializa();
+        pagina.initLinkBox();
+        
+        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
+        pagina.currentPageIndex = 1;
         pagina.initLinkBox();
         
         jLabel3.setText(String.valueOf(singleton_client.client.size()));
@@ -105,6 +114,10 @@ public class client_table extends javax.swing.JFrame {
         jl_delete = new javax.swing.JLabel();
         jl_modify = new javax.swing.JLabel();
         jl_back = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jl_txt = new javax.swing.JLabel();
+        jl_xml = new javax.swing.JLabel();
+        jl_json = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -204,6 +217,11 @@ public class client_table extends javax.swing.JFrame {
         });
 
         jl_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/delete.png"))); // NOI18N
+        jl_delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_deleteMouseClicked(evt);
+            }
+        });
 
         jl_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/modify.png"))); // NOI18N
         jl_modify.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,11 +238,67 @@ public class client_table extends javax.swing.JFrame {
             }
         });
 
+        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        jl_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/txt_file.png"))); // NOI18N
+        jl_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_txtMouseClicked(evt);
+            }
+        });
+
+        jl_xml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/xml_file.png"))); // NOI18N
+        jl_xml.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_xmlMouseClicked(evt);
+            }
+        });
+
+        jl_json.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/json_file.png"))); // NOI18N
+        jl_json.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_jsonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(jl_xml)
+                .addGap(34, 34, 34)
+                .addComponent(jl_txt)
+                .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(33, 33, 33)
+                    .addComponent(jl_json)
+                    .addContainerGap(195, Short.MAX_VALUE)))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_xml, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(jl_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jl_json, javax.swing.GroupLayout.PREFERRED_SIZE, 44, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout jp_optionsLayout = new javax.swing.GroupLayout(jp_options);
         jp_options.setLayout(jp_optionsLayout);
         jp_optionsLayout.setHorizontalGroup(
             jp_optionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 853, Short.MAX_VALUE)
+            .addGroup(jp_optionsLayout.createSequentialGroup()
+                .addGap(229, 229, 229)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(342, Short.MAX_VALUE))
             .addGroup(jp_optionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jp_optionsLayout.createSequentialGroup()
                     .addContainerGap()
@@ -239,7 +313,9 @@ public class client_table extends javax.swing.JFrame {
         );
         jp_optionsLayout.setVerticalGroup(
             jp_optionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_optionsLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jp_optionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jp_optionsLayout.createSequentialGroup()
                     .addGap(19, 19, 19)
@@ -268,6 +344,11 @@ public class client_table extends javax.swing.JFrame {
 
             }
         ));
+        TABLA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TABLAMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TABLA);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -283,7 +364,7 @@ public class client_table extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -407,7 +488,7 @@ public class client_table extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 425, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
@@ -468,7 +549,9 @@ public class client_table extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     private void bt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_searchActionPerformed
+        DNI=this.jt_dni.getText();
         new client_update().setVisible(true);
+        
         ask_dni.dispose();
         this.dispose();
         
@@ -506,6 +589,35 @@ public class client_table extends javax.swing.JFrame {
         pagina.currentPageIndex = pagina.maxPageIndex;
         pagina.initLinkBox();
     }//GEN-LAST:event_ultimoActionPerformed
+  
+    private void jl_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseClicked
+        BLL_client.save_txt();
+    }//GEN-LAST:event_jl_txtMouseClicked
+
+    private void jl_xmlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseClicked
+        BLL_client.save_xml();
+    }//GEN-LAST:event_jl_xmlMouseClicked
+
+    private void jl_jsonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseClicked
+        BLL_client.save_json();
+    }//GEN-LAST:event_jl_jsonMouseClicked
+
+    private void TABLAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLAMouseClicked
+        if (evt.getClickCount() == 2) {
+            boolean modificar;
+
+            modificar = BLL_client.modifiy_line();
+            if (modificar == false) {
+            } else {
+                this.dispose();
+            }
+
+        } 
+    }//GEN-LAST:event_TABLAMouseClicked
+
+    private void jl_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_deleteMouseClicked
+        BLL_client.delete_line();
+    }//GEN-LAST:event_jl_deleteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -564,11 +676,15 @@ public class client_table extends javax.swing.JFrame {
     public static javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jl_back;
     private javax.swing.JLabel jl_create;
     private javax.swing.JLabel jl_delete;
+    private javax.swing.JLabel jl_json;
     private javax.swing.JLabel jl_modify;
+    private javax.swing.JLabel jl_txt;
+    private javax.swing.JLabel jl_xml;
     private javax.swing.JPanel jp_options;
     public static javax.swing.JTextField jt_dni;
     public static javax.swing.JButton primero;

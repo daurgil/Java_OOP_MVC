@@ -11,12 +11,17 @@ import framework.modules.users.admin.Model.classes.miniSimpleTableModel_admin;
 import framework.modules.users.admin.Model.classes.singleton_admin;
 import framework.modules.users.admin.Model.utils.pagina;
 import framework.modules.users.admin.Model.utils.autocomplete.AutocompleteJComboBox;
-import framework.modules.users.user_utils.autocomplete.StringSearchable;
+import framework.modules.users.admin.Model.utils.autocomplete.StringSearchable;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -39,6 +44,8 @@ public class admin_table extends javax.swing.JFrame {
         initComponents();
         
         this.setTitle("Administrator Menu");
+        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_admin.icon_admin);
+	this.setIconImage(icono);
 	this.setLocationRelativeTo(null);
 	//this.setSize(700,500);//ancho x alto
 	this.setResizable(false);
@@ -50,6 +57,10 @@ public class admin_table extends javax.swing.JFrame {
         TABLA.setRowSorter(sorter);
         
         pagina.inicializa();
+        pagina.initLinkBox();
+        
+        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
+        pagina.currentPageIndex = 1;
         pagina.initLinkBox();
         
         jLabel3.setText(String.valueOf(singleton_admin.admin.size()));
@@ -207,6 +218,11 @@ public class admin_table extends javax.swing.JFrame {
         });
 
         jl_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/delete.png"))); // NOI18N
+        jl_delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_deleteMouseClicked(evt);
+            }
+        });
 
         jl_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/modify.png"))); // NOI18N
         jl_modify.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -221,26 +237,54 @@ public class admin_table extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_backMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jl_backMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jl_backMouseEntered(evt);
+            }
         });
 
-        jl_txt.setText("jLabel6");
+        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel7.setFocusable(false);
+
+        jl_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/txt_file.png"))); // NOI18N
         jl_txt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_txtMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jl_txtMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jl_txtMouseEntered(evt);
+            }
         });
 
-        jl_xml.setText("jLabel7");
+        jl_xml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/xml_file.png"))); // NOI18N
         jl_xml.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_xmlMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jl_xmlMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jl_xmlMouseEntered(evt);
+            }
         });
 
-        jl_json.setText("jLabel6");
+        jl_json.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/json_file.png"))); // NOI18N
+        jl_json.setBorder(null);
         jl_json.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_jsonMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jl_jsonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jl_jsonMouseEntered(evt);
             }
         });
 
@@ -249,29 +293,22 @@ public class admin_table extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addGap(37, 37, 37)
+                .addComponent(jl_json)
+                .addGap(40, 40, 40)
                 .addComponent(jl_xml)
-                .addGap(34, 34, 34)
+                .addGap(43, 43, 43)
                 .addComponent(jl_txt)
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(33, 33, 33)
-                    .addComponent(jl_json)
-                    .addContainerGap(192, Short.MAX_VALUE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jl_xml, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(jl_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jl_xml, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(jl_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jl_json, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jl_json, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout jp_optionsLayout = new javax.swing.GroupLayout(jp_options);
@@ -279,14 +316,14 @@ public class admin_table extends javax.swing.JFrame {
         jp_optionsLayout.setHorizontalGroup(
             jp_optionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_optionsLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
+                .addGap(214, 214, 214)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
             .addGroup(jp_optionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jp_optionsLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jl_back)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 659, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 665, Short.MAX_VALUE)
                     .addComponent(jl_create)
                     .addGap(18, 18, 18)
                     .addComponent(jl_modify)
@@ -309,7 +346,7 @@ public class admin_table extends javax.swing.JFrame {
                         .addComponent(jl_create, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jp_optionsLayout.createSequentialGroup()
                             .addComponent(jl_back, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 4, Short.MAX_VALUE)))
+                            .addGap(0, 14, Short.MAX_VALUE)))
                     .addGap(20, 20, 20)))
         );
 
@@ -328,6 +365,11 @@ public class admin_table extends javax.swing.JFrame {
 
             }
         ));
+        TABLA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TABLAMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TABLA);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -343,7 +385,7 @@ public class admin_table extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -437,7 +479,7 @@ public class admin_table extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 853, Short.MAX_VALUE)
+            .addGap(0, 859, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
@@ -467,7 +509,7 @@ public class admin_table extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
@@ -528,7 +570,9 @@ public class admin_table extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     private void bt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_searchActionPerformed
+        admin_update.DNI=jt_dni.getText();
         new admin_update().setVisible(true);
+  
         ask_dni.dispose();
         this.dispose();
         
@@ -567,13 +611,62 @@ public class admin_table extends javax.swing.JFrame {
         pagina.initLinkBox();
     }//GEN-LAST:event_ultimoActionPerformed
 
+    private void TABLAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLAMouseClicked
+        if (evt.getClickCount() == 2) {
+            boolean modificar;
+
+            modificar = BLL_admin.modifiy_line();
+            if (modificar == false) {
+            } else {
+                this.dispose();
+            }
+
+        } 
+    }//GEN-LAST:event_TABLAMouseClicked
+
+    private void jl_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_deleteMouseClicked
+        BLL_admin.delete_line();
+    }//GEN-LAST:event_jl_deleteMouseClicked
+
+    private void jl_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseEntered
+        jl_back.setFont(new Font("DejaVu Sans", Font.BOLD, 16));
+    }//GEN-LAST:event_jl_backMouseEntered
+
+    private void jl_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseExited
+        jl_back.setFont(new Font("DejaVu Sans", Font.PLAIN, 12));
+    }//GEN-LAST:event_jl_backMouseExited
+
+    private void jl_jsonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseEntered
+        jl_json.setBorder(BorderFactory.createLineBorder(Color.black));
+    }//GEN-LAST:event_jl_jsonMouseEntered
+
+    private void jl_jsonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseExited
+        jl_json.setBorder(null);
+    }//GEN-LAST:event_jl_jsonMouseExited
+
     private void jl_jsonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseClicked
         BLL_admin.save_json();
     }//GEN-LAST:event_jl_jsonMouseClicked
 
+    private void jl_xmlMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseEntered
+        jl_xml.setBorder(BorderFactory.createLineBorder(Color.black));
+    }//GEN-LAST:event_jl_xmlMouseEntered
+
+    private void jl_xmlMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseExited
+        jl_xml.setBorder(null);
+    }//GEN-LAST:event_jl_xmlMouseExited
+
     private void jl_xmlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseClicked
         BLL_admin.save_xml();
     }//GEN-LAST:event_jl_xmlMouseClicked
+
+    private void jl_txtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseEntered
+        jl_txt.setBorder(BorderFactory.createLineBorder(Color.black));
+    }//GEN-LAST:event_jl_txtMouseEntered
+
+    private void jl_txtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseExited
+        jl_txt.setBorder(null);
+    }//GEN-LAST:event_jl_txtMouseExited
 
     private void jl_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseClicked
         BLL_admin.save_txt();

@@ -7,12 +7,11 @@ package framework.modules.users.admin.Model.DAO;
 
 import com.toedter.calendar.JTextFieldDateEditor;
 import framework.classes.class_date;
-import framework.modules.users.Model.utils_users.core_date;
 import framework.modules.users.admin.Model.classes.admin_class;
+import framework.modules.users.admin.Model.utils.core_date;
 import framework.modules.users.admin.View.admin_create;
 import framework.modules.users.admin.View.admin_table;
 import framework.modules.users.admin.View.admin_update;
-import static framework.modules.users.admin.View.admin_update.jt_dni;
 import static framework.utils.singleton.*;
 import framework.utils.validate;
 import static java.awt.Color.GREEN;
@@ -233,7 +232,7 @@ public class DAO_admin {
      
                 if(check==true){
                     admin_create.check_dni.setIcon(apply);
-                    jt_dni.setBackground(GREEN);
+                    admin_create.jt_dni.setBackground(GREEN);
                     admin_create.jt_alert.setText("");
                     //admin_form.jt_name.setText("");
                     //admin_form.jt_name.requestFocus();
@@ -514,7 +513,7 @@ public class DAO_admin {
                     //admin_form.jt_password.requestFocus();
                     check = true;
                 }else{
-                    admin_create.check_email.setIcon(cancel);
+                    admin_create.check_nick.setIcon(cancel);
                     admin_create.jt_nick.setBackground(RED);
                     admin_create.jt_alert.setText("The value isn't valid");
                     check = false;

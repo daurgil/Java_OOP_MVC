@@ -9,12 +9,17 @@ package framework.modules.users.admin.Model.BLL;
 
 import framework.modules.users.admin.Model.DAO.DAO_admin;
 import framework.modules.users.admin.Model.classes.admin_class;
+import framework.modules.users.admin.Model.classes.miniSimpleTableModel_admin;
+import static framework.modules.users.admin.Model.classes.miniSimpleTableModel_admin.datosaux;
 import framework.modules.users.admin.Model.classes.singleton_admin;
-import framework.modules.users.admin.Model.utils.lib_files.auto_json;
-import framework.modules.users.admin.Model.utils.lib_files.json;
-import framework.modules.users.admin.Model.utils.lib_files.txt;
-import framework.modules.users.admin.Model.utils.lib_files.xml;
+import static framework.modules.users.admin.Model.classes.singleton_admin.adm;
+import framework.modules.users.admin.Model.utils.lib_Afiles.A_auto_json;
+import framework.modules.users.admin.Model.utils.lib_Afiles.json;
+import framework.modules.users.admin.Model.utils.lib_Afiles.txt;
+import framework.modules.users.admin.Model.utils.lib_Afiles.xml;
+import framework.modules.users.admin.Model.utils.pagina;
 import framework.modules.users.admin.View.admin_create;
+import static framework.modules.users.admin.View.admin_table.TABLA;
 import framework.modules.users.admin.View.admin_update;
 import javax.swing.JOptionPane;
 
@@ -39,7 +44,7 @@ public class BLL_admin {
                 ok=false;
             }else{
                 singleton_admin.admin.add(admin);
-                auto_json.auto_savejson_admin();
+                A_auto_json.auto_savejson_admin();
                 JOptionPane.showMessageDialog(null, "The user was created succesfuly"); 
                 ok=true;
             }
@@ -77,7 +82,7 @@ public class BLL_admin {
             ok=false;
         }else{
           singleton_admin.admin.set(position, admin);
-          auto_json.auto_savejson_admin();
+          A_auto_json.auto_savejson_admin();
           admin_update.jt_alert.setText("The user was created succesfuly"); 
           ok=true;
         }
@@ -130,6 +135,82 @@ public class BLL_admin {
 		return -1;
 			
 	}
+        
+    public static void delete_line() {
+        String dni;
+        int pos, selection, inicio, selection1;
+
+        int n = ((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount();
+        if (n != 0) {
+            //int selec = TABLA.getSelectedRow();
+            inicio=(pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
+            selection=TABLA.getSelectedRow(); //nos situamos en la fila
+            selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
+            if (selection1 == -1) {
+                JOptionPane.showMessageDialog(null, "No hay una persona seleccionada", "Error!", 2);
+            } else {
+                dni = (String) TABLA.getModel().getValueAt(selection1, 0);
+                singleton_admin.adm = new admin_class(dni);
+                
+                pos = BLL_admin.search_admin((admin_class) adm);
+                int opc = JOptionPane.showConfirmDialog(null, "Deseas borrar a la persona con DNI: " + dni,
+                        "Info", JOptionPane.WARNING_MESSAGE);
+
+                if (opc == 0) {
+                    ((miniSimpleTableModel_admin) TABLA.getModel()).removeRow(selection1);
+                    adm = singleton_admin.admin.get(pos);
+
+                    singleton_admin.admin.remove(adm);
+                    datosaux.remove(adm);
+                    A_auto_json.auto_savejson_admin();
+                    
+//                    Ordenar(0);
+//                    EFBLLgrafico.Guardar(0);
+                }
+
+                if (((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount() == 0) {
+                    if (((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount() != 0) {
+
+                    }
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "lista vacía", "Error!", 2);
+        }
+    }
+    
+    public static boolean modifiy_line() {
+        String dni;
+        boolean correcto;
+        if (((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount() != 0) {
+            //int selec = TABLA.getSelectedRow();
+            int inicio = (pagina.currentPageIndex-1)*pagina.itemsPerPage; //nos situamos al inicio de la página en cuestión
+            int selection = TABLA.getSelectedRow(); //nos situamos en la fila
+            int selection1 = inicio+selection; 
+            if (selection1 == -1) {
+                JOptionPane.showMessageDialog(null, "No hay una persona seleccionada", "Error!", 2);
+                correcto = false;
+
+            } else {
+
+                dni = (String) TABLA.getModel().getValueAt(selection1, 0);
+
+                //singleton_admin.adm = new admin_class(dni);
+                                
+                admin_update.DNI=dni;
+                new admin_update().setVisible(true);
+                
+                
+                correcto = true;
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "lista vacía", "Error!", 2);
+            correcto = false;
+        }
+        return correcto;
+    }
     
     public static void give_data(String type){
         boolean correct = false;

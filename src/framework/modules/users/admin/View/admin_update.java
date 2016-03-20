@@ -7,14 +7,17 @@ package framework.modules.users.admin.View;
 
 
 import framework.modules.users.admin.Model.BLL.BLL_admin;
-import framework.modules.users.admin.Model.utils.lib_files.auto_json;
+import framework.modules.users.admin.Model.classes.singleton_admin;
+import static framework.modules.users.admin.View.admin_create.jl_back;
+import framework.utils.singleton;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -44,14 +47,16 @@ public class admin_update extends javax.swing.JFrame {
     public admin_update() {
         initComponents();
         
-        DNI=admin_table.jt_dni.getText();
         BLL_admin.show_admin(DNI);
         
         
         this.setTitle("Create admin");
+        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_admin.icon_admin);
+	this.setIconImage(icono);
 	this.setLocationRelativeTo(null);
 	this.setSize(550,400);//ancho x alto
 	this.setResizable(false);
+        //this.jsc_form.getVerticalScrollBar().setUnitIncrement(10);
         jdc_birthday.getDateEditor().setEnabled(false);
         jdc_contract.getDateEditor().setEnabled(false);
 	//Image icono=Toolkit.getDefaultToolkit().getImage("p1.jpg");
@@ -137,6 +142,7 @@ public class admin_update extends javax.swing.JFrame {
         jsc_form.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jsc_form.setHorizontalScrollBar(null);
         jsc_form.setPreferredSize(new java.awt.Dimension(470, 632));
+        jsc_form.getVerticalScrollBar().setUnitIncrement(10);
 
         lb_dni.setText("ID Card:");
 
@@ -469,10 +475,16 @@ public class admin_update extends javax.swing.JFrame {
         jsc_form.setViewportView(update_form);
 
         jl_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/back.png"))); // NOI18N
-        jl_back.setText("Atras");
+        jl_back.setText("Back");
         jl_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_backMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jl_backMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jl_backMouseEntered(evt);
             }
         });
 
@@ -497,8 +509,8 @@ public class admin_update extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jl_back, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addComponent(jl_back, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jb_save, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,10 +522,10 @@ public class admin_update extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_back, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jsc_form, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,9 +645,6 @@ public class admin_update extends javax.swing.JFrame {
         BLL_admin.modify();
         if(BLL_admin.ok==true){
             pause();
-//                Thread.sleep(3000);
-//                this.dispose();
-//                new admin_table().setVisible(true);
         }else{
             jt_alert.setText("Error data, revise it");
         }
@@ -700,6 +709,14 @@ public class admin_update extends javax.swing.JFrame {
     private void jt_activityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_activityFocusLost
         BLL_admin.update_data("activity");
     }//GEN-LAST:event_jt_activityFocusLost
+
+    private void jl_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseEntered
+        jl_back.setFont(new Font("DejaVu Sans", Font.BOLD, 16));
+    }//GEN-LAST:event_jl_backMouseEntered
+
+    private void jl_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseExited
+        jl_back.setFont(new Font("DejaVu Sans", Font.PLAIN, 12));
+    }//GEN-LAST:event_jl_backMouseExited
 
     /**
      * @param args the command line arguments

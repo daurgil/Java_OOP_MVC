@@ -5,13 +5,16 @@
  */
 package framework.modules.users.client.View;
 
-import framework.modules.users.Model.utils_users.lib_files.auto_json;
 import framework.modules.users.client.Model.BLL.BLL_client;
+import framework.modules.users.client.Model.classes.singleton_client;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.Timer;
 
 /**
  *
@@ -19,17 +22,33 @@ import java.util.logging.Logger;
  */
 public class client_create extends javax.swing.JFrame {
 
+    private void pause(){
+        Timer delay=new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new client_table().setVisible(true);
+            }
+        });
+        
+        delay.setRepeats(false);
+        delay.start();
+        client_create.jt_alert.setText("User created correctly");
+    }
+    
     /**
      * Creates new form admin_form
      */
     public client_create() {
         initComponents();
-        this.setTitle("Create admin");
+        this.setTitle("Create Client");
+        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_client.icon_client);
+        this.setIconImage(icono);
 	this.setLocationRelativeTo(null);
 	this.setSize(550,400);//ancho x alto
 	this.setResizable(false);
         jdc_birthday.getDateEditor().setEnabled(false);
-        jdc_contract.getDateEditor().setEnabled(false);
+        jdc_update.getDateEditor().setEnabled(false);
 	//Image icono=Toolkit.getDefaultToolkit().getImage("p1.jpg");
 	//this.setIconImage(icono);
 	//this.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
@@ -58,7 +77,8 @@ public class client_create extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         bgr_state = new javax.swing.ButtonGroup();
         jfc_avatar = new javax.swing.JFileChooser();
-        jLabel1 = new javax.swing.JLabel();
+        bgr_premium = new javax.swing.ButtonGroup();
+        jl_title = new javax.swing.JLabel();
         jsc_form = new javax.swing.JScrollPane();
         create_form = new javax.swing.JPanel();
         lb_dni = new javax.swing.JLabel();
@@ -70,8 +90,8 @@ public class client_create extends javax.swing.JFrame {
         lb_password = new javax.swing.JLabel();
         lb_avatar = new javax.swing.JLabel();
         lb_birthday = new javax.swing.JLabel();
-        lb_contract = new javax.swing.JLabel();
-        lb_activity = new javax.swing.JLabel();
+        lb_update = new javax.swing.JLabel();
+        lb_shopping = new javax.swing.JLabel();
         jt_dni = new javax.swing.JTextField();
         jt_name = new javax.swing.JTextField();
         jt_surname = new javax.swing.JTextField();
@@ -79,12 +99,12 @@ public class client_create extends javax.swing.JFrame {
         jt_email = new javax.swing.JTextField();
         jt_nick = new javax.swing.JTextField();
         jt_avatar = new javax.swing.JTextField();
-        jt_activity = new javax.swing.JTextField();
+        jt_shopping = new javax.swing.JTextField();
         lb_state = new javax.swing.JLabel();
         jrb_conected = new javax.swing.JRadioButton();
         jrb_disconected = new javax.swing.JRadioButton();
         jdc_birthday = new com.toedter.calendar.JDateChooser();
-        jdc_contract = new com.toedter.calendar.JDateChooser();
+        jdc_update = new com.toedter.calendar.JDateChooser();
         check_dni = new javax.swing.JLabel();
         check_name = new javax.swing.JLabel();
         check_surname = new javax.swing.JLabel();
@@ -94,11 +114,18 @@ public class client_create extends javax.swing.JFrame {
         check_password = new javax.swing.JLabel();
         check_avatar = new javax.swing.JLabel();
         check_birthday = new javax.swing.JLabel();
-        check_contract = new javax.swing.JLabel();
+        check_update = new javax.swing.JLabel();
         check_activity = new javax.swing.JLabel();
         jb_avatar = new javax.swing.JButton();
         jt_password = new javax.swing.JPasswordField();
         chb_password = new javax.swing.JCheckBox();
+        jl_premium = new javax.swing.JLabel();
+        jrb_yes = new javax.swing.JRadioButton();
+        jrb_no = new javax.swing.JRadioButton();
+        check_shopping = new javax.swing.JLabel();
+        jl_type = new javax.swing.JLabel();
+        jt_type = new javax.swing.JTextField();
+        check_type = new javax.swing.JLabel();
         jl_back = new javax.swing.JLabel();
         jb_save = new javax.swing.JButton();
         jb_clean = new javax.swing.JButton();
@@ -108,12 +135,13 @@ public class client_create extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 1, 24)); // NOI18N
-        jLabel1.setText("Create Admin\n");
+        jl_title.setFont(new java.awt.Font("DejaVu Sans Mono", 1, 24)); // NOI18N
+        jl_title.setText("Create Client ");
 
         jsc_form.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jsc_form.setHorizontalScrollBar(null);
         jsc_form.setPreferredSize(new java.awt.Dimension(470, 632));
+        jsc_form.getVerticalScrollBar().setUnitIncrement(10);
 
         lb_dni.setText("ID Card:");
 
@@ -133,9 +161,9 @@ public class client_create extends javax.swing.JFrame {
 
         lb_birthday.setText("Bithday date:");
 
-        lb_contract.setText("Date of Contract:");
+        lb_update.setText("Up date:");
 
-        lb_activity.setText("Activity:");
+        lb_shopping.setText("Shopping:");
 
         jt_dni.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -227,17 +255,17 @@ public class client_create extends javax.swing.JFrame {
             }
         });
 
-        jt_activity.addFocusListener(new java.awt.event.FocusAdapter() {
+        jt_shopping.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_activityFocusLost(evt);
+                jt_shoppingFocusLost(evt);
             }
         });
-        jt_activity.addKeyListener(new java.awt.event.KeyAdapter() {
+        jt_shopping.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_activityKeyPressed(evt);
+                jt_shoppingKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_activityKeyReleased(evt);
+                jt_shoppingKeyReleased(evt);
             }
         });
 
@@ -263,10 +291,10 @@ public class client_create extends javax.swing.JFrame {
             }
         });
 
-        jdc_contract.setDateFormatString("dd/MM/yyyy");
-        jdc_contract.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        jdc_update.setDateFormatString("dd/MM/yyyy");
+        jdc_update.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jdc_contractPropertyChange(evt);
+                jdc_updatePropertyChange(evt);
             }
         });
 
@@ -298,6 +326,41 @@ public class client_create extends javax.swing.JFrame {
             }
         });
 
+        jl_premium.setText("Premium");
+
+        bgr_premium.add(jrb_yes);
+        jrb_yes.setText("Yes");
+        jrb_yes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_yesActionPerformed(evt);
+            }
+        });
+
+        bgr_premium.add(jrb_no);
+        jrb_no.setSelected(true);
+        jrb_no.setText("No");
+        jrb_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_noActionPerformed(evt);
+            }
+        });
+
+        jl_type.setText("Type:");
+
+        jt_type.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jt_typeFocusLost(evt);
+            }
+        });
+        jt_type.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jt_typeKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_typeKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout create_formLayout = new javax.swing.GroupLayout(create_form);
         create_form.setLayout(create_formLayout);
         create_formLayout.setHorizontalGroup(
@@ -305,13 +368,6 @@ public class client_create extends javax.swing.JFrame {
             .addGroup(create_formLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(create_formLayout.createSequentialGroup()
-                        .addComponent(lb_contract)
-                        .addGap(18, 18, 18)
-                        .addComponent(jdc_contract, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(check_contract, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(create_formLayout.createSequentialGroup()
                         .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -323,26 +379,28 @@ public class client_create extends javax.swing.JFrame {
                             .addComponent(lb_nick)
                             .addComponent(lb_password)
                             .addComponent(lb_avatar)
-                            .addComponent(lb_activity)
+                            .addComponent(lb_shopping)
                             .addComponent(lb_state)
-                            .addComponent(lb_birthday))
+                            .addComponent(lb_birthday)
+                            .addComponent(lb_update))
                         .addGap(40, 40, 40)
                         .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(create_formLayout.createSequentialGroup()
-                                .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jt_dni)
-                                    .addComponent(jt_name)
-                                    .addComponent(jt_surname)
-                                    .addComponent(jt_mobile)
-                                    .addComponent(jt_email)
-                                    .addComponent(jt_nick)
-                                    .addComponent(jt_activity)
-                                    .addComponent(jt_password)
-                                    .addGroup(create_formLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, create_formLayout.createSequentialGroup()
+                                .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jt_type, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_dni, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_name, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_surname, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_mobile, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_email, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_nick, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_shopping, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_password, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, create_formLayout.createSequentialGroup()
                                         .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(chb_password)
                                             .addComponent(jt_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(0, 3, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(check_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,13 +410,21 @@ public class client_create extends javax.swing.JFrame {
                                     .addComponent(check_email, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(check_nick, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(check_password, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(check_activity, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(create_formLayout.createSequentialGroup()
+                                        .addComponent(check_shopping, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(check_activity, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(create_formLayout.createSequentialGroup()
                                         .addComponent(jb_avatar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(check_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(check_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(check_type, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(create_formLayout.createSequentialGroup()
                                 .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(create_formLayout.createSequentialGroup()
+                                        .addComponent(jdc_update, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(check_update, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(create_formLayout.createSequentialGroup()
                                         .addComponent(jdc_birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -366,9 +432,19 @@ public class client_create extends javax.swing.JFrame {
                                     .addGroup(create_formLayout.createSequentialGroup()
                                         .addComponent(jrb_conected)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jrb_disconected)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(57, 57, 57))
+                                        .addComponent(jrb_disconected))
+                                    .addGroup(create_formLayout.createSequentialGroup()
+                                        .addComponent(jrb_yes)
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jrb_no)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(57, 57, 57))
+                    .addGroup(create_formLayout.createSequentialGroup()
+                        .addComponent(jl_premium)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(create_formLayout.createSequentialGroup()
+                        .addComponent(jl_type)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         create_formLayout.setVerticalGroup(
             create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,7 +492,7 @@ public class client_create extends javax.swing.JFrame {
                     .addComponent(lb_avatar)
                     .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jt_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jb_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jb_avatar))
                     .addComponent(check_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,15 +507,26 @@ public class client_create extends javax.swing.JFrame {
                     .addComponent(check_birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_contract)
-                    .addComponent(jdc_contract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(check_contract, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_update)
+                    .addComponent(jdc_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(check_update, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(check_activity, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jt_activity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_activity))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(jt_shopping, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_shopping)
+                    .addComponent(check_shopping, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_premium)
+                    .addComponent(jrb_yes)
+                    .addComponent(jrb_no))
+                .addGap(26, 26, 26)
+                .addGroup(create_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_type)
+                    .addComponent(jt_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(check_type, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jsc_form.setViewportView(create_form);
@@ -478,7 +565,7 @@ public class client_create extends javax.swing.JFrame {
                         .addComponent(jsc_form, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jl_back, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
@@ -496,7 +583,7 @@ public class client_create extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jsc_form, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -589,10 +676,10 @@ public class client_create extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jl_backMouseClicked
 
-    private void jt_activityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_activityKeyPressed
+    private void jt_shoppingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_shoppingKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-            BLL_client.give_data("activity");
-    }//GEN-LAST:event_jt_activityKeyPressed
+            BLL_client.give_data("shopping");
+    }//GEN-LAST:event_jt_shoppingKeyPressed
 
     private void jb_cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cleanActionPerformed
         BLL_client.clean();
@@ -602,9 +689,9 @@ public class client_create extends javax.swing.JFrame {
         BLL_client.give_data("birthday");
     }//GEN-LAST:event_jdc_birthdayPropertyChange
 
-    private void jdc_contractPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdc_contractPropertyChange
-        BLL_client.give_data("contract");
-    }//GEN-LAST:event_jdc_contractPropertyChange
+    private void jdc_updatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdc_updatePropertyChange
+        BLL_client.give_data("update");
+    }//GEN-LAST:event_jdc_updatePropertyChange
 
     private void jt_avatarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_avatarKeyPressed
         
@@ -624,17 +711,11 @@ public class client_create extends javax.swing.JFrame {
 
     private void jb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_saveActionPerformed
         BLL_client.create();
-        try {
-            if(BLL_client.ok==true){
-                auto_json.auto_savejson_admin();
-                Thread.sleep(3000);
-                this.dispose();
-                new client_table().setVisible(true);
-            }
+        if(BLL_client.ok==true){
+            pause();
+        }else{
             jt_alert.setText("Change the Id card");
-        } catch (InterruptedException ex) {
-            Logger.getLogger(client_create.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }  
         
     }//GEN-LAST:event_jb_saveActionPerformed
 
@@ -662,9 +743,9 @@ public class client_create extends javax.swing.JFrame {
          BLL_client.give_data("nick");
     }//GEN-LAST:event_jt_nickKeyReleased
 
-    private void jt_activityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_activityKeyReleased
-        BLL_client.give_data("activity");
-    }//GEN-LAST:event_jt_activityKeyReleased
+    private void jt_shoppingKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_shoppingKeyReleased
+        BLL_client.give_data("shopping");
+    }//GEN-LAST:event_jt_shoppingKeyReleased
 
     private void jt_dniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_dniFocusLost
         BLL_client.give_data("dni");
@@ -694,9 +775,30 @@ public class client_create extends javax.swing.JFrame {
         BLL_client.give_data("password");
     }//GEN-LAST:event_jt_passwordFocusLost
 
-    private void jt_activityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_activityFocusLost
-        BLL_client.give_data("activity");
-    }//GEN-LAST:event_jt_activityFocusLost
+    private void jt_shoppingFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_shoppingFocusLost
+        BLL_client.give_data("shopping");
+    }//GEN-LAST:event_jt_shoppingFocusLost
+
+    private void jrb_yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_yesActionPerformed
+        
+    }//GEN-LAST:event_jrb_yesActionPerformed
+
+    private void jrb_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrb_noActionPerformed
+
+    private void jt_typeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_typeKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            BLL_client.give_data("type");
+    }//GEN-LAST:event_jt_typeKeyPressed
+
+    private void jt_typeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_typeKeyReleased
+        BLL_client.give_data("type");
+    }//GEN-LAST:event_jt_typeKeyReleased
+
+    private void jt_typeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_typeFocusLost
+        BLL_client.give_data("type");
+    }//GEN-LAST:event_jt_typeFocusLost
 
     /**
      * @param args the command line arguments
@@ -734,33 +836,39 @@ public class client_create extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgr_premium;
     private javax.swing.ButtonGroup bgr_state;
     public static javax.swing.JCheckBox chb_password;
     public static javax.swing.JLabel check_activity;
     public static javax.swing.JLabel check_avatar;
     public static javax.swing.JLabel check_birthday;
-    public static javax.swing.JLabel check_contract;
     public static javax.swing.JLabel check_dni;
     public static javax.swing.JLabel check_email;
     public static javax.swing.JLabel check_mobile;
     public static javax.swing.JLabel check_name;
     public static javax.swing.JLabel check_nick;
     public static javax.swing.JLabel check_password;
+    public static javax.swing.JLabel check_shopping;
     public static javax.swing.JLabel check_surname;
+    public static javax.swing.JLabel check_type;
+    public static javax.swing.JLabel check_update;
     private javax.swing.JPanel create_form;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JButton jb_avatar;
     public static javax.swing.JButton jb_clean;
     public static javax.swing.JButton jb_save;
     public static com.toedter.calendar.JDateChooser jdc_birthday;
-    public static com.toedter.calendar.JDateChooser jdc_contract;
+    public static com.toedter.calendar.JDateChooser jdc_update;
     private javax.swing.JFileChooser jfc_avatar;
     public static javax.swing.JLabel jl_back;
+    private javax.swing.JLabel jl_premium;
+    private javax.swing.JLabel jl_title;
+    private javax.swing.JLabel jl_type;
     public static javax.swing.JRadioButton jrb_conected;
     public static javax.swing.JRadioButton jrb_disconected;
+    public static javax.swing.JRadioButton jrb_no;
+    public static javax.swing.JRadioButton jrb_yes;
     private javax.swing.JScrollPane jsc_form;
-    public static javax.swing.JTextField jt_activity;
     public static javax.swing.JTextField jt_alert;
     public static javax.swing.JTextField jt_avatar;
     public static javax.swing.JTextField jt_dni;
@@ -769,18 +877,20 @@ public class client_create extends javax.swing.JFrame {
     public static javax.swing.JTextField jt_name;
     public static javax.swing.JTextField jt_nick;
     public static javax.swing.JPasswordField jt_password;
+    public static javax.swing.JTextField jt_shopping;
     public static javax.swing.JTextField jt_surname;
-    private javax.swing.JLabel lb_activity;
+    public static javax.swing.JTextField jt_type;
     private javax.swing.JLabel lb_avatar;
     private javax.swing.JLabel lb_birthday;
-    private javax.swing.JLabel lb_contract;
     private javax.swing.JLabel lb_dni;
     private javax.swing.JLabel lb_email;
     private javax.swing.JLabel lb_mobile;
     private javax.swing.JLabel lb_name;
     private javax.swing.JLabel lb_nick;
     private javax.swing.JLabel lb_password;
+    private javax.swing.JLabel lb_shopping;
     private javax.swing.JLabel lb_state;
     private javax.swing.JLabel lb_surname;
+    private javax.swing.JLabel lb_update;
     // End of variables declaration//GEN-END:variables
 }

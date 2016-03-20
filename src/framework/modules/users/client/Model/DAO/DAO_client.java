@@ -7,8 +7,8 @@ package framework.modules.users.client.Model.DAO;
 
 import com.toedter.calendar.JTextFieldDateEditor;
 import framework.classes.class_date;
-import framework.modules.users.Model.utils_users.core_date;
 import framework.modules.users.client.Model.classes.client_class;
+import framework.modules.users.client.Model.utils.core_date;
 import framework.modules.users.client.View.client_create;
 import static framework.modules.users.client.View.client_create.jt_dni;
 import framework.modules.users.client.View.client_table;
@@ -29,13 +29,15 @@ public class DAO_client {
     
     public static client_class create(){
         String dni,name,surname,mobile,email,nick,
-                password,avatar, state,birthday,contract;
-        int activity;
+                password,avatar, state,birthday,
+                update,type;
+        boolean premium=false;
+        float shopping;
         client_class client=null;
-        class_date birth, cont=null;
+        class_date birth, up=null;
         
         boolean prove1, prove2, prove3, prove4, prove5, prove6, prove7, 
-                prove9, prove10, prove11;
+                prove9, prove10, prove11, prove12;
         
         prove1=DAO_client.dni();
         prove2=DAO_client.name();
@@ -46,14 +48,15 @@ public class DAO_client {
         prove7=DAO_client.password();
         //prove8=DAO_admin.avatar();
         prove9=DAO_client.birthday();
-        prove10=DAO_client.contract();
-        prove11=DAO_client.activity();
+        prove10=DAO_client.up_date();
+        prove11=DAO_client.shopping();
+        prove12=DAO_client.type();
 
         
         if (prove1 == true && prove2 == true && prove3 == true && 
                 prove4 == true && prove5 == true && prove6 == true &&
                 prove7 == true && prove9 == true && prove10 == true 
-                && prove11 == true){
+                && prove11 == true && prove12){
             dni=client_create.jt_dni.getText();
             name=client_create.jt_name.getText();
             surname=client_create.jt_surname.getText();
@@ -65,11 +68,14 @@ public class DAO_client {
             state=DAO_client.state();
             birthday=((JTextFieldDateEditor) client_create.jdc_birthday.getDateEditor()).getText();
             birth=new class_date(birthday);
-            contract=((JTextFieldDateEditor) client_create.jdc_contract.getDateEditor()).getText();
-            cont=new class_date(contract);
-            activity=Integer.parseInt(client_create.jt_activity.getText());
+            update=((JTextFieldDateEditor) client_create.jdc_update.getDateEditor()).getText();
+            up=new class_date(update);
+            shopping=Float.parseFloat(client_create.jt_shopping.getText());
+            premium=DAO_client.premium();
+            type=client_create.jt_type.getText();
             
-        //client=new client_class(dni, name, surname, mobile, email, nick, password, avatar, state, birth, cont, activity);
+        client=new client_class(dni, name, surname, mobile, email, nick, password, avatar, state, birth, up,
+                shopping, premium, type);
         
         }else{
             client=null;
@@ -81,10 +87,10 @@ public class DAO_client {
         
         int position;
         String administrator;
-        class_date birth=null, cont=null;
+        class_date birth=null, up=null;
         Calendar calendarbirth=Calendar.getInstance();
-        Calendar calendarcont=Calendar.getInstance();
-        String birthday, contract;
+        Calendar calendarup=Calendar.getInstance();
+        String birthday, update;
         
         client_update.jt_dni.setText(client.getDni());
         client_update.jt_name.setText(client.getName());
@@ -106,25 +112,34 @@ public class DAO_client {
         datebirth.setTime(calendarbirth.getTimeInMillis());
         client_update.jdc_birthday.setDate(datebirth);
         
-//        cont=client.getDate_cont();
-//        Date datecont=new Date();
-//        calendarcont.set(cont.getYear(), cont.getMonth()-1, cont.getDay());
-//        datecont.setTime(calendarcont.getTimeInMillis());
-//        client_update.jdc_contract.setDate(datecont);
-//                     
-//        client_update.jt_activity.setText(""+client.getActivity());
+        up=client.getUp_date();
+        Date dateup=new Date();
+        calendarup.set(up.getYear(), up.getMonth()-1, up.getDay());
+        dateup.setTime(calendarup.getTimeInMillis());
+        client_update.jdc_update.setDate(dateup);
+        
+        client_update.jt_shopping.setText(""+client.getShopping());
+        if(client.isPremium()==true)
+            client_update.jrb_yes.setSelected(true);
+        else
+            client_update.jrb_no.setSelected(true);
+        
+        client_update.jt_type.setText(client.getType());
+        
         
     }
     
     public static client_class modify(){
         String dni,name,surname,mobile,email,nick,
-                password,avatar, state,birthday,contract;
-        int activity;
-        class_date birth, cont=null;
+                password,avatar, state,birthday,
+                update,type;
+        boolean premium=false;
+        float shopping;
         client_class client=null;
+        class_date birth, up=null;
         
         boolean prove1, prove2, prove3, prove4, prove5, prove6, prove7, 
-                prove9, prove10, prove11;
+                prove9, prove10, prove11, prove12;
         
         prove1=DAO_client.up_dni();
         prove2=DAO_client.up_name();
@@ -135,14 +150,15 @@ public class DAO_client {
         prove7=DAO_client.up_password();
         //prove8=DAO_admin.avatar();
         prove9=DAO_client.up_birthday();
-        prove10=DAO_client.up_contract();
-        prove11=DAO_client.up_activity();
+        prove10=DAO_client.up_up_date();
+        prove11=DAO_client.up_shopping();
+        prove12=DAO_client.up_type();
 
         
         if (prove1 == true && prove2 == true && prove3 == true && 
                 prove4 == true && prove5 == true && prove6 == true &&
                 prove7 == true && prove9 == true && prove10 == true 
-                && prove11 == true){
+                && prove11 == true && prove12){
             dni=client_update.jt_dni.getText();
             name=client_update.jt_name.getText();
             surname=client_update.jt_surname.getText();
@@ -154,17 +170,18 @@ public class DAO_client {
             state=DAO_client.up_state();
             birthday=((JTextFieldDateEditor) client_update.jdc_birthday.getDateEditor()).getText();
             birth=new class_date(birthday);
-//            contract=((JTextFieldDateEditor) client_update.jdc_contract.getDateEditor()).getText();
-//            cont=new class_date(contract);
-//            activity=Integer.parseInt(client_update.jt_activity.getText());
+            update=((JTextFieldDateEditor) client_update.jdc_update.getDateEditor()).getText();
+            up=new class_date(update);
+            shopping=Float.parseFloat(client_update.jt_shopping.getText());
+            premium=DAO_client.up_premium();
+            type=client_update.jt_type.getText();
             
-            
-        //client=new client_class(dni, name, surname, mobile, email, nick, password, avatar, state, birth, cont, activity);
+        client=new client_class(dni, name, surname, mobile, email, nick, password, avatar, state, birth, up,
+                shopping, premium, type);
         
         }else{
             client=null;
         }
-        
         return client;
     }
     
@@ -201,8 +218,8 @@ public class DAO_client {
         client_create.jt_avatar.setBackground(WHITE);
         client_create.check_avatar.setIcon(empty);
         
-        client_create.jt_activity.setText("");
-        client_create.jt_activity.setBackground(WHITE);
+        client_create.jt_shopping.setText("");
+        client_create.jt_shopping.setBackground(WHITE);
         client_create.check_activity.setIcon(empty);
         
         client_create.jt_avatar.setText("");
@@ -215,8 +232,8 @@ public class DAO_client {
         client_create.jdc_birthday.setDate(null);
         client_create.check_birthday.setIcon(empty);
         
-        client_create.jdc_contract.setDate(null);
-        client_create.check_contract.setIcon(empty);
+        client_create.jdc_update.setDate(null);
+        client_create.check_update.setIcon(empty);
         
     }
     
@@ -641,25 +658,25 @@ public class DAO_client {
         return state;
     }
     
-    public static boolean activity(){
+    public static boolean shopping(){
         boolean check =false;
             
-        if(client_create.jt_activity.getText().equals("")){
-                client_create.check_activity.setIcon(cancel);
-                client_create.jt_activity.setBackground(RED);
+        if(client_create.jt_shopping.getText().equals("")){
+                client_create.check_shopping.setIcon(cancel);
+                client_create.jt_shopping.setBackground(RED);
                 client_create.jt_alert.setText("The value isn't valid");
                 check = false;
             }else{
-                check=validate.validate_activity(client_create.jt_activity.getText());
+                check=validate.validate_shopping(client_create.jt_shopping.getText());
      
                 if(check==true){
-                    client_create.check_activity.setIcon(apply);
-                    client_create.jt_activity.setBackground(GREEN);
+                    client_create.check_shopping.setIcon(apply);
+                    client_create.jt_shopping.setBackground(GREEN);
                     client_create.jt_alert.setText("");
                     check = true;
                 }else{
-                    client_create.check_activity.setIcon(cancel);
-                    client_create.jt_activity.setBackground(RED);
+                    client_create.check_shopping.setIcon(cancel);
+                    client_create.jt_shopping.setBackground(RED);
                     client_create.jt_alert.setText("The value isn't valid");
                     check = false;
                 }
@@ -667,20 +684,20 @@ public class DAO_client {
         return check;
     }  
     
-    public static boolean up_activity(){
+    public static boolean up_shopping(){
         boolean check=false;
-        if((client_update.jt_activity.getText()).isEmpty()){
-            client_update.check_activity.setIcon(cancel);
-            client_update.jt_activity.setBackground(RED);
+        if((client_update.jt_shopping.getText()).isEmpty()){
+            client_update.check_shopping.setIcon(cancel);
+            client_update.jt_shopping.setBackground(RED);
             check=false;
         }else{
-            if(validate.validate_activity((client_update.jt_activity.getText()))==false){
-               client_update.check_activity.setIcon(cancel);
-               client_update.jt_activity.setBackground(RED); 
+            if(validate.validate_shopping((client_update.jt_shopping.getText()))==false){
+               client_update.check_shopping.setIcon(cancel);
+               client_update.jt_shopping.setBackground(RED); 
                check=false;
             }else{
-                client_update.check_activity.setIcon(apply);
-                client_update.jt_activity.setBackground(GREEN);
+                client_update.check_shopping.setIcon(apply);
+                client_update.jt_shopping.setBackground(GREEN);
                 check = true;
             }
         }
@@ -748,41 +765,41 @@ public class DAO_client {
         return check;
     }
     
-    public static boolean contract(){
-        String birthday, contract;
-        class_date birth, cont;
+    public static boolean up_date(){
+        String birthday, update;
+        class_date birth, up;
         boolean check=false, confirm=false;
         int dates=0;
         
         try{
-            confirm=validate.validate_date(((JTextFieldDateEditor) client_create.jdc_contract.getDateEditor()).getText());
+            confirm=validate.validate_date(((JTextFieldDateEditor) client_create.jdc_update.getDateEditor()).getText());
             if (confirm==false) {
                 check=false;
                 
             }else{
                 birthday=(((JTextFieldDateEditor) client_create.jdc_birthday.getDateEditor()).getText());
-                contract=(((JTextFieldDateEditor) client_create.jdc_contract.getDateEditor()).getText());
+                update=(((JTextFieldDateEditor) client_create.jdc_update.getDateEditor()).getText());
                 birth= new class_date(birthday);
-                cont= new class_date(contract);
-                birth=core_date.sum_years(birth, 16);
-                dates=cont.compare_2dates(birth);
+                up= new class_date(update);
+                birth=core_date.sum_years(birth, 18);
+                dates=up.compare_2dates(birth);
                 if(dates<1){
-                   // admin_form.jdc_contract.setBackground(RED); 
-                    client_create.check_contract.setIcon(cancel);
+                   
+                    client_create.check_update.setIcon(cancel);
                     client_create.jt_alert.setText("<html>The date isn't valid,<br/>"
                             + " the date need be afer date birthday</html>");
                     check=false;
                 }else{
-                    dates=cont.compare_date_to_System();
+                    dates=up.compare_date_to_System();
                     if(dates==1){
                         //admin_form.jdc_contract.setBackground(RED); 
-                        client_create.check_contract.setIcon(cancel);
+                        client_create.check_update.setIcon(cancel);
                         client_create.jt_alert.setText("<html>The date isn't valid,<br/>"
                                 + " the date need be before actual date</html>");
                         check=false;
                     }else{
                         //admin_form.jdc_contract.setBackground(GREEN);
-                        client_create.check_contract.setIcon(apply);
+                        client_create.check_update.setIcon(apply);
                         client_create.jt_alert.setText("");
                         check=true;
                     }
@@ -796,7 +813,7 @@ public class DAO_client {
         return check;
     }
     
-    public static boolean up_contract(){
+    public static boolean up_up_date(){
         boolean check=false, confirm=false;
         String birthday, contract;
         class_date birth, cont;
@@ -806,25 +823,25 @@ public class DAO_client {
             //admin_update.jdc_birthday.setBackground(RED);
         }else{
             birthday=(((JTextFieldDateEditor) client_update.jdc_birthday.getDateEditor()).getText());
-            contract=(((JTextFieldDateEditor) client_update.jdc_contract.getDateEditor()).getText());
+            contract=(((JTextFieldDateEditor) client_update.jdc_update.getDateEditor()).getText());
             birth= new class_date(birthday);
             cont= new class_date(contract);
             dates=cont.compare_2dates(birth);
             if(dates<1){
                    // admin_form.jdc_contract.setBackground(RED); 
-                    client_update.check_contract.setIcon(cancel);
+                    client_update.check_update.setIcon(cancel);
                     client_update.jt_alert.setText("The date isn't valid, the date need be afer date birthday");
                     check=false;
                 }else{
                     dates=cont.compare_date_to_System();
                     if(dates==1){
                         //admin_form.jdc_contract.setBackground(RED); 
-                        client_update.check_contract.setIcon(cancel);
+                        client_update.check_update.setIcon(cancel);
                         client_update.jt_alert.setText("The date isn't valid, the date need be before actual date");
                         check=false;
                     }else{
                         //admin_form.jdc_contract.setBackground(GREEN);
-                        client_update.check_contract.setIcon(apply);
+                        client_update.check_update.setIcon(apply);
                         client_update.jt_alert.setText("");
                         check=true;
                     }
@@ -834,5 +851,71 @@ public class DAO_client {
         return check;
     }
     
+    public static boolean premium(){
+        boolean premium=false;
+        
+        if(client_create.jrb_yes.isSelected())
+            premium=true;
+        if(client_create.jrb_no.isSelected())
+            premium=false;
+        
+        return premium;
+    }
+    
+    public static boolean up_premium(){
+        boolean premium=false;
+        
+        if(client_update.jrb_yes.isSelected())
+            premium=true;
+        if(client_update.jrb_no.isSelected())
+            premium=false;
+        
+        return premium;
+    }
+    
+    public static boolean type(){
+        boolean check =false;
+            
+        if(client_create.jt_type.getText().equals("")){
+                client_create.check_type.setIcon(cancel);
+                client_create.jt_type.setBackground(RED);
+                client_create.jt_alert.setText("The value isn't valid");
+                check = false;
+            }else{
+                check=validate.validate_type(client_create.jt_type.getText());
      
+                if(check==true){
+                    client_create.check_type.setIcon(apply);
+                    client_create.jt_type.setBackground(GREEN);
+                    client_create.jt_alert.setText("");
+                    check = true;
+                }else{
+                    client_create.check_type.setIcon(cancel);
+                    client_create.jt_type.setBackground(RED);
+                    client_create.jt_alert.setText("The value isn't valid");
+                    check = false;
+                }
+            }
+        return check;
+    }  
+    
+    public static boolean up_type(){
+        boolean check=false;
+        if((client_update.jt_type.getText()).isEmpty()){
+            client_update.check_type.setIcon(cancel);
+            client_update.jt_type.setBackground(RED);
+            check=false;
+        }else{
+            if(validate.validate_type((client_update.jt_type.getText()))==false){
+               client_update.check_type.setIcon(cancel);
+               client_update.jt_type.setBackground(RED); 
+               check=false;
+            }else{
+                client_update.check_shopping.setIcon(apply);
+                client_update.jt_type.setBackground(GREEN);
+                check = true;
+            }
+        }
+        return check;
+    } 
 }

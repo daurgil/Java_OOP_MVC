@@ -1,5 +1,4 @@
 package framework.modules.users.admin.Model.utils.autocomplete;
-import framework.modules.users.user_utils.autocomplete.Searchable;
 import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

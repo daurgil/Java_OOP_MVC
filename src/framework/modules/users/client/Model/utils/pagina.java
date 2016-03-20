@@ -1,7 +1,6 @@
 package framework.modules.users.client.Model.utils;
 import framework.modules.users.client.Model.classes.miniSimpleTableModel_client;
 import framework.modules.users.client.View.client_table;
-import framework.modules.users.user_utils.LinkViewRadioButtonUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

@@ -2,7 +2,6 @@ package framework.modules.users.admin.Model.utils;
 
 import framework.modules.users.admin.Model.classes.miniSimpleTableModel_admin;
 import framework.modules.users.admin.View.admin_table;
-import framework.modules.users.user_utils.LinkViewRadioButtonUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

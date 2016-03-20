@@ -140,7 +140,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
                 }
             }
             admin_table.jLabel3.setText(String.valueOf(cont));
-            System.out.println("word selected: " + nom);
+            //System.out.println("word selected: " + nom);
             pagina.initLinkBox();
         }
     }
@@ -174,5 +174,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
     public void removeRow(int fila) {
         datos.remove(fila);
         fireTableDataChanged();
+        admin_table.jLabel3.setText(String.valueOf(datos.size()));
+        pagina.initLinkBox();
     }
 }

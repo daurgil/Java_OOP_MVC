@@ -5,14 +5,16 @@ import java.util.ArrayList;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import framework.modules.Config.Model.classes.language.class_language;
-
-import framework.modules.users.client.Model.classes.client_class;
-import framework.modules.users.Model.classes.reg_user_class;
-import framework.modules.users.Model.classes.singleton_user;
+import framework.modules.users.reg_user.Model.classes.reg_user_class;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
-import framework.modules.users.admin.Model.utils.lib_files.auto_json;
+import framework.modules.users.admin.Model.utils.lib_Afiles.A_auto_json;
+import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.client.Model.classes.singleton_client;
+import framework.modules.users.client.Model.utils.lib_Cfiles.C_auto_json;
+import framework.modules.users.reg_user.Model.classes.singleton_reg;
+
+
 
 
 @XStreamAlias("class_config")
@@ -51,10 +53,10 @@ public class class_config implements Serializable{
 			
 			singleton_admin.admin= new ArrayList<admin_class>();
 			singleton_client.client= new ArrayList<client_class>();
-			singleton_user.reg= new ArrayList<reg_user_class>();
+			singleton_reg.reg= new ArrayList<reg_user_class>();
 			
-                        auto_json.auto_openjson_admin();
-                       // auto_json.auto_openjson_client();
+                        A_auto_json.auto_openjson_admin();
+                        C_auto_json.auto_openjson_client();
                         //funtions_files.auto_open();
 			//class_language.getinstance();
 			
