@@ -5,8 +5,9 @@
  */
 package framework.Mains;
 
-import framework.modules.Config.Model.classes.class_config;
-import framework.modules.Menu.View.menu;
+import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.Controler.controler_menu;
+import framework.modules.Menu_config.View.menu;
 
 /**
  *
@@ -43,7 +44,7 @@ public class G_main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu().setVisible(true);
+                new controler_menu(new menu(),0).Init(0);
             }
         });
     }

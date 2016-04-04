@@ -1,10 +1,11 @@
-package framework.modules.Config.Model.classes;
+package framework.modules.Menu_config.Model.classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.files_config.auto_config;
 import framework.modules.users.reg_user.Model.classes.reg_user_class;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
@@ -42,8 +43,8 @@ public class class_config implements Serializable{
 		format_date="dd/MM/yyyy";
 		currency='€';
 		decimals=2;
-		language="en";
-		theme="metal";
+		language="eng";
+		theme="Metal";
 		file_format="json";
 		
 	}
@@ -62,7 +63,7 @@ public class class_config implements Serializable{
                         //funtions_files.auto_open();
 			//class_language.getinstance();
 			
-			//auto_config.auto_openconfig();
+			auto_config.auto_openconfig();
                         
 		}
 		return instance;

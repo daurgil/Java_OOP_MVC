@@ -1,8 +1,8 @@
 package framework.modules.users.client.Model.classes;
 
+import static framework.modules.users.client.Controler.client_controler.combo_client;
 import framework.modules.users.client.Model.utils.pagina;
 import framework.modules.users.client.View.client_table;
-import static framework.modules.users.client.View.client_table.combo;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.table.AbstractTableModel;
@@ -129,7 +129,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         datos.clear();
         int cont=0;
         
-        String nom=(String) ((JComboBox)combo).getSelectedItem();   
+        String nom=(String) ((JComboBox)combo_client).getSelectedItem();   
         if(nom!=null){
             for(int i=0;i<datosaux.size();i++) {
                 //if(datosaux.get(i).getFirst_name().contains(nom)){

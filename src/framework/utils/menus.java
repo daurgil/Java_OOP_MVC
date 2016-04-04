@@ -3,7 +3,7 @@ package framework.utils;
 import javax.swing.JOptionPane;
 import javax.xml.transform.OutputKeys;
 
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 
 public class menus {
 	

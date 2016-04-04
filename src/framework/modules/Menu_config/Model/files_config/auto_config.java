@@ -1,4 +1,4 @@
-package framework.modules.Config.Model.files_config;
+package framework.modules.Menu_config.Model.files_config;
 
 import java.io.File;
 import java.io.FileReader;
@@ -14,8 +14,8 @@ import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
-import framework.modules.Config.Model.classes.class_config;
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.utils.appearance;
 
 public class auto_config {
@@ -31,7 +31,7 @@ public class auto_config {
 			xstream.alias("class_config", class_config.class);
 			
 			PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/framework/modules/Config/Model/files_config/auto_config.json";
+                    + "/src/framework/modules/Menu_config/Model/files_config/auto_config.json";
 			
 			File path = new File(PATH);
 			
@@ -47,8 +47,8 @@ public class auto_config {
 				class_config.getinstance().setDecimals(config.getDecimals());
 				class_config.getinstance().setLanguage(config.getLanguage());
 				class_config.getinstance().setTheme(config.getTheme());
-				appearance.theme_selected(config.getTheme());
-				class_config.getinstance().setFile_format(config.getFile_format());
+				appearance.theme_selected(config.getinstance().getTheme());
+				//class_config.getinstance().setFile_format(config.getFile_format());
 				
 				
 			}
@@ -64,7 +64,7 @@ public class auto_config {
 		
 		try {
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/framework/modules/Config/Model/files_config/auto_config.json";
+                    + "/src/framework/modules/Menu_config/Model/files_config/auto_config.json";
         } catch (IOException e) {
             e.printStackTrace();
         }

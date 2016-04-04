@@ -2,7 +2,7 @@ package framework.utils;
 
 import javax.swing.JOptionPane;
 
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 
 
 public class funciones {

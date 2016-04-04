@@ -1,17 +1,10 @@
 package framework.modules.users.reg_user.Model.utils;
 
-import framework.modules.users.admin.Model.utils.*;
-import framework.modules.users.Model.utils_users.*;
-import java.io.ObjectInputStream.GetField;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.JOptionPane;
-import javax.xml.datatype.DatatypeConfigurationException;
 
 import framework.classes.class_date;
-import framework.modules.Config.Model.classes.language.class_language;
-import framework.modules.Config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.utils.funciones;
 import framework.utils.validate;
 

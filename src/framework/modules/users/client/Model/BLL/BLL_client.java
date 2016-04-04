@@ -7,6 +7,7 @@ package framework.modules.users.client.Model.BLL;
 
 
 
+import framework.modules.users.client.Controler.client_controler;
 import framework.modules.users.client.Model.DAO.DAO_client;
 import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.client.Model.classes.miniSimpleTableModel_client;
@@ -193,7 +194,7 @@ public class BLL_client {
                 //singleton_admin.adm = new admin_class(dni);
                                 
                 client_update.DNI=dni;
-                new client_update().setVisible(true);
+                new client_controler(new client_update(), 2).Init(2);
                 
                 
                 correcto = true;

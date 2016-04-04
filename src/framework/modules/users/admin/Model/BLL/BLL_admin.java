@@ -7,6 +7,7 @@ package framework.modules.users.admin.Model.BLL;
 
 
 
+import framework.modules.users.admin.Controler.admin_controler;
 import framework.modules.users.admin.Model.DAO.DAO_admin;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.miniSimpleTableModel_admin;
@@ -199,7 +200,8 @@ public class BLL_admin {
                 //singleton_admin.adm = new admin_class(dni);
                                 
                 admin_update.DNI=dni;
-                new admin_update().setVisible(true);
+                new admin_controler(new admin_update(), 2).Init(2);
+                        
                 
                 
                 correcto = true;

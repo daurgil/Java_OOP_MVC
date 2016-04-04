@@ -76,7 +76,7 @@ public class DAO_reg {
         return reg;
     }
     
-    public static void show_admin(reg_user_class reg){
+    public static void show_reg(reg_user_class reg){
         
         int position;
         String administrator;

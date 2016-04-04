@@ -1,10 +1,9 @@
-package framework.modules.Config.Model.classes.language;
+package framework.modules.Menu_config.Model.classes.language;
 
-import framework.modules.Config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.class_config;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.avalon.framework.configuration.Configurable;
 
 public class class_language extends Properties{
 	

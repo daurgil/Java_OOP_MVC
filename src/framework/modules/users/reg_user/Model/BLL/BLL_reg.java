@@ -5,6 +5,7 @@
  */
 package framework.modules.users.reg_user.Model.BLL;
 
+import framework.modules.users.reg_user.Controler.reg_controler;
 import framework.modules.users.reg_user.Model.DAO.DAO_reg;
 import framework.modules.users.reg_user.Model.classes.miniSimpleTableModel_reg;
 import static framework.modules.users.reg_user.Model.classes.miniSimpleTableModel_reg.datosaux;
@@ -56,15 +57,15 @@ public class BLL_reg {
         }
     }
     
-    public static void show_admin(String DNI){
+    public static void show_reg(String DNI){
         int position;
         
-        reg_user_class admin= new reg_user_class(DNI);
-        position=BLL_reg.search_admin(admin);
+        reg_user_class reg= new reg_user_class(DNI);
+        position=BLL_reg.search_admin(reg);
         
-        admin=singleton_reg.reg.get(position);
+        reg=singleton_reg.reg.get(position);
         
-        DAO_reg.show_admin(admin);
+        DAO_reg.show_reg(reg);
         
         
     }
@@ -201,7 +202,7 @@ public class BLL_reg {
                 //singleton_admin.adm = new admin_class(dni);
                                 
                 reg_update.DNI=dni;
-                new reg_update().setVisible(true);
+                new reg_controler(new reg_update(), 2).Init(2);
                 
                 
                 correcto = true;

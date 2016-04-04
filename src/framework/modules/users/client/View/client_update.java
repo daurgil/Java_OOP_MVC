@@ -22,20 +22,6 @@ import javax.swing.Timer;
  */
 public class client_update extends javax.swing.JFrame {
 
-    private void pause(){
-        Timer delay=new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new client_table().setVisible(true);
-            }
-        });
-        
-        delay.setRepeats(false);
-        delay.start();
-        client_update.jt_alert.setText("User created correctly");
-    }
-    
     public static String DNI;
     /**
      * Creates new form admin_form
@@ -44,30 +30,6 @@ public class client_update extends javax.swing.JFrame {
         
         initComponents();
         
-        BLL_client.show_client(DNI);
-        
-        this.setTitle("Modify Client");
-        
-        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_client.icon_client);
-        this.setIconImage(icono);
-	this.setLocationRelativeTo(null);
-	this.setSize(550,400);//ancho x alto
-	this.setResizable(false);
-        jdc_birthday.getDateEditor().setEnabled(false);
-        jdc_update.getDateEditor().setEnabled(false);
-	//Image icono=Toolkit.getDefaultToolkit().getImage("p1.jpg");
-	//this.setIconImage(icono);
-	//this.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-        
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                //JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
-                dispose();
-                new client_table().setVisible(true);
-            }
-        });
     }
     
 
@@ -171,185 +133,33 @@ public class client_update extends javax.swing.JFrame {
         lb_shopping.setText("Shopping:");
 
         jt_dni.setEnabled(false);
-        jt_dni.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_dniFocusLost(evt);
-            }
-        });
-        jt_dni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_dniKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_dniKeyReleased(evt);
-            }
-        });
-
-        jt_name.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_nameFocusLost(evt);
-            }
-        });
-        jt_name.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_nameKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_nameKeyReleased(evt);
-            }
-        });
-
-        jt_surname.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_surnameFocusLost(evt);
-            }
-        });
-        jt_surname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_surnameKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_surnameKeyReleased(evt);
-            }
-        });
-
-        jt_mobile.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_mobileFocusLost(evt);
-            }
-        });
-        jt_mobile.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_mobileKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_mobileKeyReleased(evt);
-            }
-        });
-
-        jt_email.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_emailFocusLost(evt);
-            }
-        });
-        jt_email.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_emailKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_emailKeyReleased(evt);
-            }
-        });
-
-        jt_nick.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_nickFocusLost(evt);
-            }
-        });
-        jt_nick.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_nickKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_nickKeyReleased(evt);
-            }
-        });
-
-        jt_avatar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_avatarKeyPressed(evt);
-            }
-        });
-
-        jt_shopping.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_shoppingFocusLost(evt);
-            }
-        });
-        jt_shopping.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_shoppingKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_shoppingKeyReleased(evt);
-            }
-        });
 
         lb_state.setText("State:");
 
         bgr_state.add(jrb_conected);
         jrb_conected.setSelected(true);
         jrb_conected.setText("Connected");
-        jrb_conected.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrb_conectedActionPerformed(evt);
-            }
-        });
 
         bgr_state.add(jrb_disconected);
         jrb_disconected.setText("Disconnected");
 
         jdc_birthday.setDateFormatString("dd/MM/yyyy");
         jdc_birthday.setMinSelectableDate(new java.util.Date(-631151908000L));
-        jdc_birthday.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jdc_birthdayPropertyChange(evt);
-            }
-        });
 
         jdc_update.setDateFormatString("dd/MM/yyyy");
-        jdc_update.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jdc_updatePropertyChange(evt);
-            }
-        });
 
         jb_avatar.setText("Select");
-        jb_avatar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_avatarActionPerformed(evt);
-            }
-        });
-
-        jt_password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jt_passwordFocusLost(evt);
-            }
-        });
-        jt_password.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_passwordKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_passwordKeyReleased(evt);
-            }
-        });
 
         chb_password.setText("See the password");
-        chb_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_passwordActionPerformed(evt);
-            }
-        });
 
         jl_premium.setText("Premium");
 
         bgr_premium.add(jrb_yes);
         jrb_yes.setText("Yes");
-        jrb_yes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrb_yesActionPerformed(evt);
-            }
-        });
 
         bgr_premium.add(jrb_no);
         jrb_no.setSelected(true);
         jrb_no.setText("No");
-        jrb_no.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrb_noActionPerformed(evt);
-            }
-        });
 
         jl_type.setText("Type:");
 
@@ -525,19 +335,9 @@ public class client_update extends javax.swing.JFrame {
 
         jl_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/back.png"))); // NOI18N
         jl_back.setText("Atras");
-        jl_back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_backMouseClicked(evt);
-            }
-        });
 
         jb_save.setText("Save");
         jb_save.setPreferredSize(new java.awt.Dimension(42, 31));
-        jb_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_saveActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -579,189 +379,7 @@ public class client_update extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jrb_conectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_conectedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrb_conectedActionPerformed
     
-    private void jt_dniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyPressed
-      if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          BLL_client.update_data("dni");
-          client_update.jt_name.requestFocus();
-      }
-    }//GEN-LAST:event_jt_dniKeyPressed
-
-    private void jt_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nameKeyPressed
-       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-           BLL_client.update_data("name");
-           client_update.jt_surname.requestFocus();
-       }
-    }//GEN-LAST:event_jt_nameKeyPressed
-
-    private void jt_surnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_surnameKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            BLL_client.update_data("surname");
-            client_update.jt_mobile.requestFocus();
-       }
-    }//GEN-LAST:event_jt_surnameKeyPressed
-
-    private void jt_mobileKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_mobileKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            BLL_client.update_data("mobile");
-            client_update.jt_email.requestFocus();
-       }
-    }//GEN-LAST:event_jt_mobileKeyPressed
-
-    private void jt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_emailKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            BLL_client.update_data("email");
-            client_update.jt_nick.requestFocus();
-       }
-    }//GEN-LAST:event_jt_emailKeyPressed
-
-    private void jt_nickKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nickKeyPressed
-       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-           BLL_client.update_data("nick");
-           client_update.jt_password.requestFocus();
-       }
-    }//GEN-LAST:event_jt_nickKeyPressed
-
-    private void jt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passwordKeyPressed
-       if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-           BLL_client.update_data("password");
-    }//GEN-LAST:event_jt_passwordKeyPressed
-
-    private void jt_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passwordKeyReleased
-        
-        if(chb_password.isSelected()){
-            jt_password.setEchoChar((char)0);
-            BLL_client.update_data("password");
-        }else{
-            jt_password.setEchoChar('*');
-            BLL_client.update_data("password");
-        }
-    }//GEN-LAST:event_jt_passwordKeyReleased
-
-    private void chb_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_passwordActionPerformed
-        
-        if(chb_password.isSelected()==false){
-           jt_password.setEchoChar('*'); 
-        }
-        jt_password.requestFocus();
-    }//GEN-LAST:event_chb_passwordActionPerformed
-
-    private void jl_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseClicked
-        new client_table().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jl_backMouseClicked
-
-    private void jt_shoppingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_shoppingKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-            BLL_client.update_data("shopping");
-    }//GEN-LAST:event_jt_shoppingKeyPressed
-
-    private void jdc_birthdayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdc_birthdayPropertyChange
-        BLL_client.update_data("birthday");
-    }//GEN-LAST:event_jdc_birthdayPropertyChange
-
-    private void jdc_updatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdc_updatePropertyChange
-        BLL_client.update_data("update");
-    }//GEN-LAST:event_jdc_updatePropertyChange
-
-    private void jt_avatarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_avatarKeyPressed
-        
-    }//GEN-LAST:event_jt_avatarKeyPressed
-
-    private void jb_avatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_avatarActionPerformed
-        int select;
-        
-        select=jfc_avatar.showOpenDialog(this);
-        if(select==jfc_avatar.APPROVE_OPTION){
-            jt_avatar.setText(jfc_avatar.getSelectedFile().toString());
-        }else{
-            
-        }
-        
-    }//GEN-LAST:event_jb_avatarActionPerformed
-
-    private void jb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_saveActionPerformed
-        BLL_client.modify();
-        if(BLL_client.ok==true){
-            pause();
-        }else{
-            jt_alert.setText("Error data, revise it");
-        }
-        
-    }//GEN-LAST:event_jb_saveActionPerformed
-
-    private void jt_dniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyReleased
-         BLL_client.update_data("dni");
-    }//GEN-LAST:event_jt_dniKeyReleased
-
-    private void jt_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nameKeyReleased
-         BLL_client.update_data("name");
-    }//GEN-LAST:event_jt_nameKeyReleased
-
-    private void jt_surnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_surnameKeyReleased
-         BLL_client.update_data("surname");
-    }//GEN-LAST:event_jt_surnameKeyReleased
-
-    private void jt_mobileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_mobileKeyReleased
-         BLL_client.update_data("mobile");
-    }//GEN-LAST:event_jt_mobileKeyReleased
-
-    private void jt_emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_emailKeyReleased
-         BLL_client.update_data("email");
-    }//GEN-LAST:event_jt_emailKeyReleased
-
-    private void jt_nickKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nickKeyReleased
-         BLL_client.update_data("nick");
-    }//GEN-LAST:event_jt_nickKeyReleased
-
-    private void jt_shoppingKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_shoppingKeyReleased
-        BLL_client.update_data("shopping");
-    }//GEN-LAST:event_jt_shoppingKeyReleased
-
-    private void jt_dniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_dniFocusLost
-        BLL_client.update_data("dni");
-    }//GEN-LAST:event_jt_dniFocusLost
-
-    private void jt_nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_nameFocusLost
-        BLL_client.update_data("name");
-    }//GEN-LAST:event_jt_nameFocusLost
-
-    private void jt_surnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_surnameFocusLost
-        BLL_client.update_data("surname");
-    }//GEN-LAST:event_jt_surnameFocusLost
-
-    private void jt_mobileFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_mobileFocusLost
-        BLL_client.update_data("mobile");
-    }//GEN-LAST:event_jt_mobileFocusLost
-
-    private void jt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_emailFocusLost
-        BLL_client.update_data("email");
-    }//GEN-LAST:event_jt_emailFocusLost
-
-    private void jt_nickFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_nickFocusLost
-        BLL_client.update_data("nick");
-    }//GEN-LAST:event_jt_nickFocusLost
-
-    private void jt_passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_passwordFocusLost
-        BLL_client.update_data("password");
-    }//GEN-LAST:event_jt_passwordFocusLost
-
-    private void jt_shoppingFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jt_shoppingFocusLost
-        BLL_client.update_data("shopping");
-    }//GEN-LAST:event_jt_shoppingFocusLost
-
-    private void jrb_yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_yesActionPerformed
-        
-    }//GEN-LAST:event_jrb_yesActionPerformed
-
-    private void jrb_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_noActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrb_noActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -816,11 +434,11 @@ public class client_update extends javax.swing.JFrame {
     public static javax.swing.JLabel check_update;
     private javax.swing.JPanel create_form;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JButton jb_avatar;
+    public static javax.swing.JButton jb_avatar;
     public static javax.swing.JButton jb_save;
     public static com.toedter.calendar.JDateChooser jdc_birthday;
     public static com.toedter.calendar.JDateChooser jdc_update;
-    private javax.swing.JFileChooser jfc_avatar;
+    public static javax.swing.JFileChooser jfc_avatar;
     public static javax.swing.JLabel jl_back;
     private javax.swing.JLabel jl_premium;
     private javax.swing.JLabel jl_title;

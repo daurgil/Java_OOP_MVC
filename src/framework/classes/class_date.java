@@ -1,6 +1,6 @@
 package framework.classes;
 
-import framework.modules.Config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.class_config;
 import java.io.ObjectInputStream.GetField;
 import java.io.Serializable;
 import java.text.ParseException;

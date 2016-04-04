@@ -6,7 +6,7 @@ import java.io.Serializable;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import framework.classes.class_date;
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 
 @XStreamAlias("reg_user_class")
 public class reg_user_class extends user implements Serializable{

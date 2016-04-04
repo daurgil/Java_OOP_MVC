@@ -5,93 +5,18 @@
  */
 package framework.modules.users.admin.View;
 
-import framework.modules.Menu.View.menu;
-import framework.modules.users.admin.Model.BLL.BLL_admin;
-import framework.modules.users.admin.Model.classes.miniSimpleTableModel_admin;
-import framework.modules.users.admin.Model.classes.singleton_admin;
-import framework.modules.users.admin.Model.utils.pagina;
-import framework.modules.users.admin.Model.utils.autocomplete.AutocompleteJComboBox;
-import framework.modules.users.admin.Model.utils.autocomplete.StringSearchable;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-
 /**
  *
  * @author pelu
  */
 public class admin_table extends javax.swing.JFrame {
 
-    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new miniSimpleTableModel_admin());
-    public static AutocompleteJComboBox combo = null;
-    
     /**
      * Creates new form admin_name
      */
     public admin_table() {
-        
-        
+            
         initComponents();
-        
-        this.setTitle("Administrator Menu");
-        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_admin.icon_admin);
-	this.setIconImage(icono);
-	this.setLocationRelativeTo(null);
-	//this.setSize(700,500);//ancho x alto
-	this.setResizable(false);
-	//this.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-        
-        TABLA.setModel( new miniSimpleTableModel_admin() );
-        ((miniSimpleTableModel_admin)TABLA.getModel()).cargar();
-        TABLA.setFillsViewportHeight(true);
-        TABLA.setRowSorter(sorter);
-        
-        pagina.inicializa();
-        pagina.initLinkBox();
-        
-        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-        pagina.currentPageIndex = 1;
-        pagina.initLinkBox();
-        
-        jLabel3.setText(String.valueOf(singleton_admin.admin.size()));
-        
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                //JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
-                dispose();
-                new menu().setVisible(true);
-            }
-        });
-                
-        List<String> myWords = new ArrayList<String>();
-        for(int i=0;i<=singleton_admin.admin.size()-1;i++) {
-            myWords.add(singleton_admin.admin.get(i).getName());
-        }
-        
-        StringSearchable searchable = new StringSearchable(myWords);
-	combo = new AutocompleteJComboBox(searchable);
-        //JPanel5 se utiliza solamente para que JPanel3 que contendrá combo, no se redimensione
-        jPanel3.setLayout(new java.awt.BorderLayout());
-        jPanel3.add(combo);
-        
-        combo.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboActionPerformed(evt);
-            }
-        });
     }
 
     /**
@@ -138,27 +63,8 @@ public class admin_table extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
 
         bt_search.setText("Search");
-        bt_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_searchActionPerformed(evt);
-            }
-        });
 
         bt_cancel.setText("Cancel");
-        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cancelActionPerformed(evt);
-            }
-        });
-
-        jt_dni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_dniKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_dniKeyReleased(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         jLabel1.setText("Introduce ID card to modify:");
@@ -209,84 +115,26 @@ public class admin_table extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
 
         jl_create.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/create.png"))); // NOI18N
-        jl_create.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_createMouseClicked(evt);
-            }
-        });
 
         jl_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/delete.png"))); // NOI18N
-        jl_delete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_deleteMouseClicked(evt);
-            }
-        });
 
         jl_modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/modify.png"))); // NOI18N
-        jl_modify.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_modifyMouseClicked(evt);
-            }
-        });
 
         jl_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/back.png"))); // NOI18N
         jl_back.setText("Back");
-        jl_back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_backMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jl_backMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jl_backMouseEntered(evt);
-            }
-        });
 
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel7.setFocusable(false);
 
         jl_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/txt_file.png"))); // NOI18N
-        jl_txt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_txtMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jl_txtMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jl_txtMouseEntered(evt);
-            }
-        });
 
         jl_xml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/xml_file.png"))); // NOI18N
-        jl_xml.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_xmlMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jl_xmlMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jl_xmlMouseEntered(evt);
-            }
-        });
 
         jl_json.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/json_file.png"))); // NOI18N
         jl_json.setBorder(null);
-        jl_json.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_jsonMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jl_jsonMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jl_jsonMouseEntered(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -365,11 +213,6 @@ public class admin_table extends javax.swing.JFrame {
 
             }
         ));
-        TABLA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TABLAMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(TABLA);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -401,11 +244,6 @@ public class admin_table extends javax.swing.JFrame {
         );
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "10", "15", "20", "50", "100" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -424,19 +262,9 @@ public class admin_table extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ANTERIOR.setText("<");
-        ANTERIOR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANTERIORActionPerformed(evt);
-            }
-        });
         jPanel2.add(ANTERIOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         SIGUIENTE.setText(">");
-        SIGUIENTE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SIGUIENTEActionPerformed(evt);
-            }
-        });
         jPanel2.add(SIGUIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
         CAJA.setEditable(false);
@@ -445,19 +273,9 @@ public class admin_table extends javax.swing.JFrame {
         jPanel2.add(CAJA, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 80, 30));
 
         primero.setText("|<");
-        primero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                primeroActionPerformed(evt);
-            }
-        });
         jPanel2.add(primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         ultimo.setText(">|");
-        ultimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ultimoActionPerformed(evt);
-            }
-        });
         jPanel2.add(ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel4.setText("Filtra First Name");
@@ -538,140 +356,7 @@ public class admin_table extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
   
-    private void jl_createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_createMouseClicked
-        new admin_create().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jl_createMouseClicked
-
-    private void jl_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseClicked
-        new menu().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jl_backMouseClicked
-
-    private void jl_modifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_modifyMouseClicked
-        ask_dni.setSize(400,150);
-        ask_dni.setLocation(100, 100);
-        ask_dni.setVisible(true);
-    }//GEN-LAST:event_jl_modifyMouseClicked
-
-    private void jt_dniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          BLL_admin.give_data("dni_search");
-          bt_search.requestFocus();
-        }
-    }//GEN-LAST:event_jt_dniKeyPressed
-
-    private void jt_dniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyReleased
-        BLL_admin.give_data("dni_search");
-    }//GEN-LAST:event_jt_dniKeyReleased
-
-    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-        ask_dni.dispose();
-    }//GEN-LAST:event_bt_cancelActionPerformed
-
-    private void bt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_searchActionPerformed
-        admin_update.DNI=jt_dni.getText();
-        new admin_update().setVisible(true);
-  
-        ask_dni.dispose();
-        this.dispose();
-        
-    }//GEN-LAST:event_bt_searchActionPerformed
-
-    public static void comboActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        System.out.println("word selected: " + ((JComboBox)combo).getSelectedItem());
-        pagina.currentPageIndex = 1;
-        ((miniSimpleTableModel_admin)TABLA.getModel()).filtrar();
-        ((JComboBox)combo).requestFocus();
-    } 
     
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-        pagina.currentPageIndex = 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void ANTERIORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANTERIORActionPerformed
-        pagina.currentPageIndex -= 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_ANTERIORActionPerformed
-
-    private void SIGUIENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIGUIENTEActionPerformed
-        pagina.currentPageIndex += 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_SIGUIENTEActionPerformed
-
-    private void primeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeroActionPerformed
-        pagina.currentPageIndex = 1;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_primeroActionPerformed
-
-    private void ultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ultimoActionPerformed
-        pagina.currentPageIndex = pagina.maxPageIndex;
-        pagina.initLinkBox();
-    }//GEN-LAST:event_ultimoActionPerformed
-
-    private void TABLAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TABLAMouseClicked
-        if (evt.getClickCount() == 2) {
-            boolean modificar;
-
-            modificar = BLL_admin.modifiy_line();
-            if (modificar == false) {
-            } else {
-                this.dispose();
-            }
-
-        } 
-    }//GEN-LAST:event_TABLAMouseClicked
-
-    private void jl_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_deleteMouseClicked
-        BLL_admin.delete_line();
-    }//GEN-LAST:event_jl_deleteMouseClicked
-
-    private void jl_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseEntered
-        jl_back.setFont(new Font("DejaVu Sans", Font.BOLD, 16));
-    }//GEN-LAST:event_jl_backMouseEntered
-
-    private void jl_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_backMouseExited
-        jl_back.setFont(new Font("DejaVu Sans", Font.PLAIN, 12));
-    }//GEN-LAST:event_jl_backMouseExited
-
-    private void jl_jsonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseEntered
-        jl_json.setBorder(BorderFactory.createLineBorder(Color.black));
-    }//GEN-LAST:event_jl_jsonMouseEntered
-
-    private void jl_jsonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseExited
-        jl_json.setBorder(null);
-    }//GEN-LAST:event_jl_jsonMouseExited
-
-    private void jl_jsonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jsonMouseClicked
-        BLL_admin.save_json();
-    }//GEN-LAST:event_jl_jsonMouseClicked
-
-    private void jl_xmlMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseEntered
-        jl_xml.setBorder(BorderFactory.createLineBorder(Color.black));
-    }//GEN-LAST:event_jl_xmlMouseEntered
-
-    private void jl_xmlMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseExited
-        jl_xml.setBorder(null);
-    }//GEN-LAST:event_jl_xmlMouseExited
-
-    private void jl_xmlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_xmlMouseClicked
-        BLL_admin.save_xml();
-    }//GEN-LAST:event_jl_xmlMouseClicked
-
-    private void jl_txtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseEntered
-        jl_txt.setBorder(BorderFactory.createLineBorder(Color.black));
-    }//GEN-LAST:event_jl_txtMouseEntered
-
-    private void jl_txtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseExited
-        jl_txt.setBorder(null);
-    }//GEN-LAST:event_jl_txtMouseExited
-
-    private void jl_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_txtMouseClicked
-        BLL_admin.save_txt();
-    }//GEN-LAST:event_jl_txtMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -713,9 +398,9 @@ public class admin_table extends javax.swing.JFrame {
     public static javax.swing.JTextField CAJA;
     public static javax.swing.JButton SIGUIENTE;
     public static javax.swing.JTable TABLA;
-    private javax.swing.JDialog ask_dni;
-    private javax.swing.JButton bt_cancel;
-    private javax.swing.JButton bt_search;
+    public static javax.swing.JDialog ask_dni;
+    public static javax.swing.JButton bt_cancel;
+    public static javax.swing.JButton bt_search;
     public static javax.swing.JLabel check_dni;
     public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -731,13 +416,13 @@ public class admin_table extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jl_back;
-    private javax.swing.JLabel jl_create;
-    private javax.swing.JLabel jl_delete;
-    private javax.swing.JLabel jl_json;
-    private javax.swing.JLabel jl_modify;
-    private javax.swing.JLabel jl_txt;
-    private javax.swing.JLabel jl_xml;
+    public static javax.swing.JLabel jl_back;
+    public static javax.swing.JLabel jl_create;
+    public static javax.swing.JLabel jl_delete;
+    public static javax.swing.JLabel jl_json;
+    public static javax.swing.JLabel jl_modify;
+    public static javax.swing.JLabel jl_txt;
+    public static javax.swing.JLabel jl_xml;
     private javax.swing.JPanel jp_options;
     public static javax.swing.JTextField jt_dni;
     public static javax.swing.JButton primero;

@@ -4,7 +4,7 @@ package framework.modules.users.client.Model.utils;
 import javax.swing.JOptionPane;
 
 import framework.classes.class_date;
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.utils.funciones;
 import framework.utils.validate;
 

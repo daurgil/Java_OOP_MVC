@@ -12,7 +12,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import framework.modules.Config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
 import java.io.File;

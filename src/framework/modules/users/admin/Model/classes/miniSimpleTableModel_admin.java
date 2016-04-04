@@ -1,9 +1,10 @@
 package framework.modules.users.admin.Model.classes;
 
 import framework.classes.class_date;
+import framework.modules.users.admin.Controler.admin_controler;
+import static framework.modules.users.admin.Controler.admin_controler.combo_admin;
 import framework.modules.users.admin.Model.utils.pagina;
 import framework.modules.users.admin.View.admin_table;
-import static framework.modules.users.admin.View.admin_table.combo;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.table.AbstractTableModel;
@@ -130,7 +131,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         datos.clear();
         int cont=0;
         
-        String nom=(String) ((JComboBox)combo).getSelectedItem();   
+        String nom=(String) ((JComboBox)combo_admin).getSelectedItem();   
         if(nom!=null){
             for(int i=0;i<datosaux.size();i++) {
                 //if(datosaux.get(i).getFirst_name().contains(nom)){
