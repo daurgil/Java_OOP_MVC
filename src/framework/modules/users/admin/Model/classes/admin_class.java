@@ -6,8 +6,6 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import framework.classes.class_date;
 import framework.modules.Menu_config.Model.classes.language.class_language;
-import framework.modules.Menu_config.Model.classes.class_config;
-import framework.modules.users.Classes.user;
 import framework.modules.users.Classes.user;
 import framework.utils.format;
 

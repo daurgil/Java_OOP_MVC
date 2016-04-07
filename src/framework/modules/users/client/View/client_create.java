@@ -5,15 +5,9 @@
  */
 package framework.modules.users.client.View;
 
-import framework.modules.users.client.Model.BLL.BLL_client;
-import framework.modules.users.client.Model.classes.singleton_client;
-import java.awt.Image;
-import java.awt.Toolkit;
+import framework.modules.Menu_config.Model.classes.class_config;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.Timer;
 
 /**
@@ -22,19 +16,6 @@ import javax.swing.Timer;
  */
 public class client_create extends javax.swing.JFrame {
 
-    private void pause(){
-        Timer delay=new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new client_table().setVisible(true);
-            }
-        });
-        
-        delay.setRepeats(false);
-        delay.start();
-        client_create.jt_alert.setText("User created correctly");
-    }
     
     /**
      * Creates new form admin_form
@@ -154,10 +135,10 @@ public class client_create extends javax.swing.JFrame {
         bgr_state.add(jrb_disconected);
         jrb_disconected.setText("Disconnected");
 
-        jdc_birthday.setDateFormatString("dd/MM/yyyy");
+        jdc_birthday.setDateFormatString(class_config.getinstance().getFormat_date());
         jdc_birthday.setMinSelectableDate(new java.util.Date(-631151908000L));
 
-        jdc_update.setDateFormatString("dd/MM/yyyy");
+        jdc_update.setDateFormatString(class_config.getinstance().getFormat_date());
 
         jb_avatar.setText("Select");
 

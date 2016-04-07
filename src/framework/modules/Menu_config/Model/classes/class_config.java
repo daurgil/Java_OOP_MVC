@@ -15,6 +15,7 @@ import framework.modules.users.client.Model.classes.singleton_client;
 import framework.modules.users.client.Model.utils.lib_Cfiles.C_auto_json;
 import framework.modules.users.reg_user.Model.classes.singleton_reg;
 import framework.modules.users.reg_user.Model.utils.lib_Rfiles.R_auto_json;
+import framework.utils.appearance;
 
 
 
@@ -107,6 +108,7 @@ public class class_config implements Serializable{
 
 	public void setTheme(String theme) {
 		this.theme = theme;
+                appearance.theme_selected(theme);
 	}
 
 	public String getFile_format() {

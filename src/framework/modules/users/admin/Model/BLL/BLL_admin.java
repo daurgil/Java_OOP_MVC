@@ -165,8 +165,6 @@ public class BLL_admin {
                     datosaux.remove(adm);
                     A_auto_json.auto_savejson_admin();
                     
-//                    Ordenar(0);
-//                    EFBLLgrafico.Guardar(0);
                 }
 
                 if (((miniSimpleTableModel_admin) TABLA.getModel()).getRowCount() == 0) {

@@ -7,16 +7,9 @@ package framework.modules.users.reg_user.View;
 
 
 
-import framework.modules.users.reg_user.Model.BLL.BLL_reg;
-import framework.modules.users.reg_user.Model.classes.singleton_reg;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
+import framework.modules.Menu_config.Model.classes.class_config;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.Timer;
 
 /**
@@ -143,7 +136,7 @@ public class reg_create extends javax.swing.JFrame {
         bgr_state.add(jrb_disconected);
         jrb_disconected.setText("Disconnected");
 
-        jdc_birthday.setDateFormatString("dd/MM/yyyy");
+        jdc_birthday.setDateFormatString(class_config.getinstance().getFormat_date());
         jdc_birthday.setMinSelectableDate(new java.util.Date(-631151908000L));
 
         jb_avatar.setText("Select");

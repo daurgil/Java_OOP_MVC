@@ -164,25 +164,25 @@ public class class_date implements Serializable{
 		String date="";
 		
 		switch (class_config.getinstance().getFormat_date()) {
-		case "dd/mm/yyyy":
+		case "dd/MM/yyyy":
 			info.append(String.format("%02d", this.getDay())+"/"+String.format("%02d", this.getMonth())+"/"+this.getYear());
 			break;
 			
-		case "dd-mm-yyyy":
+		case "dd-MM-yyyy":
 			info.append(String.format("%02d", this.getDay())+"-"+String.format("%02d", this.getMonth())+"-"+this.getYear());
 			break;
 			
-		case "yyyy/mm/dd":
+		case "yyyy/MM/dd":
 			info.append(this.getYear()+"/"+String.format("%02d", this.getMonth())+"/"+String.format("%02d", this.getDay()));
 			break;
 		
-		case "yyyy-mm-dd":
+		case "yyyy-MM-dd":
 			info.append(this.getYear()+"-"+String.format("%02d", this.getMonth())+"-"+String.format("%02d", this.getDay()));
 			break;
 		default:
 			break;
 		}
-		return date;
+		return info.toString();
 	}
 	
 	

@@ -5,18 +5,7 @@
  */
 package framework.modules.users.admin.View;
 
-
-import framework.modules.users.admin.Model.BLL.BLL_admin;
-import framework.modules.users.admin.Model.classes.singleton_admin;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.Timer;
+import framework.modules.Menu_config.Model.classes.class_config;
 
 /**
  *
@@ -142,10 +131,10 @@ public class admin_update extends javax.swing.JFrame {
         bgr_state.add(jrb_disconected);
         jrb_disconected.setText("Disconnected");
 
-        jdc_birthday.setDateFormatString("dd/MM/yyyy");
+        jdc_birthday.setDateFormatString(class_config.getinstance().getFormat_date());
         jdc_birthday.setMinSelectableDate(new java.util.Date(-631151908000L));
 
-        jdc_contract.setDateFormatString("dd/MM/yyyy");
+        jdc_contract.setDateFormatString(class_config.getinstance().getFormat_date());
 
         jb_avatar.setText("Select");
 

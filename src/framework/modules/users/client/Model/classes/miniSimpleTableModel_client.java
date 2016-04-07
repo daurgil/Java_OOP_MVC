@@ -1,6 +1,7 @@
 package framework.modules.users.client.Model.classes;
 
 import static framework.modules.users.client.Controler.client_controler.combo_client;
+import framework.modules.users.client.Model.utils.lib_Cfiles.C_auto_json;
 import framework.modules.users.client.Model.utils.pagina;
 import framework.modules.users.client.View.client_table;
 import java.util.ArrayList;
@@ -108,6 +109,9 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
+        singleton_client.client.clear();
+        
+        C_auto_json.auto_openjson_client();
         
         client_class client = null;
         java.util.Date date= new java.util.Date();

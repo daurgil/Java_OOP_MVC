@@ -6,17 +6,7 @@
 package framework.modules.users.admin.View;
 
 
-import framework.modules.users.admin.Model.BLL.BLL_admin;
-import framework.modules.users.admin.Model.classes.singleton_admin;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.Timer;
+import framework.modules.Menu_config.Model.classes.class_config;
 
 /**
  *
@@ -24,44 +14,12 @@ import javax.swing.Timer;
  */
 public class admin_create extends javax.swing.JFrame {
 
-    private void pause(){
-        Timer delay=new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new admin_table().setVisible(true);
-            }
-        });
-        
-        delay.setRepeats(false);
-        delay.start();
-        admin_create.jt_alert.setText("User created correctly");
-    }
     /**
      * Creates new form admin_form
      */
     public admin_create() {
         initComponents();
-        this.setTitle("Create admin");
-        Image icono=Toolkit.getDefaultToolkit().getImage(singleton_admin.icon_admin);
-	this.setIconImage(icono);
-	this.setLocationRelativeTo(null);
-	this.setSize(550,400);//ancho x alto
-	this.setResizable(false);
-        jdc_birthday.getDateEditor().setEnabled(false);
-        jdc_contract.getDateEditor().setEnabled(false);
-	
-	//this.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
         
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                //JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
-                dispose();
-                new admin_table().setVisible(true);
-            }
-        });
     }
     
 
@@ -166,10 +124,10 @@ public class admin_create extends javax.swing.JFrame {
         bgr_state.add(jrb_disconected);
         jrb_disconected.setText("Disconnected");
 
-        jdc_birthday.setDateFormatString("dd/MM/yyyy");
+        jdc_birthday.setDateFormatString(class_config.getinstance().getFormat_date());
         jdc_birthday.setMinSelectableDate(new java.util.Date(-631151908000L));
 
-        jdc_contract.setDateFormatString("dd/MM/yyyy");
+        jdc_contract.setDateFormatString(class_config.getinstance().getFormat_date());
 
         jb_avatar.setText("Select");
 

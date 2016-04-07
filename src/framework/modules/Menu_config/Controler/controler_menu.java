@@ -70,7 +70,7 @@ public class controler_menu implements ActionListener, MouseListener{
         //class_config.getinstance().getTheme();
         
         if(i==0){
-            class_config.getinstance().getTheme();
+            //class_config.getinstance().getTheme();
             menu.setVisible(true);
 
     //        menu.setContentPane(new JLabel(new ImageIcon(singleton.fondo_menu)));

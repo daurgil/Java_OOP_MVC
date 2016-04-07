@@ -1,5 +1,6 @@
 package framework.modules.users.reg_user.Model.classes;
 
+import framework.modules.users.reg_user.Model.utils.lib_Rfiles.R_auto_json;
 import framework.modules.users.reg_user.Model.utils.pagina;
 import framework.modules.users.reg_user.View.reg_table;
 import static framework.modules.users.reg_user.View.reg_table.combo;
@@ -110,6 +111,9 @@ public class miniSimpleTableModel_reg extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
+        singleton_reg.reg.clear();
+        
+        R_auto_json.auto_openjson_reg();
         
         reg_user_class client = null;
         java.util.Date date= new java.util.Date();

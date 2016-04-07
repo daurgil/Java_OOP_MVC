@@ -3,6 +3,7 @@ package framework.modules.users.admin.Model.classes;
 import framework.classes.class_date;
 import framework.modules.users.admin.Controler.admin_controler;
 import static framework.modules.users.admin.Controler.admin_controler.combo_admin;
+import framework.modules.users.admin.Model.utils.lib_Afiles.A_auto_json;
 import framework.modules.users.admin.Model.utils.pagina;
 import framework.modules.users.admin.View.admin_table;
 import java.util.ArrayList;
@@ -54,8 +55,8 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
                 break;
 
             case 3:
-                dev=fila.getDate_cont().getDate_s();
-                //dev = class_date.date_to_String(fila.getDate_cont());
+                //dev=fila.getDate_cont().getDate_s();
+                dev = fila.getDate_cont().toString();
                 break;
                 
             case 4:
@@ -110,6 +111,9 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
+        singleton_admin.admin.clear();
+        
+        A_auto_json.auto_openjson_admin();
         
         admin_class admin = null;
         java.util.Date date= new java.util.Date();
