@@ -44,8 +44,9 @@ public class BLL_admin {
                 JOptionPane.showMessageDialog(null, "This Id card already exist");
                 ok=false;
             }else{
-                singleton_admin.admin.add(admin);
-                A_auto_json.auto_savejson_admin();
+                singleton_admin.a = admin;
+                BLL_DB_admin.create_adminBLL();
+                //A_auto_json.auto_savejson_admin();
                 JOptionPane.showMessageDialog(null, "The user was created succesfuly"); 
                 ok=true;
             }
@@ -82,8 +83,9 @@ public class BLL_admin {
             admin_update.jt_alert.setText("ERROR, Any problem to save de user");
             ok=false;
         }else{
-          singleton_admin.admin.set(position, admin);
-          A_auto_json.auto_savejson_admin();
+          singleton_admin.a=admin;
+          BLL_DB_admin.modify_adminBLL();
+          //A_auto_json.auto_savejson_admin();
           admin_update.jt_alert.setText("The user was created succesfuly"); 
           ok=true;
         }
@@ -161,9 +163,11 @@ public class BLL_admin {
                     ((miniSimpleTableModel_admin) TABLA.getModel()).removeRow(selection1);
                     adm = singleton_admin.admin.get(pos);
 
-                    singleton_admin.admin.remove(adm);
+                    //singleton_admin.admin.remove(adm);
                     datosaux.remove(adm);
-                    A_auto_json.auto_savejson_admin();
+                    singleton_admin.a=adm;
+                    BLL_DB_admin.delete_adminBLL();
+                    //A_auto_json.auto_savejson_admin();
                     
                 }
 

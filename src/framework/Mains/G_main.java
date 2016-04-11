@@ -5,9 +5,11 @@
  */
 package framework.Mains;
 
-import framework.modules.Menu_config.Model.classes.class_config;
+import framework.BDdummy;
 import framework.modules.Menu_config.Controler.controler_menu;
+import framework.modules.Menu_config.Model.classes.class_config;
 import framework.modules.Menu_config.View.menu;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,7 +17,7 @@ import framework.modules.Menu_config.View.menu;
  */
 public class G_main {
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -40,6 +42,8 @@ public class G_main {
         //</editor-fold>
 
         class_config.getinstance();
+        //BDdummy.cargarBD();
+      
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

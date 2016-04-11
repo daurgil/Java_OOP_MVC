@@ -1,8 +1,8 @@
 package framework.modules.users.admin.Model.classes;
 
 import framework.classes.class_date;
-import framework.modules.users.admin.Controler.admin_controler;
 import static framework.modules.users.admin.Controler.admin_controler.combo_admin;
+import framework.modules.users.admin.Model.BLL.BLL_DB_admin;
 import framework.modules.users.admin.Model.utils.lib_Afiles.A_auto_json;
 import framework.modules.users.admin.Model.utils.pagina;
 import framework.modules.users.admin.View.admin_table;
@@ -113,7 +113,8 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         datosaux.clear();
         singleton_admin.admin.clear();
         
-        A_auto_json.auto_openjson_admin();
+        BLL_DB_admin.show_adminBLL();
+        //A_auto_json.auto_openjson_admin();
         
         admin_class admin = null;
         java.util.Date date= new java.util.Date();
@@ -126,7 +127,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
             try {
                 Thread.sleep(1); //1 milliseconds
             } catch (Exception e) {
-              System.out.println(e);
+              //System.out.println(e);
             }
         }
     }

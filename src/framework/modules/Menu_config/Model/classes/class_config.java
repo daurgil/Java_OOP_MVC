@@ -58,9 +58,9 @@ public class class_config implements Serializable{
 			singleton_client.client= new ArrayList<client_class>();
 			singleton_reg.reg= new ArrayList<reg_user_class>();
 			
-                        A_auto_json.auto_openjson_admin();
-                        C_auto_json.auto_openjson_client();
-                        R_auto_json.auto_openjson_reg();
+//                        A_auto_json.auto_openjson_admin();
+//                        C_auto_json.auto_openjson_client();
+//                        R_auto_json.auto_openjson_reg();
                         //funtions_files.auto_open();
 			//class_language.getinstance();
 			

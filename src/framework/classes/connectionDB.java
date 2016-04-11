@@ -5,7 +5,8 @@
  */
 package framework.classes;
 
-import com.mysql.jdbc.Connection;
+
+import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author pelu
  */
-public class conectionBD {
+public class connectionDB {
     
     /**
      * Open the conection in the Data base
@@ -40,7 +41,7 @@ public class conectionBD {
      *
      * @param con
      */
-    public void CerrarConexion(Connection con) {
+    public void closeConnection(Connection con) {
         try {
             if (con != null) {
                 con.close();
