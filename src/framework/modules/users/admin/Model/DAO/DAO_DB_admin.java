@@ -50,9 +50,9 @@ public class DAO_DB_admin {
             stmt.setString(7, singleton_admin.a.getAvatar());
             stmt.setString(8, singleton_admin.a.getPassword());
             stmt.setString(9, singleton_admin.a.getState());
-            stmt.setString(10, singleton_admin.a.getBirthday().toString());
+            stmt.setString(10, singleton_admin.a.getBirthday().toString_DB());
             stmt.setInt(11, singleton_admin.a.getAge());
-            stmt.setString(12, singleton_admin.a.getDate_cont().toString());
+            stmt.setString(12, singleton_admin.a.getDate_cont().toString_DB());
             stmt.setInt(13, singleton_admin.a.getAntique());
             stmt.setInt(14, singleton_admin.a.getActivity());
             stmt.setFloat(15, singleton_admin.a.getSalary());
@@ -90,11 +90,10 @@ public class DAO_DB_admin {
             rs = stmt.executeQuery();
 
             admin_class admin = null;
-
+            
             while (rs.next()) {
                 
                 admin = new admin_class();
-                
                 admin.setDni(rs.getString("dni"));
                 admin.setName(rs.getString("name"));
                 admin.setSurname(rs.getString("surname"));

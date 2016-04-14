@@ -38,6 +38,7 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -432,11 +433,17 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
                 ((JComboBox)combo_admin).requestFocus();
                 break;
             case t_jb_search:
-                admin_update.DNI=table.jt_dni.getText();
-                new admin_controler(new admin_update(), 2).Init(2);
+                if(BLL_admin.give_data("dni_search")==true){
+                    if(BLL_admin.search_admin_t()==-1){
+                        JOptionPane.showMessageDialog(null, "Error");
+                    }else{
+                        admin_update.DNI=table.jt_dni.getText();
+                        new admin_controler(new admin_update(), 2).Init(2);
 
-                table.ask_dni.dispose();
-                table.dispose();
+                        table.ask_dni.dispose();
+                        table.dispose();
+                    }
+                }
                 break;
             case t_jb_cancel:
                 table.ask_dni.dispose();

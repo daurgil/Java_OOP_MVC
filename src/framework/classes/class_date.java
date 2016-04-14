@@ -43,7 +43,7 @@ public class class_date implements Serializable{
 
 		case "dd/MM/yyyy":
 			part_date=introduced_date.split("/");
-			
+			                
 			this.day=Integer.parseInt(part_date[0]);
 			this.month=Integer.parseInt(part_date[1]);
 			this.year=Integer.parseInt(part_date[2]);
@@ -52,21 +52,22 @@ public class class_date implements Serializable{
 			break;
 			
 		case "dd-MM-yyyy":
-			part_date=introduced_date.split("-");
-			
+			part_date=introduced_date.split("/");
+			                 
 			this.day=Integer.parseInt(part_date[0]);
-			this.month=Integer.parseInt(part_date[1]);
-			this.year=Integer.parseInt(part_date[2]);
+                        this.month=Integer.parseInt(part_date[1]);
+                        this.year=Integer.parseInt(part_date[2]);
+                        
 			
 			this.date_s=this.day+"-"+this.month+"-"+this.year;
 			break;
 			
 		case "yyyy/MM/dd":
 			part_date=introduced_date.split("/");
-			
-			this.year=Integer.parseInt(part_date[0]);
+				
+			this.year=Integer.parseInt(part_date[2]);
 			this.month=Integer.parseInt(part_date[1]);
-			this.day=Integer.parseInt(part_date[2]);
+			this.day=Integer.parseInt(part_date[0]);
 			
 			this.date_s=this.year+"/"+this.month+"/"+this.day;
 			break;
@@ -74,9 +75,9 @@ public class class_date implements Serializable{
 		case "yyyy-MM-dd":
 			part_date=introduced_date.split("/");
 			
-			this.year=Integer.parseInt(part_date[0]);
+			this.year=Integer.parseInt(part_date[2]);
 			this.month=Integer.parseInt(part_date[1]);
-			this.day=Integer.parseInt(part_date[2]);
+			this.day=Integer.parseInt(part_date[0]);
 			
 			this.date_s=this.year+"/"+this.month+"/"+this.day;
 			break;	
@@ -174,7 +175,7 @@ public class class_date implements Serializable{
 			
 		case "yyyy/MM/dd":
 			info.append(this.getYear()+"/"+String.format("%02d", this.getMonth())+"/"+String.format("%02d", this.getDay()));
-			break;
+                        break;
 		
 		case "yyyy-MM-dd":
 			info.append(this.getYear()+"-"+String.format("%02d", this.getMonth())+"-"+String.format("%02d", this.getDay()));
@@ -182,8 +183,18 @@ public class class_date implements Serializable{
 		default:
 			break;
 		}
+                
 		return info.toString();
 	}
+        
+        public String toString_DB(){
+            
+            StringBuffer info =new StringBuffer();
+            
+            info.append(String.format("%02d", this.getDay())+"/"+String.format("%02d", this.getMonth())+"/"+this.getYear());
+            
+            return info.toString();
+        }
 	
 	
 	/**

@@ -55,6 +55,7 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
                 break;
 
             case 3:
+                
                 //dev=fila.getDate_cont().getDate_s();
                 dev = fila.getDate_cont().toString();
                 break;

@@ -6,6 +6,8 @@
 package framework.modules.Menu_config.Controler;
 
 import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.language.class_language;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.Model.files_config.BLL.BLL_config;
 import framework.modules.Menu_config.View.Config;
 import framework.modules.Menu_config.View.menu;
@@ -15,7 +17,6 @@ import framework.modules.users.client.Controler.client_controler;
 import framework.modules.users.client.View.client_table;
 import framework.modules.users.reg_user.Controler.reg_controler;
 import framework.modules.users.reg_user.View.reg_table;
-import framework.utils.appearance;
 import framework.utils.singleton;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -70,7 +71,9 @@ public class controler_menu implements ActionListener, MouseListener{
         //class_config.getinstance().getTheme();
         
         if(i==0){
-            //class_config.getinstance().getTheme();
+            
+            menu.jb_admin.setText(singleton_config.lang.getProperty("admin"));
+            
             menu.setVisible(true);
 
     //        menu.setContentPane(new JLabel(new ImageIcon(singleton.fondo_menu)));
@@ -83,6 +86,7 @@ public class controler_menu implements ActionListener, MouseListener{
             //menu.setSize(680,450);//ancho x alto
             menu.setResizable(false);
 
+            
             //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
             menu.jb_admin.setActionCommand("jb_admin");

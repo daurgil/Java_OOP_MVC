@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
  */
 public class singleton {
     
+    //public static BasicDataSource DataSource;
+    
     public static ImageIcon empty= new ImageIcon("");
     public static ImageIcon apply= new ImageIcon("src/framework/img/apply.png");
     public static ImageIcon cancel= new ImageIcon("src/framework/img/cancel.png");

@@ -22,10 +22,10 @@ public class class_language extends Properties{
 	public class_language(){
 		
 		switch (class_config.getinstance().getLanguage()) {
-		case "en":
+		case "eng":
 			getProperties("english.properties");
 			break;
-		case "es":
+		case "esp":
 			getProperties("Spanish.properties");
 			break;
 		case "val":
@@ -44,10 +44,10 @@ public class class_language extends Properties{
 	public void setLanguage() {
 		//this.language = class_config.getinstance().getLanguage();
 		switch(class_config.getinstance().getLanguage()){
-	    case "en":
+	    case "eng":
 	    	getProperties("english.properties");
 	        break;
-	    case "es":
+	    case "esp":
 	    	getProperties("Spanish.properties");
 	        break;
 	    case "val":

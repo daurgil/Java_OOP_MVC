@@ -62,10 +62,9 @@ public class class_config implements Serializable{
 //                        C_auto_json.auto_openjson_client();
 //                        R_auto_json.auto_openjson_reg();
                         //funtions_files.auto_open();
-			//class_language.getinstance();
-			
 			auto_config.auto_openconfig();
-                        
+                        //class_language.getinstance();
+			singleton_config.lang=new class_language();
 		}
 		return instance;
 	}

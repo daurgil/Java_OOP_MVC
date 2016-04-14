@@ -199,7 +199,7 @@
                               <Component id="jrb_dolar" min="-2" max="-2" attributes="0"/>
                               <Component id="jrb_euro" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="305" max="32767" attributes="0"/>
+                          <EmptySpace pref="337" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -224,7 +224,7 @@
                       <ComponentRef name="bg_currency"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
-                    <Property name="text" type="java.lang.String" value="Euros"/>
+                    <Property name="text" type="java.lang.String" value="&#x20ac;"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -235,8 +235,11 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="bg_currency"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Dolars"/>
+                    <Property name="text" type="java.lang.String" value="$"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrb_dolarActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
@@ -246,7 +249,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="bg_currency"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Libra"/>
+                    <Property name="text" type="java.lang.String" value="&#xa3;"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>

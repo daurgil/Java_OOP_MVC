@@ -46,10 +46,10 @@ public class BLL_DB_admin {
 
         con = connection_DB.openConection();
         DAO_DB_admin DAO_user = new DAO_DB_admin();
-
+        
         try {
             DAO_user.show_admin(con);//Recuperamos los empleados 
-
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un error Logger2!");
         }

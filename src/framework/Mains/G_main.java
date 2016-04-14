@@ -5,7 +5,6 @@
  */
 package framework.Mains;
 
-import framework.BDdummy;
 import framework.modules.Menu_config.Controler.controler_menu;
 import framework.modules.Menu_config.Model.classes.class_config;
 import framework.modules.Menu_config.View.menu;

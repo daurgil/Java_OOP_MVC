@@ -121,13 +121,18 @@ public class Config extends javax.swing.JFrame {
 
         bg_currency.add(jrb_euro);
         jrb_euro.setSelected(true);
-        jrb_euro.setText("Euros");
+        jrb_euro.setText("€");
 
         bg_currency.add(jrb_dolar);
-        jrb_dolar.setText("Dolars");
+        jrb_dolar.setText("$");
+        jrb_dolar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_dolarActionPerformed(evt);
+            }
+        });
 
         bg_currency.add(jrb_libra);
-        jrb_libra.setText("Libra");
+        jrb_libra.setText("£");
 
         javax.swing.GroupLayout jp_currencyLayout = new javax.swing.GroupLayout(jp_currency);
         jp_currency.setLayout(jp_currencyLayout);
@@ -139,7 +144,7 @@ public class Config extends javax.swing.JFrame {
                     .addComponent(jrb_libra)
                     .addComponent(jrb_dolar)
                     .addComponent(jrb_euro))
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         jp_currencyLayout.setVerticalGroup(
             jp_currencyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,6 +329,10 @@ public class Config extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jrb_dolarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_dolarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrb_dolarActionPerformed
 
     /**
      * @param args the command line arguments

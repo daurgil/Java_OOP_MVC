@@ -20,6 +20,7 @@ import framework.modules.users.admin.Model.utils.lib_Afiles.txt;
 import framework.modules.users.admin.Model.utils.lib_Afiles.xml;
 import framework.modules.users.admin.Model.utils.pagina;
 import framework.modules.users.admin.View.admin_create;
+import framework.modules.users.admin.View.admin_table;
 import static framework.modules.users.admin.View.admin_table.TABLA;
 import framework.modules.users.admin.View.admin_update;
 import javax.swing.JOptionPane;
@@ -86,7 +87,7 @@ public class BLL_admin {
           singleton_admin.a=admin;
           BLL_DB_admin.modify_adminBLL();
           //A_auto_json.auto_savejson_admin();
-          admin_update.jt_alert.setText("The user was created succesfuly"); 
+          
           ok=true;
         }
           
@@ -108,6 +109,27 @@ public class BLL_admin {
 		String dni="";
 		
 		dni=admin_create.jt_dni.getText();
+		a= new admin_class(dni);
+		
+		for(int i=0; i<=(singleton_admin.admin.size()-1);i++){
+			if(singleton_admin.admin.get(i).equals(a))
+				return i;
+		}
+		return -1;
+			
+	}
+        
+    /**Function to ask a dni to search if this admin exist in the arraylist
+	 * 
+	 * @param language
+	 * @return int, if any user in arraylist have the introduced dni or not
+	 */
+	public static int search_admin_t(){
+
+		admin_class a=null;
+		String dni="";
+		
+		dni=admin_table.jt_dni.getText();
 		a= new admin_class(dni);
 		
 		for(int i=0; i<=(singleton_admin.admin.size()-1);i++){
@@ -216,7 +238,7 @@ public class BLL_admin {
         return correcto;
     }
     
-    public static void give_data(String type){
+    public static boolean give_data(String type){
         boolean correct = false;
         switch (type) {
             case "dni":
@@ -256,6 +278,7 @@ public class BLL_admin {
                 correct = DAO_admin.contract();
                 break;
         }
+        return correct;
     }
     
     public static void update_data(String type){
