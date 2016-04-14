@@ -79,7 +79,7 @@ public class DAO_DB_admin {
      * Function to load the users on the table 
      * @param con 
      */
-    public void show_admin(Connection con) {
+    public static void show_admin(Connection con) {
 
         ResultSet rs = null;
         PreparedStatement stmt = null;
@@ -131,7 +131,7 @@ public class DAO_DB_admin {
      * Function to save a modified user
      * @param con 
      */
-    public void modify_admin(Connection con) {
+    public static void modify_admin(Connection con) {
         PreparedStatement stmt = null;
        
         try {
@@ -181,7 +181,7 @@ public class DAO_DB_admin {
      * @param con
      * @return correct, to know if it does well
      */
-    public boolean delete_admin(Connection con) {
+    public static boolean delete_admin(Connection con) {
 
         PreparedStatement stmt = null;
         boolean correct = false;

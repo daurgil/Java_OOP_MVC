@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `app` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `app` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `app`;
 -- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
 --
@@ -25,24 +25,24 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `dni` varchar(9) CHARACTER SET latin1 NOT NULL,
-  `name` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `surname` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `mobile` varchar(9) CHARACTER SET latin1 NOT NULL,
-  `email` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `nick` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `avatar` varchar(200) CHARACTER SET latin1 NOT NULL,
-  `password` varchar(200) CHARACTER SET latin1 NOT NULL,
-  `state` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `date_birthday` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `dni` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `name` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `surname` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `mobile` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `nick` varchar(100) COLLATE utf8_spanish_ciNOT NULL,
+  `avatar` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `state` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `date_birthday` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `age` int(4) NOT NULL,
-  `date_contract` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `antique` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `date_contract` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `antique` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `activity` int(9) NOT NULL,
   `salary` float NOT NULL,
   `benefit` float NOT NULL,
   PRIMARY KEY (`dni`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

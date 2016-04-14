@@ -25,13 +25,11 @@ public class BLL_DB_admin {
         int correct;
         Connection con = null;
 
-        connectionDB connetion_DB = new connectionDB();
-
-        con = connetion_DB.openConection();
+        con = connectionDB.gettingConnection();
 
         correct = DAO_DB_admin.create_admin(con);
 
-        connetion_DB.closeConnection(con);
+        connectionDB.leaveConnection(con);
 
         return correct;
     }
@@ -42,18 +40,16 @@ public class BLL_DB_admin {
     public static void show_adminBLL() {
 
         Connection con = null;
-        connectionDB connection_DB = new connectionDB();
 
-        con = connection_DB.openConection();
-        DAO_DB_admin DAO_user = new DAO_DB_admin();
+        con = connectionDB.gettingConnection();
         
         try {
-            DAO_user.show_admin(con);//Recuperamos los empleados 
+            DAO_DB_admin.show_admin(con);//Recuperamos los empleados 
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un error Logger2!");
         }
-        connection_DB.closeConnection(con);
+        connectionDB.leaveConnection(con);
 
     }
 
@@ -64,13 +60,10 @@ public class BLL_DB_admin {
 
         Connection con;
 
-        connectionDB connection_DB = new connectionDB();
+        con = connectionDB.gettingConnection();
 
-        con = connection_DB.openConection();
-        DAO_DB_admin DAO_user = new DAO_DB_admin();
-
-        DAO_user.modify_admin(con);
-        connection_DB.closeConnection(con);
+        DAO_DB_admin.modify_admin(con);
+        connectionDB.leaveConnection(con);
 
     }
 
@@ -83,13 +76,10 @@ public class BLL_DB_admin {
         Connection con;
         boolean correct;
 
-        connectionDB connection_DB = new connectionDB();
+        con = connectionDB.gettingConnection();
 
-        con = connection_DB.openConection();
-        DAO_DB_admin DAO_user = new DAO_DB_admin();
-
-        correct = DAO_user.delete_admin(con);
-        connection_DB.closeConnection(con);
+        correct = DAO_DB_admin.delete_admin(con);
+        connectionDB.leaveConnection(con);
 
         return correct;
     }
@@ -102,14 +92,12 @@ public class BLL_DB_admin {
 
         Connection con;
         boolean correct;
-
-        connectionDB connectio_DB = new connectionDB();
-
-        con = connectio_DB.openConection();
+        
+        con = connectionDB.gettingConnection();
         DAO_DB_admin DAO_user = new DAO_DB_admin();
 
         correct = DAO_user.search_admin(con);
-        connectio_DB.closeConnection(con);
+        connectionDB.leaveConnection(con);
 
         return correct;
     }

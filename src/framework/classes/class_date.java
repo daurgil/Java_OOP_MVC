@@ -1,17 +1,13 @@
 package framework.classes;
 
 import framework.modules.Menu_config.Model.classes.class_config;
-import java.io.ObjectInputStream.GetField;
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import framework.utils.format;
 
 @XStreamAlias("date_class")
 public class class_date implements Serializable{
@@ -86,6 +82,71 @@ public class class_date implements Serializable{
 		}
 			
 	}
+        
+        public class_date(String introduced_date, int i){
+		
+		String[] part_date = new String[3];
+		
+		switch (class_config.getinstance().getFormat_date()) {
+
+		case "dd/MM/yyyy":
+			part_date=introduced_date.split("/");
+			                
+			this.day=Integer.parseInt(part_date[0]);
+			this.month=Integer.parseInt(part_date[1]);
+			this.year=Integer.parseInt(part_date[2]);
+			
+			this.date_s=this.day+"/"+this.month+"/"+this.year;
+			break;
+			
+		case "dd-MM-yyyy":
+			part_date=introduced_date.split("-");
+			                 
+			this.day=Integer.parseInt(part_date[0]);
+                        this.month=Integer.parseInt(part_date[1]);
+                        this.year=Integer.parseInt(part_date[2]);
+                        
+			
+			this.date_s=this.day+"/"+this.month+"/"+this.year;
+			break;
+			
+		case "yyyy/MM/dd":
+			part_date=introduced_date.split("/");
+				
+			this.year=Integer.parseInt(part_date[0]);
+			this.month=Integer.parseInt(part_date[1]);
+			this.day=Integer.parseInt(part_date[2]);
+			
+			this.date_s=this.day+"/"+this.month+"/"+this.year;
+			break;
+		
+		case "yyyy-MM-dd":
+			part_date=introduced_date.split("-");
+			
+			this.year=Integer.parseInt(part_date[0]);
+			this.month=Integer.parseInt(part_date[1]);
+			this.day=Integer.parseInt(part_date[2]);
+			
+			this.date_s=this.day+"/"+this.month+"/"+this.year;
+			break;	
+		default:
+			break;
+		}
+			
+	}
+        
+//        public class_date(String date, int i){
+//		String[] part_date = new String[3];
+//                
+//		part_date = date.split("/");
+//			
+//		this.day=Integer.parseInt(part_date[0]);
+//		this.month=Integer.parseInt(part_date[1]);
+//		this.year=Integer.parseInt(part_date[2]);
+//			
+//		this.date_s=this.day+"/"+this.month+"/"+this.year;
+//			
+//	}
 	
 	
 	public class_date(){

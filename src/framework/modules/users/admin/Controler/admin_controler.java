@@ -7,6 +7,7 @@ package framework.modules.users.admin.Controler;
 
 import framework.modules.Menu_config.Controler.controler_menu;
 import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.View.menu;
 import static framework.modules.users.admin.Controler.admin_controler.table;
 import framework.modules.users.admin.Model.BLL.BLL_admin;
@@ -141,10 +142,14 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         
         if(op==0){
             
+            table.setTitle(singleton_config.lang.getProperty("t_admin"));
+            table.jl_back.setText(singleton_config.lang.getProperty("t_back"));
+            table.jLabel5.setText(singleton_config.lang.getProperty("t_entries"));
+            table.jLabel4.setText(singleton_config.lang.getProperty("t_filter"));
             
             table.setVisible(true);
             
-            table.setTitle("Administrator Menu");
+            //table.setTitle("Administrator Menu");
 
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton_admin.icon_admin);
             table.setIconImage(icono);

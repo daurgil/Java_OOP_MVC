@@ -22,7 +22,6 @@ public class BDdummy {
     public static void cargarBD() throws SQLException{
         
         Connection con = null;
-        connectionDB connection_DB = new connectionDB();
         PreparedStatement stmt = null;
         int resultado = 0;
         
@@ -43,7 +42,7 @@ public class BDdummy {
         float salary=1120f;
         float benefit=120f;
         
-        con= connection_DB.openConection();
+        con= connectionDB.gettingConnection();
         
         admin_class admin= new admin_class(dni, name, surname, mobile, email, nick, password, 
                 avatar, state, date_b, date_c, activity);
@@ -73,6 +72,6 @@ public class BDdummy {
         int correcte=stmt.executeUpdate();
         System.out.println(correcte);
         
-        connection_DB.closeConnection(con);
+        connectionDB.leaveConnection(con);
     }
 }

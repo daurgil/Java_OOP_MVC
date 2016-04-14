@@ -6,6 +6,7 @@
 package framework.utils;
 
 import javax.swing.ImageIcon;
+import org.apache.commons.dbcp.BasicDataSource;
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class singleton {
     
-    //public static BasicDataSource DataSource;
+    public static BasicDataSource dataSource=null;
     
     public static ImageIcon empty= new ImageIcon("");
     public static ImageIcon apply= new ImageIcon("src/framework/img/apply.png");

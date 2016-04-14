@@ -63,9 +63,10 @@ public class DAO_admin {
             avatar=admin_create.jt_avatar.getText();
             state=DAO_admin.state();
             birthday=((JTextFieldDateEditor) admin_create.jdc_birthday.getDateEditor()).getText();
-            birth=new class_date(birthday);
+            System.out.println(birthday);
+            birth=new class_date(birthday,1);
             contract=((JTextFieldDateEditor) admin_create.jdc_contract.getDateEditor()).getText();
-            cont=new class_date(contract);
+            cont=new class_date(contract,1);
             activity=Integer.parseInt(admin_create.jt_activity.getText());
             
         admin=new admin_class(dni, name, surname, mobile, email, nick, password, avatar, state, birth, cont, activity);
@@ -152,9 +153,9 @@ public class DAO_admin {
             avatar=admin_update.jt_avatar.getText();
             state=DAO_admin.up_state();
             birthday=((JTextFieldDateEditor) admin_update.jdc_birthday.getDateEditor()).getText();
-            birth=new class_date(birthday);
+            birth=new class_date(birthday,1);
             contract=((JTextFieldDateEditor) admin_update.jdc_contract.getDateEditor()).getText();
-            cont=new class_date(contract);
+            cont=new class_date(contract,1);
             activity=Integer.parseInt(admin_update.jt_activity.getText());
             
             
@@ -698,7 +699,7 @@ public class DAO_admin {
                 
             }else{
                 birthday=(((JTextFieldDateEditor) admin_create.jdc_birthday.getDateEditor()).getText());
-                birth= new class_date(birthday);
+                birth= new class_date(birthday, 1);
                 confirm=core_date.restricted_years(birth, 16);
                 if(confirm==false){
                     //admin_form.jdc_birthday.setBackground(RED); 
@@ -729,7 +730,7 @@ public class DAO_admin {
             check=false;
         }else{
             birthday=(((JTextFieldDateEditor) admin_update.jdc_birthday.getDateEditor()).getText());
-            birth= new class_date(birthday);
+            birth= new class_date(birthday,1);
             confirm=core_date.restricted_years(birth, 16);
             if(confirm==false){
                admin_update.check_birthday.setIcon(cancel);
@@ -761,8 +762,8 @@ public class DAO_admin {
             }else{
                 birthday=(((JTextFieldDateEditor) admin_create.jdc_birthday.getDateEditor()).getText());
                 contract=(((JTextFieldDateEditor) admin_create.jdc_contract.getDateEditor()).getText());
-                birth= new class_date(birthday);
-                cont= new class_date(contract);
+                birth= new class_date(birthday,1);
+                cont= new class_date(contract,1);
                 birth=core_date.sum_years(birth, 16);
                 dates=cont.compare_2dates(birth);
                 if(dates<1){
@@ -806,8 +807,8 @@ public class DAO_admin {
         }else{
             birthday=(((JTextFieldDateEditor) admin_update.jdc_birthday.getDateEditor()).getText());
             contract=(((JTextFieldDateEditor) admin_update.jdc_contract.getDateEditor()).getText());
-            birth= new class_date(birthday);
-            cont= new class_date(contract);
+            birth= new class_date(birthday,1);
+            cont= new class_date(contract,1);
             dates=cont.compare_2dates(birth);
             if(dates<1){
                    // admin_form.jdc_contract.setBackground(RED); 

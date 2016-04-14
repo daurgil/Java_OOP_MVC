@@ -1,6 +1,7 @@
 package framework.modules.users.admin.Model.classes;
 
 import framework.classes.class_date;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import static framework.modules.users.admin.Controler.admin_controler.combo_admin;
 import framework.modules.users.admin.Model.BLL.BLL_DB_admin;
 import framework.modules.users.admin.Model.utils.lib_Afiles.A_auto_json;
@@ -14,7 +15,11 @@ import javax.swing.table.AbstractTableModel;
 public class miniSimpleTableModel_admin extends AbstractTableModel {
     public static ArrayList<admin_class> datos = new ArrayList<admin_class>();
     public static ArrayList<admin_class> datosaux = new ArrayList<admin_class>();
-    String[] columnas = {"ID card", "name", "surname", "Date_cont", "Salary"};
+    String[] columnas = {singleton_config.lang.getProperty("lb_dni"),
+        singleton_config.lang.getProperty("lb_name"),
+        singleton_config.lang.getProperty("lb_surname"),
+        singleton_config.lang.getProperty("lb_contract"), 
+        singleton_config.lang.getProperty("lb_salary")};
 
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////
     @Override

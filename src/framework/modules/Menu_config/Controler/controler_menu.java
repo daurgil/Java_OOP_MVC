@@ -5,8 +5,6 @@
  */
 package framework.modules.Menu_config.Controler;
 
-import framework.modules.Menu_config.Model.classes.class_config;
-import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.Model.files_config.BLL.BLL_config;
 import framework.modules.Menu_config.View.Config;
@@ -72,14 +70,17 @@ public class controler_menu implements ActionListener, MouseListener{
         
         if(i==0){
             
-            menu.jb_admin.setText(singleton_config.lang.getProperty("admin"));
+            menu.setTitle(singleton_config.lang.getProperty("t_menu"));
+            menu.jb_admin.setText(singleton_config.lang.getProperty("bt_admin"));
+            menu.jb_client.setText(singleton_config.lang.getProperty("bt_client"));
+            menu.jb_reg_user.setText(singleton_config.lang.getProperty("bt_reg"));
             
             menu.setVisible(true);
 
     //        menu.setContentPane(new JLabel(new ImageIcon(singleton.fondo_menu)));
     //        menu.setLayout(new FlowLayout());
 
-            menu.setTitle("APP");
+            //menu.setTitle("APP");
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton.icon_app);
             menu.setIconImage(icono);
             menu.setLocationRelativeTo(null);
@@ -120,9 +121,20 @@ public class controler_menu implements ActionListener, MouseListener{
         
         if(i==1){
             
+            config.setTitle(singleton_config.lang.getProperty("t_config"));
+            config.jb_back.setText(singleton_config.lang.getProperty("c_back"));
+            config.jb_save.setText(singleton_config.lang.getProperty("c_save"));
+            //config.jt_options.sett(singleton_config.lang.getProperty("c_back"));
+            config.jrb_decimals1.setText(singleton_config.lang.getProperty("cf_1dec"));
+            config.jrb_decimals2.setText(singleton_config.lang.getProperty("cf_2dec"));
+            config.jrb_decimals3.setText(singleton_config.lang.getProperty("cf_3dec"));
+            config.jrb_eng.setText(singleton_config.lang.getProperty("cf_eng"));
+            config.jrb_esp.setText(singleton_config.lang.getProperty("cf_esp"));
+            config.jrb_val.setText(singleton_config.lang.getProperty("cf_val"));
+            
             config.setVisible(true);
             
-            config.setTitle("APP");
+            //config.setTitle("APP");
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton.icon_app);
             config.setIconImage(icono);
             config.setLocationRelativeTo(null);

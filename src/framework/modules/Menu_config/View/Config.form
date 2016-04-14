@@ -66,14 +66,22 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JTabbedPane" name="jt_options">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jp_date">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Date">
-                    <Property name="tabTitle" type="java.lang.String" value="Date"/>
+                  <JTabbedPaneConstraints tabName="&lt;User Code&gt;">
+                    <Property name="tabTitle" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="singleton_config.lang.getProperty(&quot;f_date&quot;)&#xa;" type="code"/>
+                    </Property>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -141,6 +149,9 @@
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="dd/MM/yyyy"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrb_date1ActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
@@ -183,8 +194,10 @@
             <Container class="javax.swing.JPanel" name="jp_currency">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Curency">
-                    <Property name="tabTitle" type="java.lang.String" value="Curency"/>
+                  <JTabbedPaneConstraints tabName="&lt;User Code&gt;">
+                    <Property name="tabTitle" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="singleton_config.lang.getProperty(&quot;f_currency&quot;)" type="code"/>
+                    </Property>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -260,8 +273,10 @@
             <Container class="javax.swing.JPanel" name="jp_decimals">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Decimals">
-                    <Property name="tabTitle" type="java.lang.String" value="Decimals"/>
+                  <JTabbedPaneConstraints tabName="&lt;User Code&gt;">
+                    <Property name="tabTitle" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="singleton_config.lang.getProperty(&quot;f_decimals&quot;)" type="code"/>
+                    </Property>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -334,8 +349,10 @@
             <Container class="javax.swing.JPanel" name="jp_language">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Language">
-                    <Property name="tabTitle" type="java.lang.String" value="Language"/>
+                  <JTabbedPaneConstraints tabName="&lt;User Code&gt;">
+                    <Property name="tabTitle" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="singleton_config.lang.getProperty(&quot;f_lang&quot;)" type="code"/>
+                    </Property>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -408,8 +425,10 @@
             <Container class="javax.swing.JPanel" name="jp_theme">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Theme">
-                    <Property name="tabTitle" type="java.lang.String" value="Theme"/>
+                  <JTabbedPaneConstraints tabName="&lt;User Code&gt;">
+                    <Property name="tabTitle" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="singleton_config.lang.getProperty(&quot;f_theme&quot;)" type="code"/>
+                    </Property>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>

@@ -5,7 +5,7 @@
  */
 package framework.modules.Menu_config.View;
 
-import framework.modules.Menu_config.Model.files_config.BLL.BLL_config;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 
 /**
  *
@@ -71,6 +71,11 @@ public class Config extends javax.swing.JFrame {
         bg_date.add(jrb_date1);
         jrb_date1.setSelected(true);
         jrb_date1.setText("dd/MM/yyyy");
+        jrb_date1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_date1ActionPerformed(evt);
+            }
+        });
 
         bg_date.add(jrb_date2);
         jrb_date2.setText("dd-MM-yyyy");
@@ -117,7 +122,8 @@ public class Config extends javax.swing.JFrame {
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        jt_options.addTab("Date", jp_date);
+        jt_options.addTab(singleton_config.lang.getProperty("f_date")
+            , jp_date);
 
         bg_currency.add(jrb_euro);
         jrb_euro.setSelected(true);
@@ -158,7 +164,7 @@ public class Config extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        jt_options.addTab("Curency", jp_currency);
+        jt_options.addTab(singleton_config.lang.getProperty("f_currency"), jp_currency);
 
         bg_decimals.add(jrb_decimals1);
         jrb_decimals1.setText("1 decimal");
@@ -194,7 +200,7 @@ public class Config extends javax.swing.JFrame {
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        jt_options.addTab("Decimals", jp_decimals);
+        jt_options.addTab(singleton_config.lang.getProperty("f_decimals"), jp_decimals);
 
         bg_lang.add(jrb_eng);
         jrb_eng.setSelected(true);
@@ -230,7 +236,7 @@ public class Config extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        jt_options.addTab("Language", jp_language);
+        jt_options.addTab(singleton_config.lang.getProperty("f_lang"), jp_language);
 
         bg_theme.add(jrb_theme1);
         jrb_theme1.setText("Metal");
@@ -274,7 +280,7 @@ public class Config extends javax.swing.JFrame {
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
-        jt_options.addTab("Theme", jp_theme);
+        jt_options.addTab(singleton_config.lang.getProperty("f_theme"), jp_theme);
 
         jb_save.setText("Save");
 
@@ -334,6 +340,10 @@ public class Config extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jrb_dolarActionPerformed
 
+    private void jrb_date1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_date1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrb_date1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,7 +391,7 @@ public class Config extends javax.swing.JFrame {
     private javax.swing.JLabel jl_date;
     private javax.swing.JPanel jp_butons;
     private javax.swing.JPanel jp_currency;
-    private javax.swing.JPanel jp_date;
+    public static javax.swing.JPanel jp_date;
     private javax.swing.JPanel jp_decimals;
     private javax.swing.JPanel jp_language;
     private javax.swing.JPanel jp_theme;
@@ -402,6 +412,6 @@ public class Config extends javax.swing.JFrame {
     public static javax.swing.JRadioButton jrb_theme3;
     public static javax.swing.JRadioButton jrb_theme4;
     public static javax.swing.JRadioButton jrb_val;
-    private javax.swing.JTabbedPane jt_options;
+    public static javax.swing.JTabbedPane jt_options;
     // End of variables declaration//GEN-END:variables
 }

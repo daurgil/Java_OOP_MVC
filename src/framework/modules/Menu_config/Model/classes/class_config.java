@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import framework.classes.connectionDB;
 import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.modules.Menu_config.Model.files_config.auto_config;
 import framework.modules.users.reg_user.Model.classes.reg_user_class;
@@ -65,6 +66,9 @@ public class class_config implements Serializable{
 			auto_config.auto_openconfig();
                         //class_language.getinstance();
 			singleton_config.lang=new class_language();
+                        
+                        connectionDB.init_BasicDataSourceFactory();
+                        
 		}
 		return instance;
 	}

@@ -38,6 +38,7 @@ public class BLL_admin {
         
         admin=DAO_admin.create();
         if(admin==null){
+            System.out.println("error");
             admin_create.jt_alert.setText("ERROR, Any problem to save de user");
             ok=false;
         }else{
