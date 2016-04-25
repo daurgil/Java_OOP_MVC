@@ -5,6 +5,11 @@
  */
 package framework.utils;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
+import framework.classes.Mongo_DB;
+import java.io.InputStream;
 import javax.swing.ImageIcon;
 import org.apache.commons.dbcp.BasicDataSource;
 
@@ -14,7 +19,16 @@ import org.apache.commons.dbcp.BasicDataSource;
  */
 public class singleton {
     
+    public static Mongo_DB mongo = null;
+    public static Mongo client=null;
     public static BasicDataSource dataSource=null;
+    public static InputStream input = null;
+    public static String machine = null;
+    public static String port = null;
+    public static DB db = null;
+    public static String nom_bd = null;
+    public static DBCollection collection = null;
+    public static String nom_table = null;
     
     public static ImageIcon empty= new ImageIcon("");
     public static ImageIcon apply= new ImageIcon("src/framework/img/apply.png");

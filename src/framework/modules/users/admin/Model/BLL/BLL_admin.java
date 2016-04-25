@@ -7,6 +7,7 @@ package framework.modules.users.admin.Model.BLL;
 
 
 
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.users.admin.Controler.admin_controler;
 import framework.modules.users.admin.Model.DAO.DAO_admin;
 import framework.modules.users.admin.Model.classes.admin_class;
@@ -23,6 +24,7 @@ import framework.modules.users.admin.View.admin_create;
 import framework.modules.users.admin.View.admin_table;
 import static framework.modules.users.admin.View.admin_table.TABLA;
 import framework.modules.users.admin.View.admin_update;
+import framework.utils.singleton;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,17 +41,17 @@ public class BLL_admin {
         admin=DAO_admin.create();
         if(admin==null){
             System.out.println("error");
-            admin_create.jt_alert.setText("ERROR, Any problem to save de user");
+            admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_user1"));
             ok=false;
         }else{
             if(search_admin()!=-1){
-                JOptionPane.showMessageDialog(null, "This Id card already exist");
+                JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("error_user2"));
                 ok=false;
             }else{
                 singleton_admin.a = admin;
                 BLL_DB_admin.create_adminBLL();
                 //A_auto_json.auto_savejson_admin();
-                JOptionPane.showMessageDialog(null, "The user was created succesfuly"); 
+                JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("create_ok")); 
                 ok=true;
             }
             
@@ -82,7 +84,7 @@ public class BLL_admin {
         admin=DAO_admin.modify();
         
         if(admin==null){
-            admin_update.jt_alert.setText("ERROR, Any problem to save de user");
+            admin_update.jt_alert.setText(singleton_config.lang.getProperty("error_save"));
             ok=false;
         }else{
           singleton_admin.a=admin;
@@ -173,14 +175,15 @@ public class BLL_admin {
             selection=TABLA.getSelectedRow(); //nos situamos en la fila
             selection1=inicio+selection; //nos situamos en la fila correspondiente de esa página
             if (selection1 == -1) {
-                JOptionPane.showMessageDialog(null, "No hay una persona seleccionada", "Error!", 2);
+                JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("t_no_select"),
+                        singleton_config.lang.getProperty("error_t"), 2);
             } else {
                 dni = (String) TABLA.getModel().getValueAt(selection1, 0);
                 singleton_admin.adm = new admin_class(dni);
                 
                 pos = BLL_admin.search_admin((admin_class) adm);
-                int opc = JOptionPane.showConfirmDialog(null, "Deseas borrar a la persona con DNI: " + dni,
-                        "Info", JOptionPane.WARNING_MESSAGE);
+                int opc = JOptionPane.showConfirmDialog(null, singleton_config.lang.getProperty("t_delete")+ dni,
+                        singleton_config.lang.getProperty("alert"), JOptionPane.WARNING_MESSAGE);
 
                 if (opc == 0) {
                     ((miniSimpleTableModel_admin) TABLA.getModel()).removeRow(selection1);
@@ -215,7 +218,8 @@ public class BLL_admin {
             int selection = TABLA.getSelectedRow(); //nos situamos en la fila
             int selection1 = inicio+selection; 
             if (selection1 == -1) {
-                JOptionPane.showMessageDialog(null, "No hay una persona seleccionada", "Error!", 2);
+                JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("t_no_select"),
+                        singleton_config.lang.getProperty("error_t"), 2);
                 correcto = false;
 
             } else {
@@ -233,7 +237,8 @@ public class BLL_admin {
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "lista vacía", "Error!", 2);
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("t_empty"),
+                        singleton_config.lang.getProperty("error_t"), 2);
             correcto = false;
         }
         return correcto;

@@ -89,6 +89,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Modify Admin "/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jsc_form">
       <Properties>
@@ -293,56 +296,89 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ID Card:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_name">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Name:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_surname">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Surmane/s:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_mobile">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mobile:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_email">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Email:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_nick">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nick Name:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_password">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Password:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_avatar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Avatar:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_birthday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Bithday date:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_contract">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Date of Contract:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_activity">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Activity:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jt_dni">
               <Properties>
@@ -394,6 +430,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="State:"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jrb_conected">
               <Properties>

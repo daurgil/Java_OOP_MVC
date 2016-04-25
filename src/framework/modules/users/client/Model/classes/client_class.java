@@ -1,5 +1,7 @@
 package framework.modules.users.client.Model.classes;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import framework.modules.users.Classes.user;
 import java.io.Serializable;
 import java.text.Format;
@@ -26,11 +28,11 @@ public class client_class extends user implements Serializable{
 	private String type;
 	
 	/**Builder for all attributes*/
-	public client_class(String dni, String name, String surname, String mobile, String email, String user,
+	public client_class(String dni, String name, String surname, String mobile, String email, String nick,
 			String password, String avatar, String state, class_date birthday, class_date up_date,
 			float shopping, boolean premium, String type) {
 		
-		super(dni, name, surname, mobile, email, user, password, avatar, state, birthday);
+		super(dni, name, surname, mobile, email, nick, password, avatar, state, birthday);
 		
 		this.up_date = up_date;
 		//this.antique = antique;
@@ -53,6 +55,63 @@ public class client_class extends user implements Serializable{
 		super(dni);
 	}
 	
+        /**
+         * funtion to charge a user by DB
+         */
+        public client_class DB_to_client(DBObject DBclient){
+            
+            this.setDni((String)DBclient.get("dni"));
+            this.setName((String)DBclient.get("name"));
+            this.setSurname((String)DBclient.get("surname"));
+            this.setMobile((String)DBclient.get("mobile"));
+            this.setEmail((String)DBclient.get("email"));
+            this.setNick((String)DBclient.get("nick"));
+            this.setPassword((String)DBclient.get("password"));
+            this.setAvatar((String)DBclient.get("avatar"));
+            this.setState((String)DBclient.get("state"));
+            this.setBirthday(new class_date((String)DBclient.get("birthday")));
+            this.up_date=(new class_date((String) DBclient.get("up_date")));
+            this.shopping=Float.parseFloat(DBclient.get("shopping").toString());
+            this.premium=(boolean) DBclient.get("premium");
+            this.type=(String) DBclient.get("type");
+            
+            
+            
+            return new client_class(this.getDni(), this.getName(), this.getSurname(), this.getMobile(), 
+                    this.getEmail(), this.getNick(), this.getPassword(), this.getAvatar(),
+                    this.getState(), this.getBirthday(), this.up_date, this.shopping, this.premium, 
+                    this.type);
+        }
+        
+        /**
+         * funtion to charge a user to DB
+         * @return 
+         */
+        public BasicDBObject client_to_DB() {
+	
+            BasicDBObject dBObjectclient = new BasicDBObject();
+            dBObjectclient.append("dni", this.getDni());
+            dBObjectclient.append("name", this.getName());
+            dBObjectclient.append("surname", this.getSurname());
+            dBObjectclient.append("mobile", this.getMobile());
+            dBObjectclient.append("email", this.getEmail());
+            dBObjectclient.append("nick", this.getNick());
+            dBObjectclient.append("password", this.getPassword());
+            dBObjectclient.append("avatar", this.getAvatar());
+            dBObjectclient.append("state", this.getState());
+            dBObjectclient.append("birthday", this.getBirthday().toString_DB());
+            dBObjectclient.append("age", this.getAge());
+            dBObjectclient.append("up_date", this.getUp_date().toString_DB());
+            dBObjectclient.append("antique", this.getAntique());
+            dBObjectclient.append("shopping", this.getShopping());
+            dBObjectclient.append("benefit", this.getBenefit());
+            dBObjectclient.append("premium", this.isPremium());
+            dBObjectclient.append("type", this.getType());
+	
+	return dBObjectclient;
+    }
+        
+        
 	/**Dinamic builder
 	 * 
 	 * 0-dni
@@ -221,7 +280,11 @@ public class client_class extends user implements Serializable{
 		}
 		return chain;
 	}
-
+        
+        /**
+         * funtion to recalculate the benefit of client
+         * @return 
+         */
 	public float calc_benefit(){
 		
 		float discount=0.0f;
@@ -239,6 +302,10 @@ public class client_class extends user implements Serializable{
 		return discount;
 	}
 	
+        /**
+         * funtion to recalculate the antique
+         * @return 
+         */
 	public int calc_antique(){
 		int antique=0;
 		

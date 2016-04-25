@@ -1,6 +1,7 @@
 package framework.modules.users.client.Model.classes;
 
 import static framework.modules.users.client.Controler.client_controler.combo_client;
+import framework.modules.users.client.Model.BLL.BLL_client_MG;
 import framework.modules.users.client.Model.utils.lib_Cfiles.C_auto_json;
 import framework.modules.users.client.Model.utils.pagina;
 import framework.modules.users.client.View.client_table;
@@ -20,19 +21,30 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         return columnas[col].toString();
     }
 
-    //Devuelve el numero de filas
+    /**
+     * Return the number of files
+     * @return 
+     */
     @Override
     public int getRowCount() {
         return datos.size();
     }
 
-    //Devuelve el numero de columnas
+    /**
+     * Return the number of columns
+     * @return 
+     */
     @Override
     public int getColumnCount() {
         return columnas.length;
     }
 
-    //Devuelve el valor del objeto en la fila y columna
+    /**
+     * Return the value of the object in the file and column
+     * @param row
+     * @param col
+     * @return 
+     */
     @Override
     public Object getValueAt(int row, int col) {
 
@@ -64,7 +76,7 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         }
         return dev;
     }
-
+    
     //Determina si una fila y columna ha de ser editable
     @Override
     public boolean isCellEditable(int row, int col) {
@@ -111,7 +123,8 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         datosaux.clear();
         singleton_client.client.clear();
         
-        C_auto_json.auto_openjson_client();
+        BLL_client_MG.load_client();
+        //C_auto_json.auto_openjson_client();
         
         client_class client = null;
         java.util.Date date= new java.util.Date();

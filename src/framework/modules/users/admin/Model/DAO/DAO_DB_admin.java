@@ -6,6 +6,7 @@
 package framework.modules.users.admin.Model.DAO;
 
 import framework.classes.class_date;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
 import java.sql.Connection;
@@ -59,16 +60,16 @@ public class DAO_DB_admin {
             stmt.setFloat(16, singleton_admin.a.getBenefit());
 
             correct = stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "El usuario ha sido dado de alta correctamente!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_dao_cre"));
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al insertar un nuevo usuario!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_dao_cre2"));
         } finally {
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                    JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
                 }
             }
         }
@@ -115,13 +116,13 @@ public class DAO_DB_admin {
 
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al obtener los usuarios!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_dao_show"));
         } finally {
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                    JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
                 }
             }
         }
@@ -160,16 +161,16 @@ public class DAO_DB_admin {
             stmt.setString(17, singleton_admin.a.getDni());
             stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "El usuario ha sido modificado correctamente!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_dao_mod"));
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar el usuario!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_dao_mod2"));
         } finally {
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                    JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
                 }
             }
         }
@@ -192,13 +193,13 @@ public class DAO_DB_admin {
             stmt.executeUpdate();
             correct = true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un error al eliminar el usuario!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_dao_del"));
         } finally {
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error en el Logger!");
+                    JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
                 }
             }
         }
@@ -226,20 +227,20 @@ public class DAO_DB_admin {
             }
             correct = true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al buscar el usuario por DNI");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_"));
         } finally {
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error en el Logger");
+                    JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
                 }
             }
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error en el Logger");
+                    JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
                 }
             }
         }
@@ -272,7 +273,7 @@ public class DAO_DB_admin {
             singleton_admin.a.setBenefit(rs.getFloat("benefit"));
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el Logger");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
         }
     }
 }

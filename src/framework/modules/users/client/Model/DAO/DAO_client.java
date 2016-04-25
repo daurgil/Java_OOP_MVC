@@ -5,14 +5,20 @@
  */
 package framework.modules.users.client.Model.DAO;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.toedter.calendar.JTextFieldDateEditor;
 import framework.classes.class_date;
 import framework.modules.users.client.Model.classes.client_class;
+import framework.modules.users.client.Model.classes.singleton_client;
 import framework.modules.users.client.Model.utils.core_date;
 import framework.modules.users.client.View.client_create;
 import static framework.modules.users.client.View.client_create.jt_dni;
 import framework.modules.users.client.View.client_table;
 import framework.modules.users.client.View.client_update;
+import framework.utils.singleton;
 import static framework.utils.singleton.*;
 import framework.utils.validate;
 import static java.awt.Color.GREEN;
@@ -27,6 +33,12 @@ import java.util.Date;
  */
 public class DAO_client {
     
+   
+       
+    /**
+     * function to create a new client
+     * @return 
+     */
     public static client_class create(){
         String dni,name,surname,mobile,email,nick,
                 password,avatar, state,birthday,

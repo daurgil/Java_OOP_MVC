@@ -385,7 +385,7 @@ public class admin_create extends javax.swing.JFrame {
     public static javax.swing.JLabel check_password;
     public static javax.swing.JLabel check_surname;
     private javax.swing.JPanel create_form;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField10;
     public static javax.swing.JButton jb_avatar;
     public static javax.swing.JButton jb_clean;
@@ -407,17 +407,17 @@ public class admin_create extends javax.swing.JFrame {
     public static javax.swing.JTextField jt_nick;
     public static javax.swing.JPasswordField jt_password;
     public static javax.swing.JTextField jt_surname;
-    private javax.swing.JLabel lb_activity;
-    private javax.swing.JLabel lb_avatar;
-    private javax.swing.JLabel lb_birthday;
-    private javax.swing.JLabel lb_contract;
-    private javax.swing.JLabel lb_dni;
-    private javax.swing.JLabel lb_email;
-    private javax.swing.JLabel lb_mobile;
-    private javax.swing.JLabel lb_name;
-    private javax.swing.JLabel lb_nick;
-    private javax.swing.JLabel lb_password;
-    private javax.swing.JLabel lb_state;
-    private javax.swing.JLabel lb_surname;
+    public static javax.swing.JLabel lb_activity;
+    public static javax.swing.JLabel lb_avatar;
+    public static javax.swing.JLabel lb_birthday;
+    public static javax.swing.JLabel lb_contract;
+    public static javax.swing.JLabel lb_dni;
+    public static javax.swing.JLabel lb_email;
+    public static javax.swing.JLabel lb_mobile;
+    public static javax.swing.JLabel lb_name;
+    public static javax.swing.JLabel lb_nick;
+    public static javax.swing.JLabel lb_password;
+    public static javax.swing.JLabel lb_state;
+    public static javax.swing.JLabel lb_surname;
     // End of variables declaration//GEN-END:variables
 }

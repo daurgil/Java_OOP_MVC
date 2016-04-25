@@ -7,11 +7,13 @@ package framework.modules.users.admin.Model.DAO;
 
 import com.toedter.calendar.JTextFieldDateEditor;
 import framework.classes.class_date;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.utils.core_date;
 import framework.modules.users.admin.View.admin_create;
 import framework.modules.users.admin.View.admin_table;
 import framework.modules.users.admin.View.admin_update;
+import framework.utils.singleton;
 import static framework.utils.singleton.*;
 import framework.utils.validate;
 import static java.awt.Color.GREEN;
@@ -241,7 +243,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_dni.setIcon(cancel);
                     admin_create.jt_dni.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -318,7 +320,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_name.setIcon(cancel);
                     admin_create.jt_name.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check2 = false;
                 }
             }
@@ -352,7 +354,7 @@ public class DAO_admin {
         if(admin_create.jt_surname.getText().equals("")){
                 admin_create.check_surname.setIcon(cancel);
                 admin_create.jt_surname.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check = false;
             }else{
                 check=validate.validate_surname(admin_create.jt_surname.getText());
@@ -367,7 +369,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_surname.setIcon(cancel);
                     admin_create.jt_surname.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -402,7 +404,7 @@ public class DAO_admin {
             
                 admin_create.check_mobile.setIcon(cancel);
                 admin_create.jt_mobile.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check2 = false;
             }else{
                 
@@ -418,7 +420,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_mobile.setIcon(cancel);
                     admin_create.jt_mobile.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check2 = false;
                 }
             }
@@ -452,7 +454,7 @@ public class DAO_admin {
         if(admin_create.jt_email.getText().equals("")){
                 admin_create.check_email.setIcon(cancel);
                 admin_create.jt_email.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check = false;
             }else{
                 check=validate.validate_email(admin_create.jt_email.getText());
@@ -467,7 +469,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_email.setIcon(cancel);
                     admin_create.jt_email.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -501,7 +503,7 @@ public class DAO_admin {
         if(admin_create.jt_nick.getText().equals("")){
                 admin_create.check_nick.setIcon(cancel);
                 admin_create.jt_nick.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check = false;
             }else{
                 check=validate.validate_nick(admin_create.jt_nick.getText());
@@ -516,7 +518,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_nick.setIcon(cancel);
                     admin_create.jt_nick.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -550,7 +552,7 @@ public class DAO_admin {
         if(admin_create.jt_password.getText().equals("")){
                 admin_create.check_password.setIcon(cancel);
                 admin_create.jt_password.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check = false;
             }else{
                 check=validate.validate_password(admin_create.jt_password.getText());
@@ -565,7 +567,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_password.setIcon(cancel);
                     admin_create.jt_password.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -599,7 +601,7 @@ public class DAO_admin {
         if(admin_create.jt_avatar.getText().equals("")){
                 admin_create.check_avatar.setIcon(cancel);
                 admin_create.jt_avatar.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check = false;
             }else{
                 check=validate.validate_avatar(admin_create.jt_avatar.getText());
@@ -612,7 +614,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_avatar.setIcon(cancel);
                     admin_create.jt_avatar.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -647,7 +649,7 @@ public class DAO_admin {
         if(admin_create.jt_activity.getText().equals("")){
                 admin_create.check_activity.setIcon(cancel);
                 admin_create.jt_activity.setBackground(RED);
-                admin_create.jt_alert.setText("The value isn't valid");
+                admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                 check = false;
             }else{
                 check=validate.validate_activity(admin_create.jt_activity.getText());
@@ -660,7 +662,7 @@ public class DAO_admin {
                 }else{
                     admin_create.check_activity.setIcon(cancel);
                     admin_create.jt_activity.setBackground(RED);
-                    admin_create.jt_alert.setText("The value isn't valid");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_value"));
                     check = false;
                 }
             }
@@ -704,7 +706,7 @@ public class DAO_admin {
                 if(confirm==false){
                     //admin_form.jdc_birthday.setBackground(RED); 
                     admin_create.check_birthday.setIcon(cancel);
-                    admin_create.jt_alert.setText("The date isn't valid, you need 16 years");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("restricted_date"));
                     check = false;
                 }else{
                     //admin_form.jdc_birthday.setBackground(GREEN);
@@ -735,8 +737,7 @@ public class DAO_admin {
             if(confirm==false){
                admin_update.check_birthday.setIcon(cancel);
                //admin_update.jdc_birthday.setBackground(RED);
-               admin_update.jt_alert.setText("<html>The date isn't valid,<br/>"
-                       + " you need 16 years</html>");
+               admin_update.jt_alert.setText(singleton_config.lang.getProperty("restricted_date"));
                check=false;
             }else{
                 admin_update.check_birthday.setIcon(apply);
@@ -769,16 +770,14 @@ public class DAO_admin {
                 if(dates<1){
                    // admin_form.jdc_contract.setBackground(RED); 
                     admin_create.check_contract.setIcon(cancel);
-                    admin_create.jt_alert.setText("<html>The date isn't valid,<br/>"
-                            + " the date need be afer date birthday</html>");
+                    admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_date2"));
                     check=false;
                 }else{
                     dates=cont.compare_date_to_System();
                     if(dates==1){
                         //admin_form.jdc_contract.setBackground(RED); 
                         admin_create.check_contract.setIcon(cancel);
-                        admin_create.jt_alert.setText("<html>The date isn't valid,<br/>"
-                                + " the date need be before actual date</html>");
+                        admin_create.jt_alert.setText(singleton_config.lang.getProperty("error_date3"));
                         check=false;
                     }else{
                         //admin_form.jdc_contract.setBackground(GREEN);
@@ -813,14 +812,14 @@ public class DAO_admin {
             if(dates<1){
                    // admin_form.jdc_contract.setBackground(RED); 
                     admin_update.check_contract.setIcon(cancel);
-                    admin_update.jt_alert.setText("The date isn't valid, the date need be afer date birthday");
+                    admin_update.jt_alert.setText(singleton_config.lang.getProperty("error_date2"));
                     check=false;
                 }else{
                     dates=cont.compare_date_to_System();
                     if(dates==1){
                         //admin_form.jdc_contract.setBackground(RED); 
                         admin_update.check_contract.setIcon(cancel);
-                        admin_update.jt_alert.setText("The date isn't valid, the date need be before actual date");
+                        admin_update.jt_alert.setText(singleton_config.lang.getProperty("error_date3"));
                         check=false;
                     }else{
                         //admin_form.jdc_contract.setBackground(GREEN);

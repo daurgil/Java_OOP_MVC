@@ -4,19 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import framework.classes.Mongo_DB;
 import framework.classes.connectionDB;
 import framework.modules.Menu_config.Model.classes.language.class_language;
 import framework.modules.Menu_config.Model.files_config.auto_config;
 import framework.modules.users.reg_user.Model.classes.reg_user_class;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
-import framework.modules.users.admin.Model.utils.lib_Afiles.A_auto_json;
 import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.client.Model.classes.singleton_client;
-import framework.modules.users.client.Model.utils.lib_Cfiles.C_auto_json;
 import framework.modules.users.reg_user.Model.classes.singleton_reg;
-import framework.modules.users.reg_user.Model.utils.lib_Rfiles.R_auto_json;
 import framework.utils.appearance;
+import framework.utils.singleton;
 
 
 
@@ -55,6 +54,15 @@ public class class_config implements Serializable{
 		if (instance==null){
 			instance = new class_config();
 			
+                        singleton.mongo=new Mongo_DB();
+                        singleton.nom_bd=singleton.mongo.getNom_bd();
+                        singleton.nom_table=singleton.mongo.getNom_table();
+                        singleton.client = Mongo_DB.connect();
+                        if (singleton.client != null) {
+                            singleton.db = singleton.mongo.getDb();
+                            singleton.collection = singleton.mongo.getCollection();
+                        }
+                        
 			singleton_admin.admin= new ArrayList<admin_class>();
 			singleton_client.client= new ArrayList<client_class>();
 			singleton_reg.reg= new ArrayList<reg_user_class>();

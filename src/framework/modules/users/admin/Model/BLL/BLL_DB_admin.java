@@ -6,7 +6,9 @@
 package framework.modules.users.admin.Model.BLL;
 
 import framework.classes.connectionDB;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.users.admin.Model.DAO.DAO_DB_admin;
+import framework.utils.singleton;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -47,7 +49,7 @@ public class BLL_DB_admin {
             DAO_DB_admin.show_admin(con);//Recuperamos los empleados 
             
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un error Logger2!");
+            JOptionPane.showMessageDialog(null, singleton_config.lang.getProperty("db_error"));
         }
         connectionDB.leaveConnection(con);
 

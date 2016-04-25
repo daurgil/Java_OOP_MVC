@@ -256,9 +256,27 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         
         if(op==1){
             
+            Create.jl_back.setText(singleton_config.lang.getProperty("lb_back"));
+            Create.jb_save.setText(singleton_config.lang.getProperty("bt_save"));
+            Create.jb_clean.setText(singleton_config.lang.getProperty("bt_clean"));
+            Create.jLabel1.setText(singleton_config.lang.getProperty("c_admin"));
+            Create.lb_dni.setText(singleton_config.lang.getProperty("lb_dni"));
+            Create.lb_name.setText(singleton_config.lang.getProperty("lb_name"));
+            Create.lb_surname.setText(singleton_config.lang.getProperty("lb_surname"));
+            Create.lb_mobile.setText(singleton_config.lang.getProperty("lb_mobile"));
+            Create.lb_email.setText(singleton_config.lang.getProperty("lb_email"));
+            Create.lb_nick.setText(singleton_config.lang.getProperty("lb_nick"));
+            Create.lb_password.setText(singleton_config.lang.getProperty("lb_password"));
+            Create.lb_avatar.setText(singleton_config.lang.getProperty("lb_avatar"));
+            Create.lb_state.setText(singleton_config.lang.getProperty("lb_state"));
+            Create.lb_birthday.setText(singleton_config.lang.getProperty("lb_birth"));
+            Create.lb_contract.setText(singleton_config.lang.getProperty("lb_contract"));
+            Create.lb_activity.setText(singleton_config.lang.getProperty("lb_activity"));
+            
+            
             Create.setVisible(true);
             
-            Create.setTitle("Create admin");
+            Create.setTitle(singleton_config.lang.getProperty("t_admin"));
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton_admin.icon_admin);
             Create.setIconImage(icono);
             Create.setLocationRelativeTo(null);
@@ -335,6 +353,22 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         }
         
         if(op==2){
+            
+            Update.jl_back.setText(singleton_config.lang.getProperty("lb_back"));
+            Update.jb_save.setText(singleton_config.lang.getProperty("bt_save"));
+            Update.jLabel1.setText(singleton_config.lang.getProperty("c_admin"));
+            Update.lb_dni.setText(singleton_config.lang.getProperty("lb_dni"));
+            Update.lb_name.setText(singleton_config.lang.getProperty("lb_name"));
+            Update.lb_surname.setText(singleton_config.lang.getProperty("lb_surname"));
+            Update.lb_mobile.setText(singleton_config.lang.getProperty("lb_mobile"));
+            Update.lb_email.setText(singleton_config.lang.getProperty("lb_email"));
+            Update.lb_nick.setText(singleton_config.lang.getProperty("lb_nick"));
+            Update.lb_password.setText(singleton_config.lang.getProperty("lb_password"));
+            Update.lb_avatar.setText(singleton_config.lang.getProperty("lb_avatar"));
+            Update.lb_state.setText(singleton_config.lang.getProperty("lb_state"));
+            Update.lb_birthday.setText(singleton_config.lang.getProperty("lb_birth"));
+            Update.lb_contract.setText(singleton_config.lang.getProperty("lb_contract"));
+            Update.lb_activity.setText(singleton_config.lang.getProperty("lb_activity"));
             
             Update.setVisible(true);
             
@@ -467,11 +501,11 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
 
                     delay.setRepeats(false);
                     delay.start();
-                    Create.jt_alert.setText("User created correctly");
+                    Create.jt_alert.setText(singleton_config.lang.getProperty("create_ok"));
 
                     break;
                 }else{
-                    Create.jt_alert.setText("Change the Id card");
+                    Create.jt_alert.setText(singleton_config.lang.getProperty("dni_error"));
                     break;
                 }
             case c_jb_clean:
@@ -508,10 +542,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
 
                     delay.setRepeats(false);
                     delay.start();
-                    Update.jt_alert.setText("User created correctly");
+                    Update.jt_alert.setText(singleton_config.lang.getProperty("create_ok"));
                     break;
                 }else{
-                    Update.jt_alert.setText("Error data, revise it");
+                    Update.jt_alert.setText(singleton_config.lang.getProperty("error_save"));
                     break;
                 }
             case u_chb_password:

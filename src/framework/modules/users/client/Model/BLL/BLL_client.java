@@ -31,6 +31,9 @@ import javax.swing.JOptionPane;
 public class BLL_client {
     public static boolean ok;
     
+    /**
+     * Funtion to create a new client, using a Mongo DB
+     */
     public static void create(){
         
         client_class client=null;
@@ -45,7 +48,8 @@ public class BLL_client {
                 ok=false;
             }else{
                 singleton_client.client.add(client);
-                C_auto_json.auto_savejson_client();
+                BLL_client_MG.insert_client(client);
+                //C_auto_json.auto_savejson_client();
                 JOptionPane.showMessageDialog(null, "The user was created succesfuly"); 
                 ok=true;
             }
@@ -55,6 +59,9 @@ public class BLL_client {
         }
     }
     
+    /**
+     * Funtion to show a client, using a the ArrayList of client
+     */
     public static void show_client(String DNI){
         int position;
         
@@ -68,6 +75,9 @@ public class BLL_client {
         
     }
     
+    /**
+     * Funtion to modify a client, using a Mongo DB
+     */
     public static void modify(){
         int position;
         String dni;
@@ -83,7 +93,8 @@ public class BLL_client {
             ok=false;
         }else{
           singleton_client.client.set(position, client);
-          C_auto_json.auto_savejson_client();
+          BLL_client_MG.update_client(client);
+          //C_auto_json.auto_savejson_client();
           client_update.jt_alert.setText("The user was created succesfuly"); 
           ok=true;
         }
@@ -91,6 +102,9 @@ public class BLL_client {
         
     }
     
+    /**
+     * Function to clean the labels of the create form
+     */
     public static void clean(){
         DAO_client.clean();
     }
@@ -130,7 +144,10 @@ public class BLL_client {
 		return -1;
 			
 	}
-        
+     
+    /**
+     * Funtion to delete a client by the table an delete it to the Mongo DB
+     */
     public static void delete_line() {
         String dni;
         int pos, selection, inicio, selection1;
@@ -157,7 +174,8 @@ public class BLL_client {
 
                     singleton_client.client.remove(cli);
                     datosaux.remove(cli);
-                    C_auto_json.auto_savejson_client();
+                    BLL_client_MG.delete_client(cli);
+                    //C_auto_json.auto_savejson_client();
                     
 //                    Ordenar(0);
 //                    EFBLLgrafico.Guardar(0);
@@ -175,6 +193,10 @@ public class BLL_client {
         }
     }
     
+    /**
+     * Funtion to modify a client in the table, it take the dni label to can show
+     * the client with this dni.
+     */
     public static boolean modifiy_line() {
         String dni;
         boolean correcto;
@@ -207,6 +229,10 @@ public class BLL_client {
         return correcto;
     }
     
+    /**
+     * Function to redirect to DAO_create functions
+     * @param type 
+     */
     public static void give_data(String type){
         boolean correct = false;
         switch (type) {
@@ -252,6 +278,10 @@ public class BLL_client {
         }
     }
     
+    /**
+     * Function to redirect to DAO_update functions
+     * @param type 
+     */
     public static void update_data(String type){
         boolean correct = false;
         switch (type) {
