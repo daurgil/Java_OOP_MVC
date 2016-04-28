@@ -7,6 +7,7 @@ package framework.Mains;
 
 import framework.modules.Menu_config.Controler.controler_menu;
 import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.Menu_config.View.menu;
 import java.sql.SQLException;
 
@@ -47,7 +48,7 @@ public class G_main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new controler_menu(new menu(),0).Init(0);
+                new controler_menu(new log_in(),2).Init(2);
             }
         });
     }

@@ -7,19 +7,25 @@ package framework.modules.Menu_config.Controler;
 
 import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.Model.files_config.BLL.BLL_config;
+import framework.modules.Menu_config.Model.files_config.BLL.BLL_log_in;
 import framework.modules.Menu_config.View.Config;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.Menu_config.View.menu;
 import framework.modules.users.admin.Controler.admin_controler;
 import framework.modules.users.admin.View.admin_table;
 import framework.modules.users.client.Controler.client_controler;
 import framework.modules.users.client.View.client_table;
+import framework.modules.users.client.View.client_update;
 import framework.modules.users.reg_user.Controler.reg_controler;
 import framework.modules.users.reg_user.View.reg_table;
+import framework.modules.users.reg_user.View.reg_update;
 import framework.utils.singleton;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
@@ -33,10 +39,11 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  *
  * @author pelu
  */
-public class controler_menu implements ActionListener, MouseListener{
+public class controler_menu implements ActionListener, MouseListener, KeyListener{
     
     public static menu menu;
     public static Config config;
+    public static log_in login;
     
     public controler_menu(JFrame frame, int i){
         
@@ -46,24 +53,40 @@ public class controler_menu implements ActionListener, MouseListener{
         if(i==1){
            config= (Config) frame; 
         }
+        if(i==2){
+            login= (log_in) frame;
+        }
     }
 
     
     public enum Action{
         
-        /////Botones Menu/////
+        /////Buttons Menu/////
+        
         jb_admin,
         jb_client,
         jb_reg_user,
         jl_config,
         
-        //////Botones config/////
+        //////Buttons config/////
         
         jb_save,
         jb_back,
+        
+        //////Buttons log in/////
+        
+        sign_in,
+        exit,
+        jt_dni,
+        jt_password,
+        jcb_password
+        
     }
     
-    
+    /**
+     * Funtion with the differents especifications of every view
+     * @param i type of view
+     */
     public void Init(int i){
        
         //class_config.getinstance().getTheme();
@@ -157,7 +180,43 @@ public class controler_menu implements ActionListener, MouseListener{
                 }
             });
         }     
-             
+        
+        if(i==2){
+            
+            
+            Image icono=Toolkit.getDefaultToolkit().getImage(singleton.icon_app);
+            login.setIconImage(icono);
+            login.setLocationRelativeTo(null);
+            //login.setSize(680,450);//ancho x alto
+            login.setResizable(false);
+            
+            login.setVisible(true);
+            
+            login.jb_sing.setActionCommand("sign_in");
+            login.jb_sing.addActionListener(this);
+            
+            login.jb_exit.setActionCommand("sign_in");
+            login.jb_exit.addActionListener(this);
+            
+            login.jt_dni.setName("jt_dni");
+            login.jt_dni.addKeyListener(this);
+            
+            login.jt_password.setName("jt_password");
+            login.jt_password.addKeyListener(this);
+            
+            login.jcb_password.setName("jcb_password");
+            login.jcb_password.addMouseListener(this);
+            
+            login.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                    login.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
+                    login.dispose();
+                    System.exit(0);
+                }
+            });
+        }
     }       
     
     
@@ -194,6 +253,33 @@ public class controler_menu implements ActionListener, MouseListener{
                 new controler_menu(new menu(),0).Init(0);
                 config.dispose();
                 break;
+            case sign_in:
+                BLL_log_in.search_in_DB();
+                System.out.println(singleton.type_login);
+                switch(singleton.type_login){
+                    case "admin":
+                        new controler_menu(new menu(), 0).Init(0);
+                        login.dispose();
+                        break;
+                    case "client":
+                        client_update.DNI=login.jt_dni.getText();
+                        new client_controler(new client_update(), 2).Init(2);
+                        login.dispose();
+                        break;
+                    case "reg":
+                        reg_update.DNI=login.jt_dni.getText();
+                        new reg_controler(new reg_update(), 2).Init(2);
+                        login.dispose();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case exit:
+                JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
+                login.dispose();
+                System.exit(0);
+                break;
         }
     }
     
@@ -206,6 +292,8 @@ public class controler_menu implements ActionListener, MouseListener{
                 new controler_menu(new Config(), 1).Init(1);
                 BLL_config.open_config();
                 menu.dispose();
+            case jcb_password:
+                BLL_log_in.password_show();
         }
     }
     
@@ -267,5 +355,36 @@ public class controler_menu implements ActionListener, MouseListener{
         
     }
 
-    
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch(Action.valueOf(e.getComponent().getName())){
+            case jt_dni:
+                if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                    BLL_log_in.give_data("dni");
+                  }
+                break;
+            case jt_password:
+                if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                    BLL_log_in.give_data("password");
+                  }
+                break;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        switch(Action.valueOf(e.getComponent().getName())){
+            case jt_dni:
+                BLL_log_in.give_data("dni");
+                break;
+            case jt_password:
+                BLL_log_in.give_data("password");
+                break;
+        }
+    }
 }

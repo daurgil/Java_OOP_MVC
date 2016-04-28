@@ -76,6 +76,24 @@ public class BLL_client {
     }
     
     /**
+     * Funtion to show a client, using a the ArrayList of client
+     */
+    public static void show_client_MG(String DNI){
+        boolean position;
+        
+        client_class client= new client_class(DNI);
+        position=BLL_client_MG.search_client();
+        
+        if(position==true){
+        //client=singleton_client.client.get(position);
+        
+        DAO_client.show_client(singleton_client.c);
+        }
+        
+        
+    }
+    
+    /**
      * Funtion to modify a client, using a Mongo DB
      */
     public static void modify(){
@@ -84,7 +102,6 @@ public class BLL_client {
         
         dni=client_update.DNI;
         client_class client= new client_class(dni);
-        position=BLL_client.search_client(client);
         
         client=DAO_client.modify();
         
@@ -92,7 +109,7 @@ public class BLL_client {
             client_update.jt_alert.setText("ERROR, Any problem to save de user");
             ok=false;
         }else{
-          singleton_client.client.set(position, client);
+         
           BLL_client_MG.update_client(client);
           //C_auto_json.auto_savejson_client();
           client_update.jt_alert.setText("The user was created succesfuly"); 
@@ -140,6 +157,7 @@ public class BLL_client {
 		for(int i=0; i<=(singleton_client.client.size()-1);i++){
 			if(singleton_client.client.get(i).equals(client))
 				return i;
+                        System.out.println(i);
 		}
 		return -1;
 			

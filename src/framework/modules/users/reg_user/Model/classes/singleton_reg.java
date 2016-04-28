@@ -16,6 +16,7 @@ public class singleton_reg {
     public static ArrayList <reg_user_class> reg;
     public static reg_user_class reg_u;
     public static String DNI=" ";
+    public static reg_user_class r=null;
     
     public static String icon_reg= "src/framework/img/icon_reg.png";
 }

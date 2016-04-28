@@ -29,6 +29,11 @@ public class BLL_client_MG {
         DAO_client_MG.load_clients();
     }
     
+    public static boolean search_client(){
+        boolean correct= DAO_client_MG.search_client();
+        return correct;
+    }
+    
     /**
      * Funtion to modify a client and update in DB
      * @param client 

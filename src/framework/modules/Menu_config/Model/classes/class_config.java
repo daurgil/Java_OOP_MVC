@@ -14,6 +14,7 @@ import framework.modules.users.admin.Model.classes.singleton_admin;
 import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.client.Model.classes.singleton_client;
 import framework.modules.users.reg_user.Model.classes.singleton_reg;
+import framework.modules.users.reg_user.Model.utils.lib_Rfiles.R_auto_json;
 import framework.utils.appearance;
 import framework.utils.singleton;
 
@@ -69,7 +70,7 @@ public class class_config implements Serializable{
 			
 //                        A_auto_json.auto_openjson_admin();
 //                        C_auto_json.auto_openjson_client();
-//                        R_auto_json.auto_openjson_reg();
+                        R_auto_json.auto_openjson_reg();
                         //funtions_files.auto_open();
 			auto_config.auto_openconfig();
                         //class_language.getinstance();

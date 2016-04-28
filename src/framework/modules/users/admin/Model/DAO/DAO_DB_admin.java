@@ -7,8 +7,10 @@ package framework.modules.users.admin.Model.DAO;
 
 import framework.classes.class_date;
 import framework.modules.Menu_config.Model.classes.singleton_config;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
+import framework.utils.singleton;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -216,7 +218,8 @@ public class DAO_DB_admin {
         ResultSet rs = null;
         PreparedStatement stmt = null;
         boolean correct = false;
-
+        singleton_admin.a= new admin_class(log_in.jt_dni.getText());
+        //singleton_admin.a=singleton_admin.login_admin;
         try {
             stmt = con.prepareStatement("SELECT * FROM app.admin WHERE dni=?");
             stmt.setString(1, singleton_admin.a.getDni());
@@ -224,6 +227,7 @@ public class DAO_DB_admin {
             while (rs.next()) {
 
                 take_admin(rs);
+                
             }
             correct = true;
         } catch (SQLException ex) {
@@ -254,7 +258,7 @@ public class DAO_DB_admin {
     private void take_admin(ResultSet rs) {
 
         try {
-
+            
             singleton_admin.a.setDni(rs.getString("dni"));
             singleton_admin.a.setName(rs.getString("name"));
             singleton_admin.a.setSurname(rs.getString("surname"));

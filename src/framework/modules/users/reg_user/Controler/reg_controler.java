@@ -7,6 +7,7 @@ package framework.modules.users.reg_user.Controler;
 
 import com.sun.glass.events.WindowEvent;
 import framework.modules.Menu_config.Controler.controler_menu;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.Menu_config.View.menu;
 import framework.modules.users.reg_user.Model.BLL.BLL_reg;
 import framework.modules.users.reg_user.Model.classes.miniSimpleTableModel_reg;
@@ -18,6 +19,7 @@ import framework.modules.users.reg_user.View.reg_create;
 import framework.modules.users.reg_user.View.reg_table;
 import static framework.modules.users.reg_user.View.reg_table.TABLA;
 import framework.modules.users.reg_user.View.reg_update;
+import framework.utils.singleton;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -344,15 +346,22 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
                 
                 public void windowClosing(WindowEvent e) {
                     //JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
-                    new reg_controler(new reg_table(), 0).Init(0);
-                    Update.dispose();
-                    
+                    if(singleton.type_login=="reg"){
+                        new controler_menu(new log_in(), 2).Init(2);
+                        Update.dispose();
+                    }else{
+                        new reg_controler(new reg_table(), 0).Init(0);
+                        Update.dispose();
+                    }
                 }
             });
                     
             Update.jb_save.setActionCommand("u_jb_save");
             Update.jb_save.addActionListener(this);
 
+            if(singleton.type_login=="reg"){
+                Update.jl_back.setText("Log out");
+            }
             Update.jl_back.setName("u_jl_back");
             Update.jl_back.addMouseListener(this);
 

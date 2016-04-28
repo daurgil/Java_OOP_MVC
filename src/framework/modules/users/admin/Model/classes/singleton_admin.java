@@ -17,6 +17,7 @@ public class singleton_admin {
     public static ArrayList <admin_class> admin;
     public static admin_class adm;
     public static admin_class a;
+    public static admin_class login_admin;
     public static String DNI=" ";
     
     public static String icon_admin= "src/framework/img/icon_admin.png";

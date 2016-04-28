@@ -19,6 +19,8 @@ import org.apache.commons.dbcp.BasicDataSource;
  */
 public class singleton {
     
+    public static String type_login=null;
+    
     public static Mongo_DB mongo = null;
     public static Mongo client=null;
     public static BasicDataSource dataSource=null;

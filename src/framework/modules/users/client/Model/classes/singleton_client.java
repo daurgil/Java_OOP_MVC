@@ -16,6 +16,7 @@ public class singleton_client {
     public static ArrayList <client_class> client;
     public static String DNI=" ";
     public static client_class cli;
+    public static client_class c;
     
     public static String icon_client= "src/framework/img/icon_client.png";
     

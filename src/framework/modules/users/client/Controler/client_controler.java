@@ -7,6 +7,7 @@ package framework.modules.users.client.Controler;
 
 import com.sun.glass.events.KeyEvent;
 import framework.modules.Menu_config.Controler.controler_menu;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.Menu_config.View.menu;
 import framework.modules.users.client.Model.BLL.BLL_client;
 import framework.modules.users.client.Model.classes.miniSimpleTableModel_client;
@@ -18,6 +19,7 @@ import framework.modules.users.client.View.client_create;
 import framework.modules.users.client.View.client_table;
 import static framework.modules.users.client.View.client_table.TABLA;
 import framework.modules.users.client.View.client_update;
+import framework.utils.singleton;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -334,8 +336,13 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         if(op==2){
             
             Update.setVisible(true);
+            System.out.println(Update.DNI);
             
-            BLL_client.show_client(Update.DNI);
+            if(singleton.type_login=="client"){
+                BLL_client.show_client_MG(Update.DNI);
+            }else{
+                BLL_client.show_client(Update.DNI);
+            }
         
             Update.setTitle("Modify admin");
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton_client.icon_client);
@@ -352,15 +359,23 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
                 @Override
                 public void windowClosing(WindowEvent e) {
                     //JOptionPane.showMessageDialog(null,"Saliendo de la aplicación");
-                    new client_controler(new client_table(), 0).Init(0);
-                    Update.dispose();
-                    
+                    if(singleton.type_login=="client"){
+                        new controler_menu(new log_in(), 2).Init(2);
+                        Update.dispose();
+                    }else{
+                      new client_controler(new client_table(), 0).Init(0);
+                        Update.dispose();
+                      
+                    }                    
                 }
             });
                     
             Update.jb_save.setActionCommand("u_jb_save");
             Update.jb_save.addActionListener(this);
 
+            if(singleton.type_login=="client"){
+                Update.jl_back.setText("Log out");
+            }
             Update.jl_back.setName("u_jl_back");
             Update.jl_back.addMouseListener(this);
 
@@ -487,24 +502,28 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
                 }
                 break;
             case u_jb_save:
-                BLL_client.modify();
-                if(BLL_client.ok==true){
-                    
-                    Timer delay=new Timer(3000, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            Update.dispose();
-                            new client_controler(new client_table(), 0).Init(0);
-                        }
-                    });
-
-                    delay.setRepeats(false);
-                    delay.start();
-                    Update.jt_alert.setText("User created correctly");
-                    break;
+                if(singleton.type_login=="client"){
+                    BLL_client.modify();
                 }else{
-                    Update.jt_alert.setText("Error data, revise it");
-                    break;
+                    BLL_client.modify();
+                    if(BLL_client.ok==true){
+
+                        Timer delay=new Timer(3000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                Update.dispose();
+                                new client_controler(new client_table(), 0).Init(0);
+                            }
+                        });
+
+                        delay.setRepeats(false);
+                        delay.start();
+                        Update.jt_alert.setText("User created correctly");
+                        break;
+                    }else{
+                        Update.jt_alert.setText("Error data, revise it");
+                        break;
+                }
                 }
             case u_chb_password:
                 if(Update.chb_password.isSelected()==false){
@@ -560,9 +579,15 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
                 Create.dispose();
                 break;
             case u_jl_back:
-                new client_controler(new client_table(), 0).Init(0);
-                Update.dispose();
-                break;
+                if(singleton.type_login=="client"){
+                    new controler_menu(new log_in(), 2).Init(2);
+                    Update.dispose();
+                    break;
+                }else{
+                    new client_controler(new client_table(), 0).Init(0);
+                    Update.dispose();
+                    break;
+                }
             case tableSocio:
                 if (cli.getClickCount() == 2) {
                     boolean modificar;

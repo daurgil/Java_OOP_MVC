@@ -9,6 +9,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.client.Model.classes.singleton_client;
 import framework.utils.singleton;
@@ -95,6 +96,40 @@ public class DAO_client_MG {
  
         //Realiza la actualización
         table.updateMulti(searchById, updateclient);
+    }
+    
+    public static boolean search_client(){
+       
+        DBCollection table= singleton.collection;
+        DBCursor cursor = null;
+        client_class client = new client_class();
+        boolean correct=false;
+        try {
+            
+            BasicDBObject searchById = new BasicDBObject();
+            searchById.put("dni", log_in.jt_dni.getText());
+            //singleton_client.c=new client_class(log_in.jt_dni.getText());
+            
+            cursor=table.find(searchById);
+            if(cursor.count()!=0){
+                while(cursor.hasNext()){
+                    BasicDBObject document = (BasicDBObject) cursor.next();
+                    singleton_client.c= client.DB_to_client(document);
+                    //System.out.println(singleton_client.c);
+                    correct=true;
+                    //singleton_client.c.add(client.DB_to_client(document));
+                }
+            }else{
+                System.out.println("NOT DATA"); 
+                correct=false;
+            }
+        } finally {
+            if (cursor != null){
+		cursor.close();
+            }
+	}	
+       return correct;
+        
     }
     
     /**

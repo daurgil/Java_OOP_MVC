@@ -5,6 +5,7 @@
  */
 package framework.modules.users.reg_user.Model.BLL;
 
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.users.reg_user.Controler.reg_controler;
 import framework.modules.users.reg_user.Model.DAO.DAO_reg;
 import framework.modules.users.reg_user.Model.classes.miniSimpleTableModel_reg;
@@ -42,7 +43,7 @@ public class BLL_reg {
             reg_create.jt_alert.setText("ERROR, Any problem to save de user");
             ok=false;
         }else{
-            if(search_admin()!=-1){
+            if(search_reg()!=-1){
                 JOptionPane.showMessageDialog(null, "This Id card already exist");
                 ok=false;
             }else{
@@ -61,7 +62,7 @@ public class BLL_reg {
         int position;
         
         reg_user_class reg= new reg_user_class(DNI);
-        position=BLL_reg.search_admin(reg);
+        position=BLL_reg.search_reg(reg);
         
         reg=singleton_reg.reg.get(position);
         
@@ -76,7 +77,7 @@ public class BLL_reg {
         
         dni=reg_update.DNI;
         reg_user_class reg= new reg_user_class(dni);
-        position=BLL_reg.search_admin(reg);
+        position=BLL_reg.search_reg(reg);
         
         reg=DAO_reg.modify();
         
@@ -102,7 +103,7 @@ public class BLL_reg {
 	 * @param language
 	 * @return int, if any user in arraylist have the introduced dni or not
 	 */
-	public static int search_admin(){
+	public static int search_reg(){
 
 		reg_user_class r=null;
 		String dni="";
@@ -123,7 +124,30 @@ public class BLL_reg {
 	 * @param language
 	 * @return int, if any user in arraylist have the introduced dni or not
 	 */
-	public static int search_admin(reg_user_class reg){
+	public static int search_reg_log(){
+
+		reg_user_class r=null;
+		String dni="";
+		
+		dni=log_in.jt_dni.getText();
+		r= new reg_user_class(dni);
+		
+		for(int i=0; i<=(singleton_reg.reg.size()-1);i++){
+			if(singleton_reg.reg.get(i).equals(r)){
+                                singleton_reg.r=singleton_reg.reg.get(i);
+				return i;
+                        }
+		}
+		return -1;
+			
+	}
+        
+    /**Function to ask a dni to search if this admin exist in the arraylist
+	 * 
+	 * @param language
+	 * @return int, if any user in arraylist have the introduced dni or not
+	 */
+	public static int search_reg(reg_user_class reg){
 
 //		admin_class a=admin;
 //		String dni="";
@@ -155,7 +179,7 @@ public class BLL_reg {
                 dni = (String) TABLA.getModel().getValueAt(selection1, 0);
                 singleton_reg.reg_u = new reg_user_class(dni);
                 
-                pos = BLL_reg.search_admin((reg_user_class) reg_u);
+                pos = BLL_reg.search_reg((reg_user_class) reg_u);
                 int opc = JOptionPane.showConfirmDialog(null, "Deseas borrar a la persona con DNI: " + dni,
                         "Info", JOptionPane.WARNING_MESSAGE);
 
