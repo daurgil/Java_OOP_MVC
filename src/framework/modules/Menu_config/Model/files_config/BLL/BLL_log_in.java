@@ -5,11 +5,15 @@
  */
 package framework.modules.Menu_config.Model.files_config.BLL;
 
+import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.Model.files_config.DAO.DAO_log_in;
+import framework.modules.Menu_config.View.log_in;
 import framework.modules.users.admin.Model.BLL.BLL_DB_admin;
 import framework.modules.users.admin.Model.BLL.BLL_admin;
 import framework.modules.users.client.Model.BLL.BLL_client_MG;
 import framework.modules.users.reg_user.Model.BLL.BLL_reg;
+import framework.utils.singleton;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,7 +62,18 @@ public class BLL_log_in {
         return correct;
     }
     
+    /**
+     * funtion to see the password in login view
+     */
     public static void password_show(){
         DAO_log_in.show_pass();
+    }
+    
+    /**
+     * funtion to change the language in login
+     */
+    public static void translate(){
+        class_config.getinstance();
+        DAO_log_in.translate();
     }
 }       

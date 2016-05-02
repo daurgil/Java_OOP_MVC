@@ -5,6 +5,7 @@
  */
 package framework.modules.Menu_config.Controler;
 
+import framework.modules.Menu_config.Model.classes.class_config;
 import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.Model.files_config.BLL.BLL_config;
 import framework.modules.Menu_config.Model.files_config.BLL.BLL_log_in;
@@ -20,6 +21,8 @@ import framework.modules.users.reg_user.Controler.reg_controler;
 import framework.modules.users.reg_user.View.reg_table;
 import framework.modules.users.reg_user.View.reg_update;
 import framework.utils.singleton;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -30,7 +33,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -75,11 +81,14 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         
         //////Buttons log in/////
         
-        sign_in,
+        log_in,
         exit,
         jt_dni,
         jt_password,
-        jcb_password
+        jcb_password,
+        jl_eng,
+        jl_esp,
+        jl_val,
         
     }
     
@@ -100,10 +109,11 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
             
             menu.setVisible(true);
 
-    //        menu.setContentPane(new JLabel(new ImageIcon(singleton.fondo_menu)));
-    //        menu.setLayout(new FlowLayout());
+            //menu.setContentPane(new JLabel(new ImageIcon(singleton.fondo_menu)));
+            //menu.setLayout(new FlowLayout());
 
-            //menu.setTitle("APP");
+            
+            //Image bacground=singleton.fondo_menu.getImage();
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton.icon_app);
             menu.setIconImage(icono);
             menu.setLocationRelativeTo(null);
@@ -183,6 +193,12 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         
         if(i==2){
             
+            login.jl_title.setText(singleton_config.lang.getProperty("log_title"));
+            login.jl_dni.setText(singleton_config.lang.getProperty("log_dni"));
+            login.jl_password.setText(singleton_config.lang.getProperty("log_password"));
+            login.jcb_password.setText(singleton_config.lang.getProperty("log_see_pass"));
+            login.jb_login.setText(singleton_config.lang.getProperty("log_login"));
+            login.jb_exit.setText(singleton_config.lang.getProperty("log_exit"));
             
             Image icono=Toolkit.getDefaultToolkit().getImage(singleton.icon_app);
             login.setIconImage(icono);
@@ -192,10 +208,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
             
             login.setVisible(true);
             
-            login.jb_sing.setActionCommand("sign_in");
-            login.jb_sing.addActionListener(this);
+            login.jb_login.setActionCommand("log_in");
+            login.jb_login.addActionListener(this);
             
-            login.jb_exit.setActionCommand("sign_in");
+            login.jb_exit.setActionCommand("exit");
             login.jb_exit.addActionListener(this);
             
             login.jt_dni.setName("jt_dni");
@@ -206,6 +222,15 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
             
             login.jcb_password.setName("jcb_password");
             login.jcb_password.addMouseListener(this);
+            
+            login.jl_eng.setName("jl_eng");
+            login.jl_eng.addMouseListener(this);
+            
+            login.jl_esp.setName("jl_esp");
+            login.jl_esp.addMouseListener(this);
+            
+            login.jl_val.setName("jl_val");
+            login.jl_val.addMouseListener(this);
             
             login.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                     login.addWindowListener(new WindowAdapter() {
@@ -253,26 +278,27 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
                 new controler_menu(new menu(),0).Init(0);
                 config.dispose();
                 break;
-            case sign_in:
+            case log_in:
                 BLL_log_in.search_in_DB();
-                System.out.println(singleton.type_login);
-                switch(singleton.type_login){
-                    case "admin":
-                        new controler_menu(new menu(), 0).Init(0);
-                        login.dispose();
-                        break;
-                    case "client":
-                        client_update.DNI=login.jt_dni.getText();
-                        new client_controler(new client_update(), 2).Init(2);
-                        login.dispose();
-                        break;
-                    case "reg":
-                        reg_update.DNI=login.jt_dni.getText();
-                        new reg_controler(new reg_update(), 2).Init(2);
-                        login.dispose();
-                        break;
-                    default:
-                        break;
+                if(singleton.type_login==null){
+                    break;
+                }else{
+                    switch(singleton.type_login){
+                        case "admin":
+                            new controler_menu(new menu(), 0).Init(0);
+                            login.dispose();
+                            break;
+                        case "client":
+                            client_update.DNI=login.jt_dni.getText();
+                            new client_controler(new client_update(), 2).Init(2);
+                            login.dispose();
+                            break;
+                        case "reg":
+                            reg_update.DNI=login.jt_dni.getText();
+                            new reg_controler(new reg_update(), 2).Init(2);
+                            login.dispose();
+                            break;
+                    }
                 }
                 break;
             case exit:
@@ -292,8 +318,25 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
                 new controler_menu(new Config(), 1).Init(1);
                 BLL_config.open_config();
                 menu.dispose();
+                break;
             case jcb_password:
                 BLL_log_in.password_show();
+                break;
+            case jl_eng:
+                class_config.getinstance().setLanguage("eng");
+                singleton_config.lang.setLanguage();
+                BLL_log_in.translate();
+                break;
+            case jl_esp:
+                class_config.getinstance().setLanguage("esp");
+                singleton_config.lang.setLanguage();
+                BLL_log_in.translate();
+                break;
+            case jl_val:
+                class_config.getinstance().setLanguage("val");
+                singleton_config.lang.setLanguage();
+                BLL_log_in.translate();
+                break;
         }
     }
     
@@ -327,19 +370,15 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         switch(Action.valueOf(mex.getComponent().getName())){
             
             case jb_admin:
-                
                 menu.jb_admin.setIcon(singleton.icon_user);
                 break;
-            case jb_client:
-                
+            case jb_client:                
                 menu.jb_client.setIcon(singleton.icon_user);
                 break;
-            case jb_reg_user:
-                
+            case jb_reg_user:                
                 menu.jb_reg_user.setIcon(singleton.icon_user);
                 break;
-            case jl_config:
-                
+            case jl_config:                
                 menu.jl_config.setIcon(singleton.setting);
                 break;
         }

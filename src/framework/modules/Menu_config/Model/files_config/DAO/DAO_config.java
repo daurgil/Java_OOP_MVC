@@ -6,8 +6,10 @@
 package framework.modules.Menu_config.Model.files_config.DAO;
 
 import framework.modules.Menu_config.Model.classes.class_config;
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.Model.files_config.auto_config;
 import framework.modules.Menu_config.View.Config;
+import framework.utils.singleton;
 
 /**
  *
@@ -33,6 +35,7 @@ public class DAO_config {
         
         lang=DAO_config.save_lang();
         class_config.getinstance().setLanguage(lang);
+        singleton_config.lang.setLanguage();
         
         theme=DAO_config.save_theme();
         class_config.getinstance().setTheme(theme);

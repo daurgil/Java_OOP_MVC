@@ -5,6 +5,8 @@
  */
 package framework.modules.Menu_config.View;
 
+import framework.modules.Menu_config.Model.classes.singleton_config;
+
 /**
  *
  * @author pelu
@@ -27,31 +29,40 @@ public class log_in extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jl_title = new javax.swing.JLabel();
+        jl_dni = new javax.swing.JLabel();
+        jl_password = new javax.swing.JLabel();
         jt_dni = new javax.swing.JTextField();
-        jb_sing = new javax.swing.JButton();
+        jb_login = new javax.swing.JButton();
         jb_exit = new javax.swing.JButton();
         jcb_password = new javax.swing.JCheckBox();
         jt_password = new javax.swing.JPasswordField();
         check_dni = new javax.swing.JLabel();
         check_password = new javax.swing.JLabel();
+        jl_eng = new javax.swing.JLabel();
+        jl_esp = new javax.swing.JLabel();
+        jl_val = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Sign in");
+        jl_title.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jl_title.setText("Sign in");
 
-        jLabel2.setText("jLabel2");
+        jl_dni.setText("jLabel2");
 
-        jLabel3.setText("jLabel3");
+        jl_password.setText("jlabel3");
 
-        jb_sing.setText("jButton1");
+        jb_login.setText("jButton1");
 
         jb_exit.setText("jButton2");
 
         jcb_password.setText("ver password");
+
+        jl_eng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/ic_eng.png"))); // NOI18N
+
+        jl_esp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/ic_esp.png"))); // NOI18N
+
+        jl_val.setIcon(new javax.swing.ImageIcon(getClass().getResource("/framework/img/ic_val.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,21 +70,30 @@ public class log_in extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jb_sing, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_login, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jb_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcb_password)
-                    .addComponent(jt_password))
+                    .addComponent(jl_password)
+                    .addComponent(jl_dni)
+                    .addComponent(jl_title))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcb_password)
+                            .addComponent(jt_password)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_eng)
+                        .addGap(26, 26, 26)
+                        .addComponent(jl_esp)
+                        .addGap(30, 30, 30)
+                        .addComponent(jl_val)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(check_password, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
@@ -84,23 +104,27 @@ public class log_in extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jl_eng, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jl_esp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jl_val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jl_dni)
                     .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(check_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(check_password, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
+                        .addComponent(jl_password)
                         .addComponent(jt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcb_password)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_sing)
+                    .addComponent(jb_login)
                     .addComponent(jb_exit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,12 +173,15 @@ public class log_in extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel check_dni;
     public static javax.swing.JLabel check_password;
-    public static javax.swing.JLabel jLabel1;
-    public static javax.swing.JLabel jLabel2;
-    public static javax.swing.JLabel jLabel3;
     public static javax.swing.JButton jb_exit;
-    public static javax.swing.JButton jb_sing;
+    public static javax.swing.JButton jb_login;
     public static javax.swing.JCheckBox jcb_password;
+    public static javax.swing.JLabel jl_dni;
+    public static javax.swing.JLabel jl_eng;
+    public static javax.swing.JLabel jl_esp;
+    public static javax.swing.JLabel jl_password;
+    public static javax.swing.JLabel jl_title;
+    public static javax.swing.JLabel jl_val;
     public static javax.swing.JTextField jt_dni;
     public static javax.swing.JPasswordField jt_password;
     // End of variables declaration//GEN-END:variables

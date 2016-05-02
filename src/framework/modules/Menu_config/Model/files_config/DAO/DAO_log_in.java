@@ -5,13 +5,11 @@
  */
 package framework.modules.Menu_config.Model.files_config.DAO;
 
+import framework.modules.Menu_config.Model.classes.singleton_config;
 import framework.modules.Menu_config.View.log_in;
 import framework.modules.users.admin.Model.BLL.BLL_DB_admin;
-import framework.modules.users.admin.Model.DAO.DAO_DB_admin;
-import framework.modules.users.admin.Model.classes.admin_class;
 import framework.modules.users.admin.Model.classes.singleton_admin;
 import framework.modules.users.client.Model.BLL.BLL_client_MG;
-import framework.modules.users.client.Model.classes.client_class;
 import framework.modules.users.client.Model.classes.singleton_client;
 import framework.modules.users.reg_user.Model.BLL.BLL_reg;
 import framework.modules.users.reg_user.Model.classes.singleton_reg;
@@ -20,7 +18,6 @@ import static framework.utils.singleton.*;
 import framework.utils.validate;
 import static java.awt.Color.GREEN;
 import static java.awt.Color.RED;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +25,10 @@ import javax.swing.JOptionPane;
  */
 public class DAO_log_in {
     
+    /**
+     * Function to search an admin and 
+     * @return 
+     */
     public static boolean search_admin(){
         boolean correct= false;
         
@@ -154,7 +155,7 @@ public class DAO_log_in {
                 if(check==true){
                     log_in.check_password.setIcon(apply);
                     log_in.jt_password.setBackground(GREEN);
-                    log_in.jb_sing.requestFocus();
+                    log_in.jb_login.requestFocus();
                     check = true;
                 }else{
                     log_in.check_password.setIcon(cancel);
@@ -175,6 +176,19 @@ public class DAO_log_in {
         }else{
             log_in.jt_password.setEchoChar('*');
         }
+    }
+    
+    /**
+     * funtion to change the language in login
+     */
+    public static void translate(){
+        System.out.println(singleton_config.lang);
+        log_in.jl_title.setText(singleton_config.lang.getProperty("log_title"));
+        log_in.jl_dni.setText(singleton_config.lang.getProperty("log_dni"));
+        log_in.jl_password.setText(singleton_config.lang.getProperty("log_password"));
+        log_in.jcb_password.setText(singleton_config.lang.getProperty("log_see_pass"));
+        log_in.jb_login.setText(singleton_config.lang.getProperty("log_login"));
+        log_in.jb_exit.setText(singleton_config.lang.getProperty("log_exit"));
     }
     
 }
