@@ -28,6 +28,11 @@ import java.util.Date;
  */
 public class DAO_admin {
     
+      
+    /**
+     * function to create a new admin
+     * @return 
+     */
     public static admin_class create(){
         String dni,name,surname,mobile,email,nick,
                 password,avatar, state,birthday,contract;
@@ -79,6 +84,10 @@ public class DAO_admin {
         return admin;
     }
     
+    /**
+     * Function to print a user in the update view
+     * @param client 
+     */
     public static void show_admin(admin_class admin){
         
         int position;
@@ -118,6 +127,10 @@ public class DAO_admin {
         
     }
     
+    /**
+     * Function to save a modified user
+     * @return 
+     */
     public static admin_class modify(){
         String dni,name,surname,mobile,email,nick,
                 password,avatar, state,birthday,contract;
@@ -170,6 +183,9 @@ public class DAO_admin {
         return admin;
     }
     
+    /**
+     * Funtion to clean the field of create view
+     */
     public static void clean(){
         admin_create.jt_dni.setText("");
         admin_create.jt_dni.setBackground(WHITE);

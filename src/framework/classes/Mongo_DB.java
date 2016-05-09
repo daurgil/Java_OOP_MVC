@@ -29,6 +29,9 @@ public class Mongo_DB {
     private static String nom_table = null;
     private static Properties prop = new Properties();
    
+    /**
+     * Builder of a conection of Mongo DB
+     */
     public Mongo_DB() {
         try {
             input = new FileInputStream("src/framework/classes/mongo.properties"); 
@@ -57,6 +60,10 @@ public class Mongo_DB {
 	}
     }
     
+    /**
+     * Funtion to conect to mongo an take a user registred
+     * @return a user
+     */
     public static Mongo connect() {
         try {
             client = new Mongo(getMachine(), Integer.parseInt(getPort()));

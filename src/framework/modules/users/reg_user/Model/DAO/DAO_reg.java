@@ -30,6 +30,11 @@ import java.util.Date;
  */
 public class DAO_reg {
     
+      
+    /**
+     * function to create a new reg user
+     * @return 
+     */
     public static reg_user_class create(){
         String dni,name,surname,mobile,email,nick,
                 password,avatar, state,birthday,contract;
@@ -76,6 +81,10 @@ public class DAO_reg {
         return reg;
     }
     
+    /**
+     * Function to print a user in the update view
+     * @param client 
+     */
     public static void show_reg(reg_user_class reg){
         
         int position;
@@ -109,6 +118,10 @@ public class DAO_reg {
         
     }
     
+    /**
+     * Function to save a modified user
+     * @return 
+     */
     public static reg_user_class modify(){
         String dni,name,surname,mobile,email,nick,
                 password,avatar, state,birthday,contract;
@@ -157,6 +170,9 @@ public class DAO_reg {
         return reg;
     }
     
+    /**
+     * Funtion to clean the field of create view
+     */
     public static void clean(){
         reg_create.jt_dni.setText("");
         reg_create.jt_dni.setBackground(WHITE);

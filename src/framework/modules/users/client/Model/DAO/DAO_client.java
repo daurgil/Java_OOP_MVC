@@ -95,6 +95,10 @@ public class DAO_client {
         return client;
     }
     
+    /**
+     * Function to print a user in the update view
+     * @param client 
+     */
     public static void show_client(client_class client){
         
         int position;
@@ -141,6 +145,10 @@ public class DAO_client {
         
     }
     
+    /**
+     * Function to save a modified user
+     * @return 
+     */
     public static client_class modify(){
         String dni,name,surname,mobile,email,nick,
                 password,avatar, state,birthday,
@@ -197,6 +205,9 @@ public class DAO_client {
         return client;
     }
     
+    /**
+     * Funtion to clean the field of create view
+     */
     public static void clean(){
         client_create.jt_dni.setText("");
         client_create.jt_dni.setBackground(WHITE);

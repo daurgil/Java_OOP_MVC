@@ -34,6 +34,9 @@ import javax.swing.JOptionPane;
 public class BLL_admin {
     public static boolean ok;
     
+    /**
+     * Funtion to create a admin
+     */
     public static void create(){
         
         admin_class admin=null;
@@ -60,6 +63,10 @@ public class BLL_admin {
         }
     }
     
+    /**
+     * Funtion to show an admin
+     * @param DNI 
+     */
     public static void show_admin(String DNI){
         int position;
         
@@ -73,6 +80,9 @@ public class BLL_admin {
         
     }
     
+    /**
+     * funtion to modify an existent admin
+     */
     public static void modify(){
         int position;
         String dni;
@@ -97,6 +107,9 @@ public class BLL_admin {
         
     }
     
+    /**
+     * funtion to clean the fields in view create admin
+     */
     public static void clean(){
         DAO_admin.clean();
     }
@@ -163,7 +176,10 @@ public class BLL_admin {
 		return -1;
 			
 	}
-        
+    
+    /**
+     * funtion to delete a linea in table admin, and in DB
+     */
     public static void delete_line() {
         String dni;
         int pos, selection, inicio, selection1;
@@ -209,6 +225,9 @@ public class BLL_admin {
         }
     }
     
+    /**
+     * funtion to modify a line in table admin, and in DB
+     */
     public static boolean modifiy_line() {
         String dni;
         boolean correcto;
@@ -244,6 +263,11 @@ public class BLL_admin {
         return correcto;
     }
     
+    /**
+     * funtion to check the introduced date in create view
+     * @param type
+     * @return 
+     */
     public static boolean give_data(String type){
         boolean correct = false;
         switch (type) {
@@ -287,6 +311,11 @@ public class BLL_admin {
         return correct;
     }
     
+    /**
+     * funtion to check the introduced date in update view
+     * @param type
+     * @return 
+     */
     public static void update_data(String type){
         boolean correct = false;
         switch (type) {

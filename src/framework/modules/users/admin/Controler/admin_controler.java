@@ -60,7 +60,11 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
     public static admin_create Create;
     public static AutocompleteJComboBox combo_admin = null;
     
-    
+    /**
+     * Funtion to iniciate de frame controler
+     * @param frame
+     * @param i 
+     */
     public admin_controler(JFrame frame, int i){
         
         if(i==0){
@@ -136,6 +140,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         
     }
     
+    /**
+     * options to charge part of the views an control them
+     * @param op 
+     */
     public void Init(int op){
         
         class_config.getinstance();
@@ -441,6 +449,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         
     }
     
+    /**
+     * funtion to detect action changes in views
+     * @param adm 
+     */
     public void actionPerformed(ActionEvent adm) {
         
         switch(Action.valueOf(adm.getActionCommand())){
@@ -568,6 +580,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param adm 
+     */
     @Override
     public void mouseClicked(MouseEvent adm) {
         
@@ -623,6 +639,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param adm 
+     */
     @Override
     public void mouseEntered(MouseEvent adm) {
         
@@ -648,6 +668,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         }
     }
 
+    /**
+     * funtion to detect mouse changes in views
+     * @param adm 
+     */
     @Override
     public void mouseExited(MouseEvent adm) {
         
@@ -688,6 +712,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param adm 
+     */
     @Override
     public void keyPressed(KeyEvent adm) {
         
@@ -787,6 +815,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         }
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param adm 
+     */
     @Override
     public void keyReleased(KeyEvent adm) {
         
@@ -859,6 +891,10 @@ public class admin_controler implements ActionListener, MouseListener, KeyListen
         
     }
 
+    /**
+     * funtion to detect focus changes in views
+     * @param adm 
+     */
     @Override
     public void focusLost(FocusEvent adm) {
         

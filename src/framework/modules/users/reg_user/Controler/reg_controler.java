@@ -60,7 +60,11 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
     public static reg_create Create;
     public static AutocompleteJComboBox combo_reg = null;
     
-    
+    /**
+     * Funtion to iniciate de frame controler
+     * @param frame
+     * @param i 
+     */
     public reg_controler(JFrame frame, int i){
         
         if(i==0){
@@ -136,6 +140,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         
     }
     
+    /**
+     * options to charge part of the views an control them
+     * @param op 
+     */
     public void Init(int op){
                 
         if(op==0){
@@ -402,6 +410,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         
     }
     
+    /**
+     * funtion to detect action changes in views
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent adm) {
         
@@ -524,6 +536,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param mc 
+     */
     @Override
     public void mouseClicked(MouseEvent adm) {
         
@@ -579,6 +595,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param mc 
+     */
     @Override
     public void mouseEntered(MouseEvent adm) {
         
@@ -604,6 +624,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         }
     }
 
+    /**
+     * funtion to detect mouse changes in views
+     * @param mc 
+     */
     @Override
     public void mouseExited(MouseEvent adm) {
         
@@ -644,6 +668,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param e 
+     */
     @Override
     public void keyPressed(KeyEvent adm) {
         
@@ -743,6 +771,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         }
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param e 
+     */
     @Override
     public void keyReleased(KeyEvent adm) {
         
@@ -815,6 +847,10 @@ public class reg_controler implements ActionListener, MouseListener, KeyListener
         
     }
 
+    /**
+     * funtion to detect focus changes in views
+     * @param e 
+     */
     @Override
     public void focusLost(FocusEvent adm) {
         

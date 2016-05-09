@@ -34,6 +34,9 @@ import javax.swing.JOptionPane;
 public class BLL_reg {
     public static boolean ok;
     
+    /**
+     * Funtion to create a admin
+     */
     public static void create(){
         
         reg_user_class reg=null;
@@ -58,6 +61,10 @@ public class BLL_reg {
         }
     }
     
+    /**
+     * Funtion to show an reg user
+     * @param DNI 
+     */
     public static void show_reg(String DNI){
         int position;
         
@@ -71,6 +78,9 @@ public class BLL_reg {
         
     }
     
+    /**
+     * funtion to modify an existent reg user
+     */
     public static void modify(){
         int position;
         String dni;
@@ -162,7 +172,10 @@ public class BLL_reg {
 		return -1;
 			
 	}
-        
+    
+    /**
+     * funtion to delete a line in table admin, and in DB
+     */
     public static void delete_line() {
         String dni;
         int pos, selection, inicio, selection1;
@@ -207,6 +220,9 @@ public class BLL_reg {
         }
     }
     
+    /**
+     * funtion to modify a line in table admin, and in DB
+     */
     public static boolean modifiy_line() {
         String dni;
         boolean correcto;
@@ -239,6 +255,11 @@ public class BLL_reg {
         return correcto;
     }
     
+    /**
+     * funtion to check the introduced date in create view
+     * @param type
+     * @return 
+     */
     public static void give_data(String type){
         boolean correct = false;
         switch (type) {
@@ -275,6 +296,11 @@ public class BLL_reg {
         }
     }
     
+    /**
+     * funtion to check the introduced date in update view
+     * @param type
+     * @return 
+     */
     public static void update_data(String type){
         boolean correct = false;
         switch (type) {

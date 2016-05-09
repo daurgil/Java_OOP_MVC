@@ -118,6 +118,9 @@ public class miniSimpleTableModel_client extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    /**
+     * Funtion to charge in table clients in db
+     */
     public void cargar() {
         datos.clear();
         datosaux.clear();

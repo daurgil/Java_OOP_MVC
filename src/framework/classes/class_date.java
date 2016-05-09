@@ -82,7 +82,12 @@ public class class_date implements Serializable{
 		}
 			
 	}
-        
+        /**
+	 * Date builder with multiple formats and prepared to work with DBs
+	 * @param introduced_date date introduced by user
+	 * @param format choose by user
+         * @param i to diferenciat this than another function
+	 */
         public class_date(String introduced_date, int i){
 		
 		String[] part_date = new String[3];
@@ -148,7 +153,9 @@ public class class_date implements Serializable{
 //			
 //	}
 	
-	
+	/**
+	 * Date builder
+	 */
 	public class_date(){
 		Calendar actual_date= Calendar.getInstance();
 		String date=this.Calendar_toString(actual_date);

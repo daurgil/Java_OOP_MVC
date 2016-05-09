@@ -60,7 +60,11 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
     public static client_create Create;
     public static AutocompleteJComboBox combo_client = null;
     
-    
+    /**
+     * Funtion to iniciate de frame controler
+     * @param frame
+     * @param i 
+     */
     public client_controler(JFrame frame, int i){
         
         if(i==0){
@@ -138,6 +142,10 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         
     }
     
+    /**
+     * options to charge part of the views an control them
+     * @param op 
+     */
     public void Init(int op){
                 
         if(op==0){
@@ -420,9 +428,13 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         
     }
     
-    public void actionPerformed(ActionEvent adm) {
+    /**
+     * funtion to detect action changes in views
+     * @param cli 
+     */
+    public void actionPerformed(ActionEvent cli) {
         
-        switch(Action.valueOf(adm.getActionCommand())){
+        switch(Action.valueOf(cli.getActionCommand())){
             
             case primero:
                 pagina.currentPageIndex = 1;
@@ -545,6 +557,10 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param cli 
+     */
     @Override
     public void mouseClicked(MouseEvent cli) {
         
@@ -606,10 +622,14 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param cli 
+     */
     @Override
-    public void mouseEntered(MouseEvent adm) {
+    public void mouseEntered(MouseEvent cli) {
         
-        switch(Action.valueOf(adm.getComponent().getName())){
+        switch(Action.valueOf(cli.getComponent().getName())){
             case t_jl_back:
                 table.jl_back.setFont(new Font("DejaVu Sans", Font.BOLD, 16));
                 break;
@@ -631,10 +651,14 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         }
     }
 
+    /**
+     * funtion to detect mouse changes in views
+     * @param cli 
+     */
     @Override
-    public void mouseExited(MouseEvent adm) {
+    public void mouseExited(MouseEvent cli) {
         
-        switch(Action.valueOf(adm.getComponent().getName())){
+        switch(Action.valueOf(cli.getComponent().getName())){
             case t_jl_back:
                 table.jl_back.setFont(new Font("DejaVu Sans", Font.PLAIN, 12));
                 break;
@@ -666,6 +690,10 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         
     }
     
+    /**
+     * funtion to detect key actions in views
+     * @param cli 
+     */
     @Override
     public void keyPressed(java.awt.event.KeyEvent cli) {
        switch(Action.valueOf(cli.getComponent().getName())){
@@ -777,6 +805,10 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param cli 
+     */
     @Override
     public void keyReleased(java.awt.event.KeyEvent cli) {
         switch(Action.valueOf(cli.getComponent().getName())){
@@ -854,6 +886,10 @@ public class client_controler implements ActionListener, MouseListener, KeyListe
         
     }
 
+    /**
+     * funtion to detect focus changes in views
+     * @param cli 
+     */
     @Override
     public void focusLost(FocusEvent cli) {
         switch(Action.valueOf(cli.getComponent().getName())){

@@ -108,6 +108,9 @@ public class miniSimpleTableModel_reg extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    /**
+     * Funtion to charge in table reg users in db
+     */
     public void cargar() {
         datos.clear();
         datosaux.clear();

@@ -51,6 +51,11 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
     public static Config config;
     public static log_in login;
     
+    /**
+     * Funtion to iniciate de frame controler
+     * @param frame
+     * @param i 
+     */
     public controler_menu(JFrame frame, int i){
         
         if(i==0){
@@ -93,8 +98,8 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
     }
     
     /**
-     * Funtion with the differents especifications of every view
-     * @param i type of view
+     * options to charge part of the views an control them
+     * @param op 
      */
     public void Init(int i){
        
@@ -244,7 +249,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         }
     }       
     
-    
+    /**
+     * funtion to detect action changes in views
+     * @param ae 
+     */
     public void actionPerformed(ActionEvent ae){
         
         switch(Action.valueOf(ae.getActionCommand())){
@@ -309,6 +317,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param mc 
+     */
     public void mouseClicked(MouseEvent mc){
         
         switch(Action.valueOf(mc.getComponent().getName())){
@@ -340,6 +352,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         }
     }
     
+    /**
+     * funtion to detect mouse changes in views
+     * @param men 
+     */
     @Override
     public void mouseEntered(MouseEvent men) {
         
@@ -364,6 +380,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         }
     }
 
+    /**
+     * funtion to detect mouse changes in views
+     * @param mex
+     */
     @Override
     public void mouseExited(MouseEvent mex) {
         
@@ -399,6 +419,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param e 
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch(Action.valueOf(e.getComponent().getName())){
@@ -415,6 +439,10 @@ public class controler_menu implements ActionListener, MouseListener, KeyListene
         }
     }
 
+    /**
+     * funtion to detect key actions in views
+     * @param e 
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         switch(Action.valueOf(e.getComponent().getName())){

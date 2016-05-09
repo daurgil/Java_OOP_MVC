@@ -114,6 +114,9 @@ public class miniSimpleTableModel_admin extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    /**
+     * Funtion to charge in table admins in db
+     */
     public void cargar() {
         datos.clear();
         datosaux.clear();

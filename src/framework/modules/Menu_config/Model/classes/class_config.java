@@ -40,6 +40,9 @@ public class class_config implements Serializable{
 	@XStreamAlias("file_format")
 	private String file_format;
 	
+        /**
+         * Basic builder of config
+         */
 	public class_config(){
 		
 		format_date="dd/MM/yyyy";
@@ -51,6 +54,10 @@ public class class_config implements Serializable{
 		
 	}
 	
+        /**
+         * Builder to iniciate config an another options, can work with de config options too
+         * @return 
+         */
 	public static class_config getinstance(){
 		if (instance==null){
 			instance = new class_config();
